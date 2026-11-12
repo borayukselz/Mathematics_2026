@@ -1,95 +1,129 @@
-# Exercise 9: Area and the Determinant
+### Exercise 9. Area and the Determinant
 
-### Given Vectors
+#### Exercise Reminder
 
-**Vector u:**
-[  3 ]
-[  1 ][cite: 23]
+The vectors
 
-**Vector v:**
-[  1 ]
-[  4 ][cite: 23]
+$$
+u=
+\begin{pmatrix}
+3 \\
+1 \\
+\end{pmatrix},\qquad v=
+\begin{pmatrix}
+1 \\
+4 \\
+\end{pmatrix}
+$$
 
----
+span a parallelogram.
 
-### Core Formula for Area of a Parallelogram
-
-In 2D space, the geometric area of the parallelogram spanned by two vectors u and v is equal to the **absolute value of the determinant** of the 2x2 matrix formed by placing the vectors as columns (or rows)[cite: 18, 23]:
-**Area = | det([ u  v ]) |**
-
----
-
-### 1. Compute Area Using Matrix M = [ u  v ]
-
-* **Result:**
-  **Determinant:** det(M) = 11[cite: 23]
-  **Area:** Area = 11 square units[cite: 23]
-
-* **Detailed Calculation Steps:**
-  1. Construct Matrix M with vector u as Column 1 and vector v as Column 2[cite: 23]:
-     M = [  3   1 ]
-         [  1   4 ][cite: 23]
-
-  2. Compute determinant using the 2x2 formula det = (a × d) - (b × c)[cite: 18]:
-     det(M) = (3 × 4) - (1 × 1)
-     det(M) = 12 - 1 = **11**[cite: 23]
-
-  3. Compute physical area by taking the absolute value:
-     Area = | det(M) | = | 11 | = **11**[cite: 23]
-
-* **Method & Explanation:**
-  The determinant calculates the signed area scaled by the linear transformation mapping standard unit vectors to u and v[cite: 23].
-
-* **Mathematical Verification:**
-  Re-verify arithmetic: (3 × 4) - (1 × 1) = 12 - 1 = 11. Absolute value is 11. Calculation confirmed.
+1. Compute its area using a determinant.
+2. Reverse the order of the vectors and explain what changes in the determinant and what does not change in the area.
 
 ---
 
-### 2. Reverse Vector Order: Matrix M' = [ v  u ]
+#### Solution
 
-* **Result:**
-  **Determinant:** det(M') = -11[cite: 23]
-  **Area:** Area = 11 square units[cite: 23]
+##### 1. Computing the Area Using a Determinant
 
-* **Detailed Calculation Steps:**
-  1. Construct Matrix M' with vector v as Column 1 and vector u as Column 2[cite: 23]:
-     M' = [  1   3 ]
-          [  4   1 ][cite: 23]
+**Result.**
 
-  2. Compute determinant:
-     det(M') = (1 × 1) - (3 × 4)
-     det(M') = 1 - 12 = **-11**[cite: 23]
+$$
+\text{Area} = 11.
+$$
 
-  3. Compute physical area by taking the absolute value:
-     Area = | det(M') | = | -11 | = **11**[cite: 23]
+<br>
+
+**Main steps.** Form the $2\times 2$ matrix $M_1$ whose columns are $u$ and $v$ in the given order:
+
+$$
+M_1 =
+\begin{pmatrix}
+3 & 1 \\
+1 & 4 \\
+\end{pmatrix}.
+$$
+
+Compute the determinant of $M_1$:
+
+$$
+\det M_1 = 3 \cdot 4 - 1 \cdot 1 = 12 - 1 = 11.
+$$
+
+Take the absolute value of the determinant to obtain the area of the parallelogram spanned by $u$ and $v$:
+
+$$
+\text{Area} = |\det M_1| = |11| = 11.
+$$
+
+<br>
+
+**Property / method used.** *Geometric area formula in $\mathbb{R}^2$:* the area of the parallelogram spanned by two vectors $u, v \in \mathbb{R}^2$ equals the absolute value of the determinant of the $2\times 2$ matrix formed by those vectors:
+
+$$
+\text{Area} = \bigl|\det
+\begin{pmatrix}
+u & v
+\end{pmatrix}\bigr|.
+$$
+
+<br>
+
+**Mathematical verification.** Using the Euclidean norms and dot product of $u$ and $v$, we have $\|u\|^2 = 3^2 + 1^2 = 10$, $\|v\|^2 = 1^2 + 4^2 = 17$, and $u \cdot v = 3(1) + 1(4) = 7$. The Lagrange identity gives
+
+$$
+\text{Area} = \sqrt{\|u\|^2 \|v\|^2 - (u \cdot v)^2} = \sqrt{10 \cdot 17 - 7^2} = \sqrt{170 - 49} = \sqrt{121} = 11,
+$$
+
+confirming the determinant calculation.
 
 ---
 
-### 3. Summary: What Changes vs. What Does Not Change
+##### 2. Reversing the Order of the Vectors
 
-| Property | Original Order [ u  v ] | Reversed Order [ v  u ] | Effect of Reversing Order |
-|----------|-------------------------|-------------------------|---------------------------|
-| **Determinant Value** | +11 | -11 | **Sign changes** (+ to -)[cite: 20, 23] |
-| **Parallelogram Area** | 11 | 11 | **Does NOT change** (remains 11)[cite: 23] |
+**Result.** Reversing the order of $u$ and $v$ yields
 
----
+$$
+\det
+\begin{pmatrix}
+1 & 3 \\
+4 & 1 \\
+\end{pmatrix}= -11, \qquad \text{while} \qquad \text{Area} = |-11| = 11.
+$$
 
-### 4. Detailed Explanation & Linear Algebra Insights
+- **What changes in the determinant:** Its **sign** flips from $+11$ to $-11$ (indicating opposite geometric orientation).
+- **What does not change in the area:** The **area** remains unchanged at $11$.
 
-1. **What Changes in the Determinant (The Sign & Orientation):**
-   * **Column Swap Property:** Swapping the two columns of a matrix multiplies its determinant by **-1**[cite: 20].
-   * **Geometric Meaning of the Sign:**
-     * In **det([ u  v ]) = +11**, the positive sign indicates that rotating vector u into vector v through the smaller angle follows a **counterclockwise** (right-handed) orientation[cite: 23].
-     * In **det([ v  u ]) = -11**, the negative sign indicates that rotating vector v into vector u follows a **clockwise** (left-handed) orientation[cite: 23].
-   * Reversing the vector order flips the geometric orientation, which causes the determinant to change its sign from +11 to -11[cite: 20, 23].
+<br>
 
-2. **What Does NOT Change in the Area (Geometric Magnitude):**
-   * **Physical Parallelogram Area:** The geometric shape and physical space enclosed by two vectors depend strictly on their lengths and the angle between them, regardless of which vector is ordered first or second[cite: 23].
-   * **Absolute Value Function:** Because physical area cannot be negative, area is defined as **Area = | det |**[cite: 18, 23]. Taking the absolute value removes the sign/orientation component, ensuring the computed area remains strictly **11 square units** under both ordering paths[cite: 23].
+**Main steps.** Place $v$ in the first column and $u$ in the second column to form $M_2$:
 
-3. **Alternative Geometric Calculation Check (Base × Height Formula):**
-   * Length of base vector u: ||u|| = √(3² + 1²) = √10.
-   * Angle θ between u and v: cos(θ) = (u · v) / (||u|| × ||v||) = (3×1 + 1×4) / (√10 × √(1² + 4²)) = 7 / (√10 × √17) = 7 / √170.
-   * sin(θ) = √(1 - cos²(θ)) = √(1 - 49/170) = √(121/170) = 11 / √170.
-   * Area = ||u|| × ||v|| × sin(θ) = √10 × √17 × (11 / √170) = √170 × (11 / √170) = **11**.
-   * The classical geometric base-times-height formula yields 11 square units, matching the determinant result exactly!
+$$
+M_2 =
+\begin{pmatrix}
+1 & 3 \\
+4 & 1 \\
+\end{pmatrix}.
+$$
+
+Compute $\det M_2$:
+
+$$
+\det M_2 = 1 \cdot 1 - 3 \cdot 4 = 1 - 12 = -11.
+$$
+
+1. **Change in the determinant:** Swapping the two columns reverses the sign of the determinant ($\det M_2 = -\det M_1 = -11$). Geometrically, the signed determinant measures *oriented* area: the ordered pair $(u, v)$ is oriented counterclockwise ($\det M_1 > 0$), whereas $(v, u)$ is oriented clockwise ($\det M_2 < 0$).
+2. **Invariance of the area:** The geometric parallelogram spanned by $\{v, u\}$ is the exact same region in the plane as the parallelogram spanned by $\{u, v\}$, and taking the absolute value removes the sign:
+
+$$
+\text{Area} = |\det M_2| = |-11| = 11 = |\det M_1|.
+$$
+
+<br>
+
+**Property / method used.** *Alternating (column-swap) property of determinants and nonnegativity of area:* interchanging two columns multiplies the determinant by $-1$, whereas geometric area equals $|\det M|$ and depends only on the spanning set of vectors, not their ordering.
+
+<br>
+
+**Mathematical verification.** Since $M_2$ is obtained from $M_1$ by a single column swap ($C_1 \leftrightarrow C_2$), the alternating property directly predicts $\det M_2 = -\det M_1 = -11$, and $|-11| = |11| = 11$ confirms that both orderings yield identical area.

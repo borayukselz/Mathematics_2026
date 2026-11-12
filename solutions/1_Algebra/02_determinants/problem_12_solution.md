@@ -1,128 +1,142 @@
-# Exercise 12: A Parameter Revealed by a Row Operation
+### Exercise 12. A Parameter Revealed by a Row Operation
 
-### Given Family of Matrices
+#### Exercise Reminder
 
-**Matrix A(t):**
-[  1   2   3 ]
-[  2   4   t ]
-[  0   1   1 ][cite: 26]
+For
 
----
+$$
+A(t)=
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 4 & t \\
+0 & 1 & 1 \\
+\end{pmatrix},
+$$
 
-### 1. Perform Row Operation R₂ ← R₂ - 2R₁
-
-* **Operation:**
-  Elementary row replacement subtracting 2 times Row 1 from Row 2[cite: 26].
-
-* **Detailed Calculation Steps:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ][cite: 26]
-  * Calculate new Row 2 (R₂ - 2R₁):
-    * Entry (2,1): 2 - 2(1) = 2 - 2 = 0
-    * Entry (2,2): 4 - 2(2) = 4 - 4 = 0
-    * Entry (2,3): t - 2(3) = t - 6
-  * Row 3 remains unchanged: [ 0, 1, 1 ][cite: 26]
-
-* **Resulting Transformed Matrix A₁(t):**
-  [  1   2    3  ]
-  [  0   0   t-6 ]
-  [  0   1    1  ]
-
-* **Effect on Determinant:**
-  Adding a scalar multiple of one row to another **does not change** the determinant[cite: 19].
-  **det(A(t)) = det(A₁(t))**[cite: 19]
+1. Perform the row operation $R_2 \leftarrow R_2 - 2R_1$ before computing the determinant and use the resulting structure to find the values of $t$ for which the matrix is not invertible.
+2. Explain what special thing happens to the rows for the value of the parameter found.
 
 ---
 
-### 2. Compute det(A(t)) Using the Resulting Structure
+#### Solution
 
-#### Method A: Row Swap to Upper Triangular Form
-1. Swap Row 2 and Row 3 of Matrix A₁(t):
-   * Swapping two rows multiplies the determinant by **-1**[cite: 20].
+##### 1. Performing $R_2 \leftarrow R_2 - 2R_1$ and Finding Where $A(t)$ Is Not Invertible
 
-   [  1   2    3  ]
-   [  0   1    1  ]
-   [  0   0   t-6 ]
+**Result.** After applying $R_2 \leftarrow R_2 - 2R_1$, the matrix becomes
 
-2. The matrix is now in **Upper Triangular Form**[cite: 18]. The determinant of an upper triangular matrix equals the product of its main diagonal entries[cite: 18]:
-   det(Triangular) = 1 × 1 × (t - 6) = **t - 6**
+$$
+A_1(t)=
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 0 & t - 6 \\
+0 & 1 & 1 \\
+\end{pmatrix},
+$$
 
-3. Account for the row swap sign change[cite: 20]:
-   det(A(t)) = -1 × (t - 6) = **6 - t**
+giving $\det A(t) = 6 - t$. Therefore, $A(t)$ is not invertible solely for
 
-#### Method B: Cofactor Expansion along Row 2
-* Row 2 of A₁(t) contains two zeros: [ 0, 0, t - 6 ].
-* Expand along Row 2:
-  det(A(t)) = (t - 6) × (-1)²⁺³ × det[ 1, 2 ; 0, 1 ]
-  det(A(t)) = (t - 6) × (-1) × ((1 × 1) - (2 × 0))
-  det(A(t)) = -(t - 6) = **6 - t**
+$$
+t = 6.
+$$
 
-* **Final Determinant Formula:**
-  **det(A(t)) = 6 - t**
+<br>
+
+**Main steps.**
+
+1. **Apply the row replacement $R_2 \leftarrow R_2 - 2R_1$:** Subtract $2$ times row $1$ from row $2$:
+
+$$
+A(t)=
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 4 & t \\
+0 & 1 & 1 \\
+\end{pmatrix}
+\xrightarrow{R_2 \leftarrow R_2 - 2R_1}
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 0 & t - 6 \\
+0 & 1 & 1 \\
+\end{pmatrix}= A_1(t).
+$$
+
+Because $R_2 \leftarrow R_2 - 2R_1$ is a row replacement operation, it leaves the determinant unchanged: $\det A(t) = \det A_1(t)$.
+
+2. **Use the resulting structure to compute $\det A(t)$:** Swapping rows $2$ and $3$ ($R_2 \leftrightarrow R_3$) transforms $A_1(t)$ into an upper triangular matrix $U(t)$ while multiplying the determinant by $-1$:
+
+$$
+A_1(t)=
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 0 & t - 6 \\
+0 & 1 & 1 \\
+\end{pmatrix}
+\xrightarrow{R_2 \leftrightarrow R_3}
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+0 & 0 & t - 6 \\
+\end{pmatrix}= U(t).
+$$
+
+Multiplying the main diagonal entries of $U(t)$ and accounting for the sign flip from the single row swap yields
+
+$$
+\det A(t) = \det A_1(t) = -\det U(t) = -\bigl(1 \cdot 1 \cdot (t - 6)\bigr) = -(t - 6) = 6 - t.
+$$
+
+3. **Find the noninvertible parameter value:** A square matrix is not invertible if and only if its determinant equals zero:
+
+$$
+\det A(t) = 0 \implies 6 - t = 0 \implies t = 6.
+$$
+
+<br>
+
+**Property / method used.** *Row operation invariance, alternating row-swap property, and singularity criterion:*
+- Row replacement ($R_2 \leftarrow R_2 - 2R_1$) preserves the determinant.
+- Interchanging two rows ($R_2 \leftrightarrow R_3$) reverses the sign of the determinant.
+- A square matrix $A(t)$ fails to be invertible if and only if $\det A(t) = 0$.
+
+<br>
+
+**Mathematical verification.** Expanding $\det A(t)$ directly via Sarrus' rule confirms the determinant formula independently:
+
+$$
+\det A(t) = (1\cdot 4\cdot 1 + 2\cdot t\cdot 0 + 3\cdot 2\cdot 1) - (0\cdot 4\cdot 3 + 1\cdot t\cdot 1 + 1\cdot 2\cdot 2) = (4 + 0 + 6) - (0 + t + 4) = 10 - t - 4 = 6 - t.
+$$
 
 ---
 
-### 3. Find Values of t for Which Matrix A(t) is Not Invertible
+##### 2. What Happens to the Rows When $t = 6$
 
-* **Result:**
-  Matrix A(t) is **not invertible** when **t = 6**[cite: 26].
+**Result.** When $t = 6$, the second row of $A(6)$ becomes an exact scalar multiple of the first row ($R_2 = 2R_1$), so the rows of $A(6)$ are linearly dependent and the row operation $R_2 \leftarrow R_2 - 2R_1$ produces an entire row of zeros.
 
-* **Detailed Calculation Steps:**
-  1. A matrix is non-invertible (singular) if and only if its determinant equals zero (**det = 0**)[cite: 18, 20].
-  2. Set the determinant equal to 0:
-     6 - t = 0
-  3. Solve for t:
-     **t = 6**
+<br>
 
----
+**Main steps.** Substitute $t = 6$ into both the original matrix $A(t)$ and the reduced matrix $A_1(t)$:
 
-### 4. What Special Thing Happens to the Rows when t = 6?
+$$
+A(6)=
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 4 & 6 \\
+0 & 1 & 1 \\
+\end{pmatrix},\qquad A_1(6)=
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+\end{pmatrix}.
+$$
 
-* **Row Structure at t = 6:**
-  When t = 6, substitute t = 6 back into the original Matrix A(6)[cite: 26]:
-  [  1   2   3 ]
-  [  2   4   6 ]
-  [  0   1   1 ]
+1. **Proportional rows in $A(6)$:** In $A(6)$, the first row is $(1, 2, 3)$ and the second row is $(2, 4, 6) = 2(1, 2, 3)$, meaning $R_2 = 2R_1$.
+2. **Zero row after elimination:** Because $R_2$ is twice $R_1$, subtracting $2R_1$ from $R_2$ annihilates the entire second row in $A_1(6)$, leaving $(0, 0, 0)$ and reducing the rank of the matrix from $3$ to $2$.
 
-* **Special Properties of the Rows:**
-  1. **Direct Proportionality / Row Dependence:**
-     Row 2 becomes an exact scalar multiple of Row 1:
-     **Row 2 = 2 × Row 1** ([ 2, 4, 6 ] = 2 × [ 1, 2, 3 ])[cite: 24].
+<br>
 
-  2. **Creation of a Zero Row:**
-     In the transformed matrix A₁(6), the entire second row collapses to zeros:
-     Row 2 = [ 0, 0, 6 - 6 ] = **[ 0, 0, 0 ]**.
+**Property / method used.** *Linear dependence of rows and rank deficiency:* when two rows of a $3\times 3$ matrix are proportional, the rows span at most a $2$-dimensional subspace ($\mathrm{rank}(A) < 3$), forcing $\det A = 0$ and making $A$ noninvertible.
 
-  3. **Linear Dependence & Rank Loss:**
-     Because Row 2 is linearly dependent on Row 1, the matrix loses full row rank (rank becomes 2 instead of 3)[cite: 24]. The three row vectors span a 2D plane instead of 3D space, collapsing the 3D volume to zero and making the transformation non-invertible[cite: 18, 24].
+<br>
 
----
-
-### 5. Verification Checks
-
-#### Check 1: Sarrus' Rule on Original Matrix A(t)
-* **Original Matrix A(t):** [ 1, 2, 3 ; 2, 4, t ; 0, 1, 1 ][cite: 26]
-* **Down-Right Diagonals (Positive Terms):**
-  (1 × 4 × 1) + (2 × t × 0) + (3 × 2 × 1) = 4 + 0 + 6 = **10**
-* **Up-Right Diagonals (Negative Terms):**
-  (0 × 4 × 3) + (1 × t × 1) + (1 × 2 × 2) = 0 + t + 4 = **t + 4**
-* **det(A(t)):** 10 - (t + 4) = **6 - t**
-
-#### Check 2: Cofactor Expansion along Column 1 of Original Matrix A(t)
-* Column 1 contains entries [ 1, 2, 0 ][cite: 26]:
-  det(A(t)) = 1 × det[ 4, t ; 1, 1 ] - 2 × det[ 2, 3 ; 1, 1 ] + 0
-  det(A(t)) = 1 × (4 - t) - 2 × (2 - 3)
-  det(A(t)) = (4 - t) - 2 × (-1) = 4 - t + 2 = **6 - t**
-
-Both verification methods confirm that **det(A(t)) = 6 - t** and **t = 6** causes non-invertibility[cite: 18, 26].
-
----
-
-### 6. Detailed Explanation & Linear Algebra Insights
-
-1. **Why Performing a Row Operation First Makes the Problem Easier:**
-   * Performing `R₂ ← R₂ - 2R₁` creates two zeros in Row 2 simultaneously: `[ 0, 0, t - 6 ]`[cite: 26].
-   * This immediately reveals the critical parameter value (t = 6) by inspection, showing where Row 2 becomes all zeros without needing a lengthy determinant formula[cite: 26].
-
-2. **Parameter Dependence in Matrix Families:**
-   * For any value **t ≠ 6**, det(A(t)) ≠ 0, so Matrix A(t) is non-singular and fully invertible[cite: 18].
-   * At the unique critical point **t = 6**, det(A(6)) = 0, causing the matrix to become singular and non-invertible[cite: 18, 26].
+**Mathematical verification.** The nontrivial linear combination $2R_1 - R_2 + 0R_3 = (0, 0, 0)$ holds among the rows of $A(6)$, directly verifying that the rows are linearly dependent and that $A(6)x = 0$ has infinitely many nonzero solutions (for example, $x = (1, 1, -1)^T$).

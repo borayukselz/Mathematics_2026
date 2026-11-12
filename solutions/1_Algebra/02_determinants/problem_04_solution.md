@@ -1,82 +1,110 @@
-# Exercise 4: Triangular Matrix
+### Exercise 4. Triangular Matrix
 
-### Given Matrix
+#### Exercise Reminder
 
-**Matrix A:**
-[  2   4   1 ]
-[  0  -3   5 ]
-[  0   0   7 ][cite: 18]
+Without expanding the determinant, compute
 
----
+$$
+\det
+\begin{pmatrix}
+2 & 4 & 1 \\
+0 & -3 & 5 \\
+0 & 0 & 7 \\
+\end{pmatrix}.
+$$
 
-### 1. Compute det(A) Without Expanding
-
-* **Result:**
-  **det(A) = -42**[cite: 18]
-
-* **Calculation Steps:**
-  * Identify the main diagonal entries of Matrix A[cite: 18]: **2**, **-3**, and **7**.
-  * Multiply the diagonal entries together[cite: 18]:
-    det(A) = 2 × (-3) × 7
-    det(A) = -6 × 7 = **-42**
-
-* **Method & Explanation:**
-  Because Matrix A is an **upper triangular matrix** (all entries below the main diagonal are zeros), its determinant can be computed directly by taking the product of the entries along the main diagonal, without performing full determinant expansion[cite: 18].
+State the rule for an arbitrary triangular matrix and explain it using this example.
 
 ---
 
-### 2. General Rule for an Arbitrary Triangular Matrix
+#### Solution
 
-* **Rule Statement:**
-  The determinant of any triangular matrix (whether **upper triangular**, **lower triangular**, or **diagonal**) is equal to the **product of its main diagonal entries**[cite: 18].
+##### 1. Computing the Determinant Without Expansion
 
-* **General Formula:**
-  For an n × n triangular matrix T with main diagonal entries t₁₁, t₂₂, ..., tₙₙ:
-  **det(T) = t₁₁ × t₂₂ × ... × tₙₙ**
+**Result.**
+
+$$
+\det
+\begin{pmatrix}
+2 & 4 & 1 \\
+0 & -3 & 5 \\
+0 & 0 & 7 \\
+\end{pmatrix}= -42.
+$$
+
+<br>
+
+**Main steps.** Let
+
+$$
+A=
+\begin{pmatrix}
+2 & 4 & 1 \\
+0 & -3 & 5 \\
+0 & 0 & 7 \\
+\end{pmatrix}.
+$$
+
+Notice that every entry below the main diagonal is zero ($a_{21} = 0$, $a_{31} = 0$, and $a_{32} = 0$), so $A$ is an upper triangular matrix. Identify its three main diagonal entries:
+
+$$
+a_{11} = 2,\qquad a_{22} = -3,\qquad a_{33} = 7.
+$$
+
+Multiply the diagonal entries directly without performing cofactor expansion or Sarrus' rule:
+
+$$
+\det A = a_{11} \cdot a_{22} \cdot a_{33} = 2 \cdot (-3) \cdot 7 = -42.
+$$
+
+<br>
+
+**Property / method used.** *Triangular matrix determinant rule:* the determinant of any $n\times n$ triangular matrix (upper triangular, lower triangular, or diagonal) equals the product of its main diagonal entries:
+
+$$
+\det T = \prod_{i=1}^{n} t_{ii} = t_{11} t_{22} \cdots t_{nn}.
+$$
+
+<br>
+
+**Mathematical verification.** Performing cofactor expansion along the first column (where $a_{21} = a_{31} = 0$) confirms why only the diagonal product survives:
+
+$$
+\det A = 2 \cdot \det
+\begin{pmatrix}
+-3 & 5 \\
+0 & 7 \\
+\end{pmatrix}- 0 + 0 = 2\bigl((-3)\cdot 7 - 5\cdot 0\bigr) = 2 \cdot (-3) \cdot 7 = -42.
+$$
 
 ---
 
-### 3. Detailed Explanation of the Rule Using This Example
+##### 2. General Rule and Explanation Using This Example
 
-#### A. Algebraic Explanation (via Cofactor Expansion)
-To understand why only the main diagonal entries matter, look at what happens when performing cofactor expansion on Matrix A[cite: 18]:
+**Result.** For any arbitrary $n\times n$ triangular matrix $T$, its determinant is the product of all entries along its main diagonal ($\det T = t_{11}t_{22}\cdots t_{nn}$), regardless of the values of the nonzero entries on the opposite side of the diagonal.
 
-1. **Expand along Column 1:**
-   Column 1 contains entries [ 2, 0, 0 ][cite: 18].
-   det(A) = 2 × det[ -3, 5 ; 0, 7 ] - 0 × det[ 4, 1 ; 0, 7 ] + 0 × det[ 4, 1 ; -3, 5 ]
-   
-   Notice that both off-diagonal zeros multiply their respective sub-determinants by 0, eliminating them completely!
-   det(A) = 2 × det[ -3, 5 ; 0, 7 ]
+<br>
 
-2. **Evaluate the 2×2 Sub-Determinant:**
-   The sub-matrix [ -3, 5 ; 0, 7 ] is also upper triangular[cite: 18].
-   det[ -3, 5 ; 0, 7 ] = (-3 × 7) - (5 × 0) = -3 × 7 = -21
+**Main steps.**
+1. **Why off-diagonal entries do not affect $\det T$:** In an upper triangular matrix, all entries below the main diagonal are zero ($t_{ij} = 0$ for $i > j$), while the entries above the main diagonal ($t_{ij}$ for $i < j$) can be arbitrary numbers. In this example, the upper-right entries $4$, $1$, and $5$ contribute nothing to $\det A$.
+2. **Recursive reduction:** Expanding along column $1$ isolates $t_{11} = 2$ multiplied by the $(n-1)\times(n-1)$ upper triangular submatrix $\begin{pmatrix} -3 & 5 \\ 0 & 7 \end{pmatrix}$, and repeating this step peels off $t_{22} = -3$ and $t_{33} = 7$, leaving solely $2 \cdot (-3) \cdot 7 = -42$.
+3. **Symmetry for lower triangular matrices:** Because $\det(L^T) = \det L$ and the transpose of a lower triangular matrix is upper triangular with the exact same diagonal entries, the identical product rule applies to lower triangular matrices as well.
 
-3. **Final Product:**
-   det(A) = 2 × (-3) × 7 = **-42**
+<br>
 
-* **Key Insight:** At every stage of cofactor expansion down the first column (or along the bottom row), every term involving off-diagonal elements vanishes because it is multiplied by zero. The only term that survives at every level is the product of the main diagonal entries[cite: 18]!
+**Property / method used.** *Inductive cofactor reduction and transpose invariance ($\det(M^T) = \det M$):* zeros below (or above) the main diagonal eliminate every off-diagonal term in the Leibniz permutation expansion except the identity permutation $t_{11}t_{22}\cdots t_{nn}$.
 
----
+<br>
 
-#### B. Geometric Explanation (Volume Scaling in 3D Space)
-* **Axis Scaling vs. Shearing:**
-  In Matrix A = [ 2, 4, 1 ; 0, -3, 5 ; 0, 0, 7 ][cite: 18]:
-  * The main diagonal entries (2, -3, 7) scale space along the coordinate axes[cite: 18].
-  * The upper off-diagonal entries (4, 1, 5) represent **shear transformations** (sliding parallel to coordinate planes)[cite: 18].
-* **Volume Invariance under Shearing:**
-  Shearing a geometric object (like slanting a stack of paper) changes its shape but **leaves its total enclosed volume completely unchanged**.
-* **Conclusion:** The off-diagonal entries (4, 1, 5) do not affect the 3D volume[cite: 18]. Therefore, the volume scaling factor (determinant) depends strictly on the direct scaling factors along the diagonal: **2 × (-3) × 7 = -42**[cite: 18].
+**Mathematical verification.** Replacing the superdiagonal entries $4, 1, 5$ with zeros forms the diagonal matrix $D = \mathrm{diag}(2, -3, 7)$, which has the exact same determinant:
 
----
+$$
+\det
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & -3 & 0 \\
+0 & 0 & 7 \\
+\end{pmatrix}= 2 \cdot (-3) \cdot 7 = -42 = \det A,
+$$
 
-### 4. Mathematical Verification
-
-* **Check using Sarrus' Rule:**
-  * Down-Right Diagonals:
-    (2 × -3 × 7) + (4 × 5 × 0) + (1 × 0 × 0) = -42 + 0 + 0 = **-42**[cite: 18]
-  * Up-Right Diagonals:
-    (0 × -3 × 1) + (0 × 5 × 2) + (7 × 0 × 4) = 0 + 0 + 0 = **0**[cite: 18]
-  * det(A) = -42 - 0 = **-42**
-
-* **Conclusion:** Standard computation confirms that det(A) = **-42**, verifying the triangular matrix rule[cite: 18].
+confirming that the entries above the diagonal have no effect on the determinant.

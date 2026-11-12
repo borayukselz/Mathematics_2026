@@ -1,139 +1,109 @@
-# Exercise 5: Row Operations
+### Exercise 5. Row Operations
 
-### Given Matrix
+#### Exercise Reminder
 
-**Matrix A:**
-[  1   2   3 ]
-[  2   1   0 ]
-[ -1   4   2 ][cite: 19]
+For
 
----
+$$
+A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 1 & 0 \\
+-1 & 4 & 2 \\
+\end{pmatrix},
+$$
 
-### Core Determinant Rules for Elementary Row Operations
-
-1. **Row Replacement (Rᵢ ← Rᵢ + cRⱼ):**
-   Adding a scalar multiple of one row to another row **does not change** the determinant[cite: 19]:
-   **det(A_new) = det(A_old)**
-
-2. **Row Interchange (Rᵢ ↔ Rⱼ):**
-   Swapping two rows multiplies the determinant by **-1**:
-   **det(A_new) = -det(A_old)**
-
-3. **Row Scaling (Rᵢ ← cRᵢ):**
-   Multiplying a row by a non-zero scalar c multiplies the determinant by **c** (or factoring out c from a row scales the determinant by c):
-   **det(A_old) = c × det(A_factored)**
+find $\det A$ by simplifying the matrix with row operations. At each step, indicate whether and how the determinant changes.
 
 ---
 
-### Step-by-Step Matrix Reduction and Determinant Tracking
+#### Solution
 
-#### Step 1: Perform R₂ ← R₂ - 2R₁
+**Result.**
 
-* **Operation:** Elementary row replacement to eliminate entry (2,1)[cite: 19].
-* **Calculation:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ][cite: 19]
-  * Calculate new Row 2 (R₂ - 2R₁):
-    * Entry (2,1):  2 - 2(1) = 0
-    * Entry (2,2):  1 - 2(2) = 1 - 4 = -3
-    * Entry (2,3):  0 - 2(3) = 0 - 6 = -6
-  * Row 3 remains unchanged: [ -1, 4, 2 ][cite: 19]
+$$
+\det A = 21.
+$$
 
-* **Resulting Matrix A₁:**
-  [  1   2   3 ]
-  [  0  -3  -6 ]
-  [ -1   4   2 ]
+<br>
 
-* **Effect on Determinant:**
-  Row replacement does not change the determinant[cite: 19].
-  **det(A) = det(A₁)**
+**Main steps.** Reduce $A$ to an upper triangular matrix $U$ using elementary row operations while tracking the effect of each operation on the determinant:
 
----
+1. **Step 1 — Eliminate the $(2,1)$ entry via $R_2 \leftarrow R_2 - 2R_1$:**
 
-#### Step 2: Perform R₃ ← R₃ + R₁
+$$
+A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 1 & 0 \\
+-1 & 4 & 2 \\
+\end{pmatrix}
+\xrightarrow{R_2 \leftarrow R_2 - 2R_1}
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+-1 & 4 & 2 \\
+\end{pmatrix}= A_1.
+$$
 
-* **Operation:** Elementary row replacement to eliminate entry (3,1)[cite: 19].
-* **Calculation:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ][cite: 19]
-  * Row 2 remains unchanged: [ 0, -3, -6 ]
-  * Calculate new Row 3 (R₃ + R₁):
-    * Entry (3,1): -1 + 1 = 0
-    * Entry (3,2):  4 + 2 = 6
-    * Entry (3,3):  2 + 3 = 5
+- **Effect on determinant:** **Does not change** ($\det A_1 = \det A$), because adding a scalar multiple of one row to another row leaves the determinant unchanged.
 
-* **Resulting Matrix A₂:**
-  [  1   2   3 ]
-  [  0  -3  -6 ]
-  [  0   6   5 ]
+2. **Step 2 — Eliminate the $(3,1)$ entry via $R_3 \leftarrow R_3 + R_1$:**
 
-* **Effect on Determinant:**
-  Row replacement does not change the determinant[cite: 19].
-  **det(A) = det(A₁) = det(A₂)**
+$$
+A_1=
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+-1 & 4 & 2 \\
+\end{pmatrix}
+\xrightarrow{R_3 \leftarrow R_3 + R_1}
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+0 & 6 & 5 \\
+\end{pmatrix}= A_2.
+$$
 
----
+- **Effect on determinant:** **Does not change** ($\det A_2 = \det A_1 = \det A$), because this is again a row replacement operation.
 
-#### Step 3: Perform R₃ ← R₃ + 2R₂
+3. **Step 3 — Eliminate the $(3,2)$ entry via $R_3 \leftarrow R_3 + 2R_2$:**
 
-* **Operation:** Elementary row replacement to eliminate entry (3,2)[cite: 19].
-* **Calculation:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ][cite: 19]
-  * Row 2 remains unchanged: [ 0, -3, -6 ]
-  * Calculate new Row 3 (R₃ + 2R₂):
-    * Entry (3,1): 0 + 2(0)  = 0
-    * Entry (3,2): 6 + 2(-3) = 6 - 6 = 0
-    * Entry (3,3): 5 + 2(-6) = 5 - 12 = -7
+$$
+A_2=
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+0 & 6 & 5 \\
+\end{pmatrix}
+\xrightarrow{R_3 \leftarrow R_3 + 2R_2}
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+0 & 0 & -7 \\
+\end{pmatrix}= U.
+$$
 
-* **Resulting Matrix A₃ (Upper Triangular Form):**
-  [  1   2   3 ]
-  [  0  -3  -6 ]
-  [  0   0  -7 ]
+- **Effect on determinant:** **Does not change** ($\det U = \det A_2 = \det A$), because adding $2R_2$ to $R_3$ is a row replacement operation.
 
-* **Effect on Determinant:**
-  Row replacement does not change the determinant[cite: 19].
-  **det(A) = det(A₃)**
+4. **Step 4 — Compute $\det U$ from the upper triangular form:**
 
----
+$$
+\det A = \det U = 1 \cdot (-3) \cdot (-7) = 21.
+$$
 
-### Compute Determinant of the Triangular Matrix
+<br>
 
-* **Calculation:**
-  For an upper triangular matrix, the determinant equals the product of its main diagonal entries[cite: 18, 19]:
-  det(A₃) = (1) × (-3) × (-7) = **21**
+**Property / method used.** *Gaussian elimination for determinants:*
+- **Row replacement** ($R_i \leftarrow R_i + cR_j$ for $i \neq j$): preserves the determinant ($\det_{\text{new}} = \det_{\text{old}}$).
+- **Row swap** ($R_i \leftrightarrow R_j$): multiplies the determinant by $-1$ (not needed here because all pivots are nonzero).
+- **Row scaling** ($R_i \leftarrow kR_i$): multiplies the determinant by $k$ (not needed here).
+- **Upper triangular determinant:** once reduced to upper triangular form $U$, $\det U$ equals the product of the main diagonal entries.
 
-* **Final Result:**
-  Since det(A) = det(A₃), we have:
-  **det(A) = 21**[cite: 19]
+<br>
 
----
+**Mathematical verification.** Computing $\det A$ directly by Sarrus' rule confirms the result:
 
-### Verification Checks
-
-#### Check 1: Sarrus' Rule
-* **Down-Right Diagonals (Positive Terms):**
-  (1 × 1 × 2) + (2 × 0 × -1) + (3 × 2 × 4) = 2 + 0 + 24 = **26**[cite: 19]
-* **Up-Right Diagonals (Negative Terms):**
-  (-1 × 1 × 3) + (4 × 0 × 1) + (2 × 2 × 2) = -3 + 0 + 8 = **5**[cite: 19]
-* **det(A):** 26 - 5 = **21**[cite: 19]
-
-#### Check 2: Alternative Reduction using Row Scaling (Factoring Out Scalars)
-* From Matrix A₂: [ 1, 2, 3 ; 0, -3, -6 ; 0, 6, 5 ]
-* Factor out -3 from Row 2 (Scaling Row 2 by -1/3):
-  det(A) = (-3) × det[ 1, 2, 3 ; 0, 1, 2 ; 0, 6, 5 ]
-* Perform R₃ ← R₃ - 6R₂:
-  det(A) = (-3) × det[ 1, 2, 3 ; 0, 1, 2 ; 0, 0, -7 ]
-* Multiply main diagonal entries:
-  det(A) = (-3) × (1 × 1 × -7) = (-3) × (-7) = **21**[cite: 19]
-
-Both verification methods confirm that **det(A) = 21**[cite: 19].
-
----
-
-### Detailed Explanation & Linear Algebra Insights
-
-1. **Why Row Operations are Powerful for Computing Determinants:**
-   * Computing a large determinant via cofactor expansion requires an exponential number of calculations (n! terms).
-   * Reducing a matrix to upper triangular form using elementary row operations takes O(n³) operations, making it the primary method used by computer software for high-dimensional matrices.
-
-2. **Summary of Determinant Invariants:**
-   * **Row Replacement:** Adding a scalar multiple of one row to another corresponds geometrically to a shear transformation, which preserves the hyper-volume of the parallelepiped defined by the rows.
-   * **Row Interchange:** Reverses spatial orientation (changes sign).
-   * **Row Scaling:** Stretches or shrinks the matrix along one dimension by scalar factor c (scales determinant by c).
+$$
+\det A = \bigl(1\cdot 1\cdot 2 + 2\cdot 0\cdot (-1) + 3\cdot 2\cdot 4\bigr) - \bigl((-1)\cdot 1\cdot 3 + 4\cdot 0\cdot 1 + 2\cdot 2\cdot 2\bigr) = (2 + 0 + 24) - (-3 + 0 + 8) = 26 - 5 = 21.
+$$

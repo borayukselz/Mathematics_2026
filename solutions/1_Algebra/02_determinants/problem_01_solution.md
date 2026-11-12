@@ -1,94 +1,163 @@
-# Exercise 1: Determinant of a 2x2 Matrix
+### Exercise 1. Determinant of a $2\times 2$ Matrix
 
-### Given Matrices
+#### Exercise Reminder
 
-**Matrix A:**
-[  3  -2 ]
-[  5   4 ]
+Compute
 
-**Matrix B:**
-[  1   7 ]
-[  2  14 ]
+$$
+\det
+\begin{pmatrix}
+3 & -2 \\
+5 & 4 \\
+\end{pmatrix},\qquad \det
+\begin{pmatrix}
+1 & 7 \\
+2 & 14 \\
+\end{pmatrix}.
+$$
 
----
-
-### Core Formula for 2x2 Determinant
-
-For any 2x2 matrix M = [ a, b ; c, d ], the determinant is calculated as[cite: 18]:
-**det(M) = (a × d) - (b × c)**
-(Main diagonal product minus anti-diagonal product)
-
----
-
-### 1. Compute Determinants
-
-#### A. Compute det(Matrix A)
-
-* **Result:**
-  **det(A) = 22**[cite: 18]
-
-* **Detailed Calculation Steps:**
-  * Identify elements from Matrix A[cite: 18]: a = 3, b = -2, c = 5, d = 4
-  * Main diagonal product (a × d): 3 × 4 = 12
-  * Anti-diagonal product (b × c): (-2) × 5 = -10
-  * Apply formula: det(A) = 12 - (-10) = 12 + 10 = **22**
-
-* **Method & Explanation:**
-  Multiply the top-left element by the bottom-right element, then subtract the product of the top-right and bottom-left elements[cite: 18].
-
-* **Mathematical Verification:**
-  3 × 4 - (-2 × 5) = 12 + 10 = 22. Calculation verified.
+Which matrix is invertible? Justify your answer.
 
 ---
 
-#### B. Compute det(Matrix B)
+#### Solution
 
-* **Result:**
-  **det(B) = 0**[cite: 18]
+##### 1. Computing Both $2\times 2$ Determinants
 
-* **Detailed Calculation Steps:**
-  * Identify elements from Matrix B[cite: 18]: a = 1, b = 7, c = 2, d = 14
-  * Main diagonal product (a × d): 1 × 14 = 14
-  * Anti-diagonal product (b × c): 7 × 2 = 14
-  * Apply formula: det(B) = 14 - 14 = **0**
+**Result.**
 
-* **Method & Explanation:**
-  Multiply the top-left element by the bottom-right element, then subtract the product of the top-right and bottom-left elements[cite: 18].
+$$
+\det
+\begin{pmatrix}
+3 & -2 \\
+5 & 4 \\
+\end{pmatrix}= 22,\qquad \det
+\begin{pmatrix}
+1 & 7 \\
+2 & 14 \\
+\end{pmatrix}= 0.
+$$
 
-* **Mathematical Verification:**
-  1 × 14 - 7 × 2 = 14 - 14 = 0. Calculation verified.
+<br>
+
+**Main steps.** Let
+
+$$
+A=
+\begin{pmatrix}
+3 & -2 \\
+5 & 4 \\
+\end{pmatrix},\qquad B=
+\begin{pmatrix}
+1 & 7 \\
+2 & 14 \\
+\end{pmatrix}.
+$$
+
+Apply the $2\times 2$ determinant formula $\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$ to each matrix:
+
+$$
+\det(A) = 3\cdot 4 - (-2)\cdot 5 = 12 - (-10) = 12 + 10 = 22,
+$$
+
+$$
+\det(B) = 1\cdot 14 - 7\cdot 2 = 14 - 14 = 0.
+$$
+
+<br>
+
+**Property / method used.** *Closed-form $2\times 2$ determinant formula:* for any $2\times 2$ matrix, the determinant equals the product of the main diagonal entries minus the product of the off-diagonal entries:
+
+$$
+\det
+\begin{pmatrix}
+a & b \\
+c & d \\
+\end{pmatrix}= ad - bc.
+$$
+
+<br>
+
+**Mathematical verification.** Using the transpose invariance property $\det(M^T) = \det(M)$ confirms both calculations:
+
+$$
+\det(A^T) = \det
+\begin{pmatrix}
+3 & 5 \\
+-2 & 4 \\
+\end{pmatrix}= 3\cdot 4 - 5\cdot (-2) = 12 + 10 = 22 = \det(A),
+$$
+
+$$
+\det(B^T) = \det
+\begin{pmatrix}
+1 & 2 \\
+7 & 14 \\
+\end{pmatrix}= 1\cdot 14 - 2\cdot 7 = 14 - 14 = 0 = \det(B).
+$$
 
 ---
 
-### 2. Which Matrix is Invertible? Justification
+##### 2. Invertibility Check and Justification
 
-* **Result:**
-  **Matrix A is invertible**, while **Matrix B is not invertible** (singular)[cite: 18].
+**Result.** Only the first matrix,
 
-* **Justification:**
-  * **Invertibility Criterion:** A square matrix M is invertible if and only if its determinant is non-zero (**det(M) ≠ 0**)[cite: 18].
-  * **For Matrix A:** Since **det(A) = 22 ≠ 0**, Matrix A is non-singular and therefore **invertible**[cite: 18].
-  * **For Matrix B:** Since **det(B) = 0**, Matrix B is singular and therefore **not invertible**[cite: 18].
+$$
+A=
+\begin{pmatrix}
+3 & -2 \\
+5 & 4 \\
+\end{pmatrix},
+$$
 
----
+is invertible. The second matrix $B$ is singular (not invertible).
 
-### 3. Detailed Explanation & Linear Algebra Insights
+<br>
 
-1. **Why det(M) ≠ 0 Guarantees Invertibility:**
-   * The explicit formula for the inverse of a 2x2 matrix M = [ a, b ; c, d ] is:
-     **M⁻¹ = (1 / det(M)) × [ d, -b ; -c, a ]**
-   * Notice that the formula requires dividing by **det(M)**.
-   * If det(M) = 0, division by zero occurs, making the matrix inverse mathematically undefined.
-   * **For Matrix A:** A⁻¹ = (1 / 22) × [ 4, 2 ; -5, 3 ] = [ 4/22, 2/22 ; -5/22, 3/22 ].
-   * **For Matrix B:** B⁻¹ would require dividing by 0, which is impossible.
+**Main steps.**
+1. For matrix $A$, $\det(A) = 22 \neq 0$, so $A$ has a nonzero determinant and therefore possesses a unique inverse $A^{-1}$.
+2. For matrix $B$, $\det(B) = 0$. Notice that the second row of $B$ is an exact scalar multiple of the first row ($R_2$ equals $2R_1$, since $\begin{pmatrix} 2 & 14 \end{pmatrix} = 2\begin{pmatrix} 1 & 7 \end{pmatrix}$), making the rows linearly dependent and preventing $B$ from having an inverse.
 
-2. **Geometric Interpretation of the Determinant:**
-   * In 2D space, the absolute value of the determinant |det(M)| represents the **area scaling factor** of the linear transformation defined by matrix M.
-   * **For Matrix A (|det(A)| = 22):** A unit square transformed by Matrix A stretches into a parallelogram with an area of 22 square units. Because the area is non-zero, the transformed space occupies 2D area, and the original vectors can be uniquely recovered (reversible).
-   * **For Matrix B (det(B) = 0):** A unit square transformed by Matrix B collapses completely into a 1D line segment (area = 0). Because 2D space collapses onto a 1D line, information is lost, making it impossible to undo the transformation (irreversible).
+<br>
 
-3. **Linear Dependence of Rows and Columns in Matrix B:**
-   * Look closely at Matrix B = [ 1, 7 ; 2, 14 ][cite: 18]:
-     * Row 2 is a direct scalar multiple of Row 1: **[ 2, 14 ] = 2 × [ 1, 7 ]**[cite: 18].
-     * Column 2 is a direct scalar multiple of Column 1: **[ 7, 14 ] = 7 × [ 1, 2 ]**[cite: 18].
-   * Whenever rows or columns of a matrix are linearly dependent (proportional), the determinant is always zero, confirming the matrix cannot be inverted[cite: 18].
+**Property / method used.** *Determinant criterion for invertibility:* an $n\times n$ square matrix $M$ is invertible if and only if its determinant is nonzero ($\det(M) \neq 0$).
+
+<br>
+
+**Mathematical verification.** Constructing the explicit inverse of $A$ using the $2\times 2$ inverse formula confirms that $A A^{-1} = I$:
+
+$$
+A^{-1} = \frac{1}{\det(A)}
+\begin{pmatrix}
+4 & 2 \\
+-5 & 3 \\
+\end{pmatrix}= \frac{1}{22}
+\begin{pmatrix}
+4 & 2 \\
+-5 & 3 \\
+\end{pmatrix},
+$$
+
+$$
+A A^{-1} = \frac{1}{22}
+\begin{pmatrix}
+3 & -2 \\
+5 & 4 \\
+\end{pmatrix}
+\begin{pmatrix}
+4 & 2 \\
+-5 & 3 \\
+\end{pmatrix}= \frac{1}{22}
+\begin{pmatrix}
+12 + 10 & 6 - 6 \\
+20 - 20 & 10 + 12 \\
+\end{pmatrix}= \frac{1}{22}
+\begin{pmatrix}
+22 & 0 \\
+0 & 22 \\
+\end{pmatrix}=
+\begin{pmatrix}
+1 & 0 \\
+0 & 1 \\
+\end{pmatrix}= I.
+$$

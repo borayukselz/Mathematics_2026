@@ -1,68 +1,137 @@
-# Exercise 4: Matrix Multiplication and Noncommutativity
+### Exercise 4. Matrix Multiplication and Noncommutativity
 
-### Given Matrices
+#### Exercise Reminder
 
-**Matrix A:**
-[ 1  2 ]
-[ 0  1 ]
+Given the $2\times 2$ matrices
 
-**Matrix B:**
-[ 2  0 ]
-[ 3  1 ]
+$$
+A=
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+\end{pmatrix},\qquad B=
+\begin{pmatrix}
+2 & 0 \\
+3 & 1 \\
+\end{pmatrix},
+$$
 
----
-
-### 1. Compute AB
-
-* **Result:**
-  [ 8  2 ]
-  [ 3  1 ]
-
-* **Main Steps:** Multiply rows of A by columns of B[cite: 6]:
-  * Top-left (1,1):     (1 × 2) + (2 × 3) = 2 + 6 = 8
-  * Top-right (1,2):    (1 × 0) + (2 × 1) = 0 + 2 = 2
-  * Bottom-left (2,1):  (0 × 2) + (1 × 3) = 0 + 3 = 3
-  * Bottom-right (2,2): (0 × 0) + (1 × 1) = 0 + 1 = 1
-
-* **Method & Explanation:** The entry at row i, column j of AB is computed by taking the dot product of row i from Matrix A and column j from Matrix B[cite: 6].
-
-* **Mathematical Verification:** Check individual row-column dot products: (1 × 2 + 2 × 3 = 8) and (0 × 0 + 1 × 1 = 1). All entries match.
+1. Compute $AB$ and $BA$.
+2. Determine whether $AB=BA$.
+3. Use this example to explain what noncommutativity of matrix multiplication means.
 
 ---
 
-### 2. Compute BA
+#### Solution
 
-* **Result:**
-  [ 2  4 ]
-  [ 3  7 ]
+##### 1. Computing $AB$ and $BA$
 
-* **Main Steps:** Multiply rows of B by columns of A[cite: 6]:
-  * Top-left (1,1):     (2 × 1) + (0 × 0) = 2 + 0 = 2
-  * Top-right (1,2):    (2 × 2) + (0 × 1) = 4 + 0 = 4
-  * Bottom-left (2,1):  (3 × 1) + (1 × 0) = 3 + 0 = 3
-  * Bottom-right (2,2): (3 × 2) + (1 × 1) = 6 + 1 = 7
+**Result.**
 
-* **Method & Explanation:** The entry at row i, column j of BA is computed by taking the dot product of row i from Matrix B and column j from Matrix A[cite: 6].
+$$
+AB=
+\begin{pmatrix}
+8 & 2 \\
+3 & 1 \\
+\end{pmatrix},\qquad BA=
+\begin{pmatrix}
+2 & 4 \\
+3 & 7 \\
+\end{pmatrix}.
+$$
 
-* **Mathematical Verification:** Check individual row-column dot products: (2 × 1 + 0 × 0 = 2) and (3 × 2 + 1 × 1 = 7). All entries match.
+**Main steps.** Both $A$ and $B$ have size $2\times 2$, so both $AB$ and $BA$ are defined and have size $2\times 2$.
 
----
+To compute $AB$, take the dot product of each row of $A$ with each column of $B$:
 
-### 3. Is AB = BA?
+$$
+AB=
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+2 & 0 \\
+3 & 1 \\
+\end{pmatrix}=
+\begin{pmatrix}
+1\cdot 2 + 2\cdot 3 & 1\cdot 0 + 2\cdot 1 \\
+0\cdot 2 + 1\cdot 3 & 0\cdot 0 + 1\cdot 1 \\
+\end{pmatrix}=
+\begin{pmatrix}
+8 & 2 \\
+3 & 1 \\
+\end{pmatrix}.
+$$
 
-* **Result:** **No, AB ≠ BA[cite: 6].**
-* **Justification:**
-  * AB = [ 8  2 ; 3  1 ]
-  * BA = [ 2  4 ; 3  7 ]
-  * Comparing corresponding positions shows that elements differ (for example, top-left entry 8 ≠ 2, top-right entry 2 ≠ 4). Therefore, the resulting matrices are not equal[cite: 6].
+To compute $BA$, take the dot product of each row of $B$ with each column of $A$:
 
----
+$$
+BA=
+\begin{pmatrix}
+2 & 0 \\
+3 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+\end{pmatrix}=
+\begin{pmatrix}
+2\cdot 1 + 0\cdot 0 & 2\cdot 2 + 0\cdot 1 \\
+3\cdot 1 + 1\cdot 0 & 3\cdot 2 + 1\cdot 1 \\
+\end{pmatrix}=
+\begin{pmatrix}
+2 & 4 \\
+3 & 7 \\
+\end{pmatrix}.
+$$
 
-### 4. Explanation of Noncommutativity
+**Property / method used.** *Row-by-column matrix multiplication:* for compatible matrices $X$ ($m\times n$) and $Y$ ($n\times p$), the $(i,j)$ entry of the product is given by $(XY)_{ij}=\sum_{k=1}^{n} x_{ik}y_{kj}$.
 
-* **Result / Explanation:**
-  * **Definition:** Noncommutativity means that changing the order of operands changes the final result[cite: 6]. Unlike regular numbers where multiplication is commutative (for example, 3 × 5 = 5 × 3), matrix multiplication is **noncommutative** (AB ≠ BA in general)[cite: 6].
-  * **Reasoning in this example:** Matrix multiplication pairs the **rows** of the left matrix with the **columns** of the right matrix[cite: 6].
-    * In **AB**, the rows of A are paired with the columns of B[cite: 6].
-    * In **BA**, the rows of B are paired with the columns of A[cite: 6].
-  * Because different entries are multiplied together when the order is switched, AB and BA yield completely different matrix outputs[cite: 6].
+**Mathematical verification.** For any two square matrices of the same size, their products must share the same trace and determinant even when the matrices themselves differ. Checking both invariants confirms the entries:
+- **Trace check:** $\operatorname{tr}(AB) = 8 + 1 = 9$ and $\operatorname{tr}(BA) = 2 + 7 = 9$, so $\operatorname{tr}(AB) = \operatorname{tr}(BA)$.
+- **Determinant check:** $\det(A) = 1\cdot 1 - 2\cdot 0 = 1$ and $\det(B) = 2\cdot 1 - 0\cdot 3 = 2$, giving $\det(A)\det(B) = 2$. Computing directly from the products yields $\det(AB) = 8\cdot 1 - 2\cdot 3 = 2$ and $\det(BA) = 2\cdot 7 - 4\cdot 3 = 2$.
+
+##### 2. Equality Check and Meaning of Noncommutativity
+
+**Result.** No, $AB \neq BA$. Noncommutativity of matrix multiplication means that the order in which two matrices are multiplied matters: swapping the left and right factors generally produces a different matrix (or may even make the product undefined).
+
+**Main steps.** Two matrices are equal if and only if they have the same size and identical entries in every $(i,j)$ position. Comparing $AB$ and $BA$ entry by entry shows they disagree in three of the four positions:
+
+$$
+AB=
+\begin{pmatrix}
+8 & 2 \\
+3 & 1 \\
+\end{pmatrix}
+\neq
+\begin{pmatrix}
+2 & 4 \\
+3 & 7 \\
+\end{pmatrix}=BA.
+$$
+
+Specifically, $(AB)_{11}=8 \neq 2=(BA)_{11}$, $(AB)_{12}=2 \neq 4=(BA)_{12}$, and $(AB)_{22}=1 \neq 7=(BA)_{22}$.
+
+**Property / method used.** *Noncommutativity of matrix algebra:* unlike real or complex numbers where $ab = ba$ always holds, matrix multiplication is not commutative ($AB \neq BA$ in general) because $AB$ pairs rows of $A$ with columns of $B$, whereas $BA$ pairs rows of $B$ with columns of $A$.
+
+**Mathematical verification.** Because $AB - BA \neq 0$, the commutator of $A$ and $B$ is nonzero:
+
+$$
+[A,B] = AB - BA =
+\begin{pmatrix}
+8-2 & 2-4 \\
+3-3 & 1-7 \\
+\end{pmatrix}=
+\begin{pmatrix}
+6 & -2 \\
+0 & -6 \\
+\end{pmatrix}
+\neq
+\begin{pmatrix}
+0 & 0 \\
+0 & 0 \\
+\end{pmatrix},
+$$
+
+which directly confirms that $A$ and $B$ do not commute.

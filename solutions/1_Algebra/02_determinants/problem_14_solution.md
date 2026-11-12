@@ -1,133 +1,165 @@
-# Exercise 14: A System of Equations and the Determinant
+### Exercise 14. A System of Equations and the Determinant
 
-### Given System and Matrix
+#### Exercise Reminder
 
-**System of Equations:**
-Ax = b
+Consider the linear system $Ax = b$, where
 
-**Matrix A:**
-[  1   2 ]
-[  k   4 ]
+$$
+A=
+\begin{pmatrix}
+1 & 2 \\
+k & 4 \\
+\end{pmatrix}.
+$$
 
-**Right-Hand Side Vector b:**
-[  b₁ ]
-[  b₂ ]
-
----
-
-### 1. Values of k for Which the System Has Exactly One Solution for Every b
-
-* **Result:**
-  The system Ax = b has **exactly one solution for every b** for all real values **k ≠ 2**.
-
-* **Core Theorem:**
-  A linear system Ax = b has a unique (exactly one) solution for every right-hand vector b if and only if Matrix A is **invertible**, which requires its determinant to be non-zero (**det(A) ≠ 0**)[cite: 18].
-
-* **Detailed Calculation Steps:**
-  1. Calculate det(A) using the 2x2 formula det = (a × d) - (b × c)[cite: 18]:
-     det(A) = (1 × 4) - (2 × k)
-     **det(A) = 4 - 2k**
-
-  2. Set the condition for invertibility (det(A) ≠ 0)[cite: 18]:
-     4 - 2k ≠ 0
-
-  3. Solve for k:
-     2k ≠ 4
-     **k ≠ 2**
-
-* **Conclusion:**
-  When **k ≠ 2**, Matrix A is non-singular, A⁻¹ exists, and the unique solution can always be directly calculated as **x = A⁻¹b** for any vector b[cite: 18].
+1. For which values of $k$ does the system have exactly one solution for every $b$?
+2. For the remaining value, give an example of a right-hand side $b$ for which the system has infinitely many solutions, and an example for which it has no solution.
 
 ---
 
-### 2. Analysis of the Remaining Value (k = 2)
+#### Solution
 
-When **k = 2**, Matrix A becomes:
-[  1   2 ]
-[  2   4 ]
+##### 1. Values of $k$ for Which $Ax = b$ Has a Unique Solution for Every $b$
 
-Notice that **det(A) = (1 × 4) - (2 × 2) = 4 - 4 = 0**, meaning Matrix A is singular and not invertible[cite: 18].
+**Result.** The system $Ax = b$ has a unique solution for every $b \in \mathbb{R}^2$ if and only if
 
-The linear system Ax = b expands to two scalar equations:
-1.  1*x₁ + 2*x₂ = b₁
-2.  2*x₁ + 4*x₂ = b₂
+$$
+k \neq 2.
+$$
 
-Since the left-hand side of Equation 2 is exactly twice the left-hand side of Equation 1 (`2*(x₁ + 2*x₂) = 2x₁ + 4x₂`), consistency depends entirely on whether `b₂ = 2*b₁`.
+<br>
 
----
+**Main steps.** Compute the determinant of the $2\times 2$ coefficient matrix $A$:
 
-#### A. Example of Vector b for Infinitely Many Solutions
+$$
+\det A = 1 \cdot 4 - 2 \cdot k = 4 - 2k.
+$$
 
-* **Condition for Infinitely Many Solutions:**
-  The right-hand side b must be consistent with the row dependence (`b₂ = 2*b₁`), making Equation 2 a redundant duplicate of Equation 1.
+A square linear system $Ax = b$ admits a unique solution $x = A^{-1}b$ for every right-hand side $b$ if and only if $A$ is invertible, which occurs precisely when $\det A \neq 0$:
 
-* **Chosen Vector b:**
-  [  1 ]
-  [  2 ]
+$$
+\det A \neq 0 \iff 4 - 2k \neq 0 \iff 2k \neq 4 \iff k \neq 2.
+$$
 
-* **System Calculation:**
-  1.  x₁ + 2*x₂ = 1
-  2.  2*x₁ + 4*x₂ = 2
+<br>
 
-* **Verification:**
-  Divide Equation 2 by 2:
-  (2*x₁ + 4*x₂) / 2 = 2 / 2  →  x₁ + 2*x₂ = 1
-  
-  Both equations represent the exact same line in 2D space. Expressing x₁ in terms of x₂:
-  **x₁ = 1 - 2*x₂**
-  
-  Since x₂ can be chosen arbitrarily as any real parameter t, there are **infinitely many solutions** of the form:
-  **x = [ 1 - 2t ; t ]** for all real numbers t.
+**Property / method used.** *Invertible Matrix Theorem (unique solvability criterion):* for an $n\times n$ matrix $A$, the linear system $Ax = b$ has a unique solution for every $b \in \mathbb{R}^n$ if and only if $\det A \neq 0$.
 
----
+<br>
 
-#### B. Example of Vector b for No Solution
+**Mathematical verification.** For any $k \neq 2$, $4 - 2k \neq 0$, so the explicit inverse matrix exists and produces the unique solution $x = A^{-1}b$:
 
-* **Condition for No Solution:**
-  The right-hand side b must violate the row relationship (`b₂ ≠ 2*b₁`), causing a mathematical contradiction.
-
-* **Chosen Vector b:**
-  [  1 ]
-  [  3 ]
-
-* **System Calculation:**
-  1.  x₁ + 2*x₂ = 1
-  2.  2*x₁ + 4*x₂ = 3
-
-* **Verification:**
-  Multiply Equation 1 by 2:
-  2*x₁ + 4*x₂ = 2
-  
-  Compare with Equation 2:
-  2*x₁ + 4*x₂ = 3
-  
-  Subtracting the two equations yields:
-  0 = 1 (Contradiction!)
-  
-  Because 0 can never equal 1, no values of x₁ and x₂ can satisfy both equations simultaneously. Thus, the system has **no solution** (inconsistent).
+$$
+A^{-1} = \frac{1}{4 - 2k}
+\begin{pmatrix}
+4 & -2 \\
+-k & 1 \\
+\end{pmatrix}
+\implies x = \frac{1}{4 - 2k}
+\begin{pmatrix}
+4b_1 - 2b_2 \\
+-kb_1 + b_2 \\
+\end{pmatrix}.
+$$
 
 ---
 
-### 3. Summary Table of Solution Cases
+##### 2. Examples for the Remaining Value $k = 2$
 
-| Parameter Value | Determinant | Vector b Condition | System Behavior | Geometric Interpretation |
-|-----------------|-------------|--------------------|-----------------|--------------------------|
-| **k ≠ 2**       | det(A) ≠ 0  | Any vector b       | **Exactly 1 Solution** | Lines intersect at a single unique point |
-| **k = 2**       | det(A) = 0  | b₂ = 2*b₁ (e.g., [ 1 ; 2 ]) | **Infinitely Many Solutions** | Lines are identical (completely overlapping) |
-| **k = 2**       | det(A) = 0  | b₂ ≠ 2*b₁ (e.g., [ 1 ; 3 ]) | **No Solution** | Lines are distinct and parallel |
+**Result.** For the remaining value $k = 2$:
+- **Example with infinitely many solutions:**
 
----
+$$
+b=
+\begin{pmatrix}
+1 \\
+2 \\
+\end{pmatrix}.
+$$
 
-### 4. Detailed Explanation & Linear Algebra Insights
+- **Example with no solution:**
 
-1. **The Invertible Matrix Theorem Connection:**
-   * The determinant serves as the central indicator for system stability[cite: 18].
-   * When det(A) ≠ 0, the columns of Matrix A span all of 2D space (R²), guaranteeing that every target vector b can be reached uniquely[cite: 18].
-   * When det(A) = 0, the column space collapses to a 1D line, meaning vector b can only be reached if it happens to lie on that exact 1D line (`b₂ = 2*b₁`)[cite: 18].
+$$
+b=
+\begin{pmatrix}
+1 \\
+3 \\
+\end{pmatrix}.
+$$
 
-2. **Geometric Interpretation in 2D Space:**
-   * Each equation in a 2x2 system represents a straight line in the Cartesian plane.
-   * **When k ≠ 2:** The slopes of the two lines are different (-1/2 and -k/4), so they cross at exactly one intersection point regardless of b.
-   * **When k = 2:** Both lines have the exact same slope (-1/2). They are parallel lines:
-     * If they share the same y-intercept (`b₂ = 2*b₁`), they lie on top of each other, yielding infinite intersection points.
-     * If they have different y-intercepts (`b₂ ≠ 2*b₁`), they never meet, yielding zero intersection points.
+<br>
+
+**Main steps.** When $k = 2$, the coefficient matrix becomes
+
+$$
+A=
+\begin{pmatrix}
+1 & 2 \\
+2 & 4 \\
+\end{pmatrix},
+$$
+
+and the system $Ax = b$ with $x = (x_1, x_2)^T$ and $b = (b_1, b_2)^T$ writes out as
+
+$$
+\begin{aligned}
+x_1 + 2x_2 &= b_1, \\
+2x_1 + 4x_2 &= b_2.
+\end{aligned}
+$$
+
+Applying the row operation $R_2 \leftarrow R_2 - 2R_1$ to the augmented matrix gives
+
+$$
+\left(\begin{array}{cc|c}
+1 & 2 & b_1 \\
+2 & 4 & b_2
+\end{array}\right)
+\quad \longrightarrow \quad
+\left(\begin{array}{cc|c}
+1 & 2 & b_1 \\
+0 & 0 & b_2 - 2b_1
+\end{array}\right).
+$$
+
+1. **Case 1 — Infinitely many solutions ($b_2 - 2b_1 = 0$):** Choose $b_1 = 1$ and $b_2 = 2$, so $b = (1, 2)^T$. The second row reduces to $0x_1 + 0x_2 = 0$, leaving a single equation $x_1 + 2x_2 = 1$ in two unknowns. Setting $x_2 = t \in \mathbb{R}$ as a free parameter gives infinitely many solutions:
+
+$$
+x=
+\begin{pmatrix}
+1 - 2t \\
+t \\
+\end{pmatrix}, \qquad t \in \mathbb{R}.
+$$
+
+2. **Case 2 — No solution ($b_2 - 2b_1 \neq 0$):** Choose $b_1 = 1$ and $b_2 = 3$, so $b = (1, 3)^T$. The second row reduces to the impossible equation $0x_1 + 0x_2 = 1$. Because the system is inconsistent, it has no solution.
+
+<br>
+
+**Property / method used.** *Rouché–Capelli theorem (rank condition for consistency):* when $\det A = 0$ ($\mathrm{rank}(A) = 1 < 2$), $Ax = b$ has infinitely many solutions if $\mathrm{rank}(A \mid b) = 1$ (consistent with $2 - 1 = 1$ free variable), and has no solution if $\mathrm{rank}(A \mid b) = 2$ (inconsistent).
+
+<br>
+
+**Mathematical verification.**
+- Substituting $x = (1 - 2t,\, t)^T$ into $Ax$ confirms $Ax = (1, 2)^T$ for every $t \in \mathbb{R}$:
+
+$$
+\begin{pmatrix}
+1 & 2 \\
+2 & 4 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 - 2t \\
+t \\
+\end{pmatrix}=
+\begin{pmatrix}
+(1 - 2t) + 2t \\
+2(1 - 2t) + 4t \\
+\end{pmatrix}=
+\begin{pmatrix}
+1 \\
+2 \\
+\end{pmatrix}.
+$$
+
+- For $b = (1, 3)^T$, any pair $(x_1, x_2)$ satisfying $x_1 + 2x_2 = 1$ must satisfy $2x_1 + 4x_2 = 2(x_1 + 2x_2) = 2 \neq 3$, confirming that no solution exists.

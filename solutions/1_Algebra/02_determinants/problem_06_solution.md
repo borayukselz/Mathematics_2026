@@ -1,106 +1,71 @@
-# Exercise 6: Parameter and Invertibility
+### Exercise 6. Parameter and Invertibility
 
-### Given Family of Matrices
+#### Exercise Reminder
 
-**Matrix A(t):**
-[  t   1 ]
-[  2   t ][cite: 20]
+For
 
----
+$$A(t)= \begin{pmatrix} t & 1 \\ 2 & t \\ \end{pmatrix},$$
 
-### 1. Compute det(A(t))
-
-* **Result:**
-  **det(A(t)) = t² - 2**[cite: 20]
-
-* **Detailed Calculation Steps:**
-  * Identify elements of Matrix A(t)[cite: 20]: a = t, b = 1, c = 2, d = t
-  * Main diagonal product (a × d): t × t = **t²**
-  * Anti-diagonal product (b × c): 1 × 2 = **2**
-  * Apply determinant formula det = (a × d) - (b × c)[cite: 18]:
-    det(A(t)) = **t² - 2**[cite: 20]
-
-* **Method & Explanation:**
-  The determinant of a 2x2 matrix is computed by multiplying the main diagonal elements and subtracting the product of the off-diagonal elements[cite: 18].
+1. Find all values of $t$ for which the matrix is not invertible.
+2. Explain how your answer is related to the determinant being zero.
 
 ---
 
-### 2. Find Values of t for Which A(t) is Not Invertible
+#### Solution
 
-* **Result:**
-  The matrix A(t) is **not invertible** for **t = √2** and **t = -√2** (or approximately t ≈ 1.414 and t ≈ -1.414)[cite: 20].
+##### 1. Values of $t$ for Which $A(t)$ Is Not Invertible
 
-* **Detailed Calculation Steps:**
-  1. Set the determinant equal to zero[cite: 20]:
-     t² - 2 = 0[cite: 20]
+**Result.** The matrix $A(t)$ is not invertible for
 
-  2. Solve the algebraic equation for t:
-     t² = 2
-     t = ±√2
+$$t = \sqrt{2} \qquad \text{and} \qquad t = -\sqrt{2} \qquad (\text{i.e., } t = \pm\sqrt{2}).$$
 
-  3. List the solutions:
-     * **t₁ = √2**[cite: 20]
-     * **t₂ = -√2**[cite: 20]
+<br>
 
----
+**Main steps.** Compute the determinant of the $2\times 2$ matrix $A(t)$ as a function of the parameter $t$:
 
-### 3. Explanation of Relationship to Determinant Being Zero
+$$\det A(t) = t \cdot t - 1 \cdot 2 = t^2 - 2.$$
 
-* **Core Theorem of Invertibility:**
-  A square matrix M is **invertible** if and only if its determinant is non-zero (**det(M) ≠ 0**)[cite: 18]. Conversely, a matrix is **not invertible** (singular) if and only if its determinant is equal to zero (**det(M) = 0**)[cite: 18, 20].
+Set $\det A(t) = 0$ and solve for $t$:
 
-* **Direct Relationship in This Problem:**
-  * To find the exact parameter values of t that cause Matrix A(t) to lose invertibility, we must solve for where the determinant function collapses to zero[cite: 20].
-  * For any value **t ≠ ±√2**, det(A(t)) ≠ 0, meaning the matrix **is invertible**[cite: 18].
-  * At the critical parameter values **t = √2** and **t = -√2**, det(A(t)) = 0, meaning the matrix **is not invertible**[cite: 18, 20].
+$$t^2 - 2 = 0 \implies t^2 = 2 \implies t = \pm\sqrt{2}.$$
 
----
+Thus, $A(t)$ fails to be invertible exclusively when $t = \sqrt{2}$ or $t = -\sqrt{2}$.
 
-### 4. Mathematical Verification
+<br>
 
-#### Case 1: Plug in t = √2
-* **Matrix:**
-  A(√2) = [  √2   1 ]
-          [   2  √2 ]
+**Property / method used.** *Determinant singularity criterion:* a square matrix $A(t)$ is singular (not invertible) if and only if $\det A(t) = 0$.
 
-* **Determinant:**
-  det(A(√2)) = (√2 × √2) - (1 × 2) = 2 - 2 = **0**
+<br>
 
-* **Row Relationship:**
-  Observe that Row 2 is exactly **√2 times Row 1**:
-  [ 2, √2 ] = √2 × [ √2, 1 ]
-  Because the rows are linearly dependent (proportional), the matrix is singular and not invertible[cite: 18].
+**Mathematical verification.** For any $t \neq \pm\sqrt{2}$, the explicit inverse of $A(t)$ is
+
+$$A(t)^{-1} = \frac{1}{t^2 - 2} \begin{pmatrix} t & -1 \\ -2 & t \\ \end{pmatrix},$$
+
+which involves division by $t^2 - 2$ and therefore exists if and only if $t^2 - 2 \neq 0$, confirming that $t = \pm\sqrt{2}$ are the exact values where $A(t)^{-1}$ fails to exist.
 
 ---
 
-#### Case 2: Plug in t = -√2
-* **Matrix:**
-  A(-√2) = [ -√2   1 ]
-           [   2 -√2 ]
+##### 2. Relation to the Determinant Being Zero
 
-* **Determinant:**
-  det(A(-√2)) = (-√2 × -√2) - (1 × 2) = 2 - 2 = **0**
+**Result.** By the Invertible Matrix Theorem, an $n\times n$ matrix is invertible if and only if its determinant is nonzero; therefore, the values $t = \pm\sqrt{2}$ where $A(t)$ loses invertibility are precisely the roots of the equation $\det A(t) = 0$, at which the rows (and columns) of $A(t)$ become linearly dependent.
 
-* **Row Relationship:**
-  Observe that Row 2 is exactly **-√2 times Row 1**:
-  [ 2, -√2 ] = -√2 × [ -√2, 1 ]
-  Because the rows are linearly dependent (proportional), the matrix is singular and not invertible[cite: 18].
+<br>
 
----
+**Main steps.**
+1. **Algebraic connection:** A square matrix $M$ has a multiplicative inverse $M^{-1}$ satisfying $MM^{-1} = I$ if and only if $\det M \neq 0$. Setting $\det A(t) = t^2 - 2 = 0$ directly characterizes the singular cases in the parameter family $A(t)$.
+2. **Row-dependence interpretation:** When $\det A(t) = 0$, the two rows of $A(t)$ become scalar multiples of one another:
+   - At $t = \sqrt{2}$, $A(\sqrt{2}) = \begin{pmatrix} \sqrt{2} & 1 \\ 2 & \sqrt{2} \end{pmatrix}$ satisfies $R_2 = \sqrt{2}R_1$.
+   - At $t = -\sqrt{2}$, $A(-\sqrt{2}) = \begin{pmatrix} -\sqrt{2} & 1 \\ 2 & -\sqrt{2} \end{pmatrix}$ satisfies $R_2 = -\sqrt{2}R_1$.
+3. Because the rows collapse onto a single line (rank $1 < 2$), $A(t)$ maps nonzero vectors to the zero vector and cannot be inverted.
 
-### 5. Detailed Explanation & Linear Algebra Insights
+<br>
 
-1. **Why det = 0 Prevents Matrix Inversion (Algebraic Perspective):**
-   * The explicit formula for the inverse of a 2x2 matrix A(t) is:
-     **A(t)⁻¹ = (1 / det(A(t))) × [ t, -1 ; -2, t ]**
-   * If t = ±√2, det(A(t)) = 0, which requires division by zero (1 / 0). Since division by zero is mathematically undefined, the inverse matrix **A(t)⁻¹ cannot exist**.
+**Property / method used.** *Invertible Matrix Theorem (determinant and linear dependence equivalence):* for a $2\times 2$ matrix $M$, $\det M = 0 \iff M \text{ is not invertible} \iff \text{the rows/columns of } M \text{ are linearly dependent}$.
 
-2. **Loss of Dimension (Geometric Perspective):**
-   * The determinant measures how much a linear transformation scales 2D areas.
-   * When **t ≠ ±√2**, Matrix A(t) transforms a 2D square into a parallelogram with non-zero area (det = t² - 2), so points can be uniquely mapped backward (reversible)[cite: 18].
-   * When **t = ±√2**, the area scaling factor becomes zero (det = 0). The transformation completely collapses 2D space onto a 1D line, destroying dimensional information and making it impossible to undo the operation[cite: 18].
+<br>
 
-3. **Systems of Linear Equations Perspective:**
-   * Consider the system A(t)x = b.
-   * If **t ≠ ±√2**, the system has a unique solution for any right-hand vector b.
-   * If **t = ±√2**, the system either has infinitely many solutions or no solution at all, depending on vector b.
+**Mathematical verification.** Substituting $t = \sqrt{2}$ and $t = -\sqrt{2}$ directly into $\det A(t)$ confirms that both yield a zero determinant:
+
+$$\det A(\sqrt{2}) = \det \begin{pmatrix} \sqrt{2} & 1 \\ 2 & \sqrt{2} \\ \end{pmatrix}= (\sqrt{2})(\sqrt{2}) - (1)(2) = 2 - 2 = 0,$$
+
+$$\det A(-\sqrt{2}) = \det \begin{pmatrix} -\sqrt{2} & 1 \\ 2 & -\sqrt{2} \\ \end{pmatrix}= (-\sqrt{2})(-\sqrt{2}) - (1)(2) = 2 - 2 = 0.$$

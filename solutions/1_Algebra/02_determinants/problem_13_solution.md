@@ -1,127 +1,55 @@
-# Exercise 13: Determinant by Elimination
+### Exercise 13. Determinant by Elimination
 
-### Given Matrix
+#### Exercise Reminder
 
-**Matrix A:**
-[  1   2   3 ]
-[  2   5   7 ]
-[  1   0   2 ]
+Compute the determinant
 
----
+$$A= \begin{pmatrix} 1 & 2 & 3 \\ 2 & 5 & 7 \\ 1 & 0 & 2 \\ \end{pmatrix}$$
 
-### 1. Summary of Elementary Row Operations and Determinant Effects
-
-* **Row Replacement (Rᵢ ← Rᵢ + cRⱼ):** Adding a scalar multiple of one row to another **does not change** the determinant[cite: 19].
-* All row operations used below are row replacements, so **det(A_new) = det(A_old)** at every step[cite: 19].
+using elimination. Record the effect of every row operation used on the value of the determinant.
 
 ---
 
-### 2. Step-by-Step Elimination to Upper Triangular Form
+#### Solution
 
-#### Step 1: Perform R₂ ← R₂ - 2R₁
+**Result.**
 
-* **Operation:** Eliminate entry at position (2,1)[cite: 19].
-* **Calculation:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ]
-  * Calculate new Row 2 (R₂ - 2R₁):
-    * Entry (2,1): 2 - 2(1) = 0
-    * Entry (2,2): 5 - 2(2) = 5 - 4 = 1
-    * Entry (2,3): 7 - 2(3) = 7 - 6 = 1
-  * Row 3 remains unchanged: [ 1, 0, 2 ]
+$$\det A = 1.$$
 
-* **Resulting Matrix A₁:**
-  [  1   2   3 ]
-  [  0   1   1 ]
-  [  1   0   2 ]
+<br>
 
-* **Effect on Determinant:**
-  Row replacement does not change the determinant[cite: 19].
-  **det(A) = det(A₁)**[cite: 19]
+**Main steps.** Reduce $A$ to an upper triangular matrix $U$ via Gaussian elimination while recording the effect of each row operation on the determinant:
 
----
+1. **Step 1 — Eliminate the $(2,1)$ entry via $R_2 \leftarrow R_2 - 2R_1$:**
 
-#### Step 2: Perform R₃ ← R₃ - R₁
+$$A= \begin{pmatrix} 1 & 2 & 3 \\ 2 & 5 & 7 \\ 1 & 0 & 2 \\ \end{pmatrix} \xrightarrow{R_2 \leftarrow R_2 - 2R_1} \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 1 \\ 1 & 0 & 2 \\ \end{pmatrix}= A_1.$$
 
-* **Operation:** Eliminate entry at position (3,1)[cite: 19].
-* **Calculation:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ]
-  * Row 2 remains unchanged: [ 0, 1, 1 ]
-  * Calculate new Row 3 (R₃ - R₁):
-    * Entry (3,1): 1 - 1 = 0
-    * Entry (3,2): 0 - 2 = -2
-    * Entry (3,3): 2 - 3 = -1
+- **Effect on determinant:** **No change** ($\det A_1 = \det A$), because adding a scalar multiple of one row to another row leaves the determinant unchanged.
 
-* **Resulting Matrix A₂:**
-  [  1   2   3 ]
-  [  0   1   1 ]
-  [  0  -2  -1 ]
+2. **Step 2 — Eliminate the $(3,1)$ entry via $R_3 \leftarrow R_3 - R_1$:**
 
-* **Effect on Determinant:**
-  Row replacement does not change the determinant[cite: 19].
-  **det(A) = det(A₁) = det(A₂)**[cite: 19]
+$$A_1= \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 1 \\ 1 & 0 & 2 \\ \end{pmatrix} \xrightarrow{R_3 \leftarrow R_3 - R_1} \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 1 \\ 0 & -2 & -1 \\ \end{pmatrix}= A_2.$$
 
----
+- **Effect on determinant:** **No change** ($\det A_2 = \det A_1 = \det A$), because subtracting $R_1$ from $R_3$ is a row replacement operation.
 
-#### Step 3: Perform R₃ ← R₃ + 2R₂
+3. **Step 3 — Eliminate the $(3,2)$ entry via $R_3 \leftarrow R_3 + 2R_2$:**
 
-* **Operation:** Eliminate entry at position (3,2)[cite: 19].
-* **Calculation:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ]
-  * Row 2 remains unchanged: [ 0, 1, 1 ]
-  * Calculate new Row 3 (R₃ + 2R₂):
-    * Entry (3,1): 0 + 2(0) = 0
-    * Entry (3,2): -2 + 2(1) = 0
-    * Entry (3,3): -1 + 2(1) = -1 + 2 = 1
+$$A_2= \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 1 \\ 0 & -2 & -1 \\ \end{pmatrix} \xrightarrow{R_3 \leftarrow R_3 + 2R_2} \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \\ \end{pmatrix}= U.$$
 
-* **Resulting Matrix A₃ (Upper Triangular Form):**
-  [  1   2   3 ]
-  [  0   1   1 ]
-  [  0   0   1 ]
+- **Effect on determinant:** **No change** ($\det U = \det A_2 = \det A$), because adding $2R_2$ to $R_3$ is a row replacement operation.
 
-* **Effect on Determinant:**
-  Row replacement does not change the determinant[cite: 19].
-  **det(A) = det(A₃)**[cite: 19]
+4. **Step 4 — Evaluate $\det U$ from the upper triangular form:** Since none of the three elimination steps changed the determinant, $\det A = \det U$, which equals the product of the main diagonal entries of $U$:
 
----
+$$\det A = \det U = 1 \cdot 1 \cdot 1 = 1.$$
 
-### 3. Compute Determinant of the Triangular Matrix
+<br>
 
-* **Calculation:**
-  The determinant of an upper triangular matrix equals the product of its main diagonal entries[cite: 18, 19]:
-  det(A₃) = (1) × (1) × (1) = **1**
+**Property / method used.** *Elimination method for determinants:*
+- **Row replacement** ($R_i \leftarrow R_i + cR_j$ for $i \neq j$) preserves the value of the determinant ($\det_{\text{new}} = \det_{\text{old}}$).
+- **Upper triangular determinant rule:** once a matrix is reduced to upper triangular form $U$, its determinant equals the product of its diagonal entries $u_{11}u_{22}u_{33}$.
 
-* **Final Result:**
-  Since no row swaps or scaling operations were performed, det(A) = det(A₃):
-  **det(A) = 1**
+<br>
 
----
+**Mathematical verification.** Computing $\det A$ directly by Sarrus' rule confirms the elimination result:
 
-### 4. Mathematical Verification
-
-#### Check 1: Sarrus' Rule
-* **Down-Right Diagonals (Positive Terms):**
-  (1 × 5 × 2) + (2 × 7 × 1) + (3 × 2 × 0) = 10 + 14 + 0 = **24**
-* **Up-Right Diagonals (Negative Terms):**
-  (1 × 5 × 3) + (0 × 7 × 1) + (2 × 2 × 2) = 15 + 0 + 8 = **23**
-* **det(A):** 24 - 23 = **1**
-
-#### Check 2: Cofactor Expansion along Row 3
-* Row 3 contains [ 1, 0, 2 ]:
-  det(A) = 1 × det[ 2, 3 ; 5, 7 ] - 0 + 2 × det[ 1, 2 ; 2, 5 ]
-  det(A) = 1 × ((2 × 7) - (3 × 5)) + 2 × ((1 × 5) - (2 × 2))
-  det(A) = 1 × (14 - 15) + 2 × (5 - 4)
-  det(A) = 1 × (-1) + 2 × (1) = -1 + 2 = **1**
-
-Both verification methods confirm that **det(A) = 1**.
-
----
-
-### 5. Detailed Explanation & Linear Algebra Insights
-
-1. **Efficiency of Gaussian Elimination for Determinants:**
-   * Converting Matrix A to upper triangular form systematically reduces all entries below the diagonal to zero using row replacements[cite: 19].
-   * Because row replacement operations preserve the exact determinant value, the final determinant is read directly off the main diagonal without tracking cumulative sign flips or scaling factors[cite: 18, 19].
-
-2. **Geometric & Structural Meaning:**
-   * **Invertibility:** Since det(A) = 1 ≠ 0, Matrix A is non-singular and fully **invertible**[cite: 18].
-   * **Volume Preservation:** Geometrically, Matrix A transforms the 3D unit cube into a parallelepiped with an exact volume of **1 cubic unit**, keeping spatial volume completely preserved[cite: 18].
+$$\det A = (1\cdot 5\cdot 2 + 2\cdot 7\cdot 1 + 3\cdot 2\cdot 0) - (1\cdot 5\cdot 3 + 0\cdot 7\cdot 1 + 2\cdot 2\cdot 2) = (10 + 14 + 0) - (15 + 0 + 8) = 24 - 23 = 1.$$

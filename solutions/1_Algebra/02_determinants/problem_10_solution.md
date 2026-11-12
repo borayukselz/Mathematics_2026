@@ -1,68 +1,49 @@
-# Exercise 10: Detecting Dependence
+### Exercise 10. Detecting Dependence
 
-### Given Matrix
+#### Exercise Reminder
 
-**Matrix A:**
-[  1   2   3 ]
-[  2   4   6 ]
-[  0   1   5 ][cite: 24]
+Without carrying out a full determinant calculation, explain why
 
----
+$$\det \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 0 & 1 & 5 \\ \end{pmatrix}= 0.$$
 
-### 1. Identify Specific Dependence Between Rows
-
-* **Result:**
-  **Row 2 is a direct scalar multiple of Row 1:**
-  **R₂ = 2 × R₁**[cite: 24]
-
-* **Detailed Comparison:**
-  * Row 1 (R₁): [ 1, 2, 3 ][cite: 24]
-  * Row 2 (R₂): [ 2, 4, 6 ] = 2 × [ 1, 2, 3 ][cite: 24]
-  * Row 3 (R₃): [ 0, 1, 5 ][cite: 24]
-
-* **Method & Explanation:**
-  Two rows are linearly dependent if one row is an exact scalar multiple of another[cite: 24]. Here, every entry in Row 2 is exactly twice the corresponding entry in Row 1 (2 = 2×1, 4 = 2×2, 6 = 2×3)[cite: 24].
+Identify a specific dependence between the rows and connect it with noninvertibility of the matrix.
 
 ---
 
-### 2. Explain Why det(A) = 0 Without Full Calculation
+#### Solution
 
-* **Property Rule:**
-  If a square matrix has two proportional (linearly dependent) rows, its determinant is **equal to 0**[cite: 24].
+**Result.** The determinant is $0$ because the second row is an exact scalar multiple of the first row ($R_2 = 2R_1$), making the rows linearly dependent and the matrix singular (not invertible).
 
-* **Justification via Row Replacement:**
-  1. Perform the elementary row replacement **R₂ ← R₂ - 2R₁**[cite: 19].
-  2. Adding a scalar multiple of one row to another row **does not change** the value of the determinant[cite: 19].
-  3. Calculating the new second row gives:
-     [ 2 - 2(1), 4 - 2(2), 6 - 2(3) ] = [ 0, 0, 0 ]
-  4. The matrix becomes:
-     [  1   2   3 ]
-     [  0   0   0 ]
-     [  0   1   5 ]
-  5. Any matrix containing a row of all zeros has a determinant of **0** (expanding along the zero row yields 0)[cite: 24].
+<br>
 
----
+**Main steps.** Let
 
-### 3. Connect Row Dependence with Noninvertibility
+$$A= \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 0 & 1 & 5 \\ \end{pmatrix},$$
 
-* **Invertibility Criterion:**
-  A square matrix is invertible if and only if its determinant is non-zero (**det(A) ≠ 0**)[cite: 18].
+and denote its rows by $R_1$, $R_2$, and $R_3$.
 
-* **Connection to Noninvertibility:**
-  * **Zero Determinant:** Because row dependence causes **det(A) = 0**, Matrix A is singular and therefore **not invertible**[cite: 18, 24].
-  * **Reduced Rank:** Linear dependence means the three rows do not contain three independent directions of information[cite: 24]. Matrix A has rank 2 instead of full rank 3.
-  * **Geometric Collapse:** Matrix A maps 3D space onto a 2D plane (collapsing 3D volume to zero)[cite: 18]. Because 3D space collapses onto a flattened plane, multiple distinct points get squished together, making it impossible to uniquely reverse the transformation (noninvertible)[cite: 18, 24].
+1. **Identify the specific row dependence:** Compare the entries of row $1$ and row $2$:
 
----
+$$R_1 = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix},\qquad R_2 = \begin{pmatrix} 2 & 4 & 6 \end{pmatrix}= 2 \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}= 2R_1.$$
 
-### 4. Mathematical Verification (Quick Check)
+Equivalently, $2R_1 - R_2 = \begin{pmatrix} 0 & 0 & 0 \end{pmatrix}$, which is a nontrivial linear dependence relation among the rows of $A$.
 
-* **Verification via Sarrus' Rule:**
-  * **Down-Right Diagonals:**
-    (1 × 4 × 5) + (2 × 6 × 0) + (3 × 2 × 1) = 20 + 0 + 6 = **26**[cite: 24]
-  * **Up-Right Diagonals:**
-    (0 × 4 × 3) + (1 × 6 × 1) + (5 × 2 × 2) = 0 + 6 + 20 = **26**[cite: 24]
-  * **det(A):** 26 - 26 = **0**[cite: 24]
+2. **Why $\det A = 0$ without full expansion:** Performing the single row replacement $R_2 \leftarrow R_2 - 2R_1$ does not change the determinant and produces a zero row:
 
-* **Conclusion:**
-  Direct calculation confirms **det(A) = 0**, fully validating the structural row-dependence analysis[cite: 24].
+$$\det A = \det \begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 0 \\ 0 & 1 & 5 \\ \end{pmatrix}= 0,$$
+
+because any square matrix with proportional rows (or a row of zeros) has determinant $0$.
+
+3. **Connection with noninvertibility:** By the Invertible Matrix Theorem, a square matrix $A$ is invertible if and only if $\det A \neq 0$ (equivalently, its rows are linearly independent). Because $R_2 = 2R_1$, the rows of $A$ are linearly dependent ($\mathrm{rank}(A) = 2 < 3$), $\det A = 0$, and $A$ has no inverse $A^{-1}$.
+
+<br>
+
+**Property / method used.** *Proportional-rows determinant property and the Invertible Matrix Theorem:* if one row of a square matrix is a scalar multiple of another row, then $\det A = 0$, and for any $n\times n$ matrix $A$,
+
+$$\text{rows of } A \text{ are linearly dependent} \iff \det A = 0 \iff A \text{ is not invertible.}$$
+
+<br>
+
+**Mathematical verification.** Evaluating $\det A$ directly via Sarrus' rule confirms that all terms cancel to zero:
+
+$$\det A = (1\cdot 4\cdot 5 + 2\cdot 6\cdot 0 + 3\cdot 2\cdot 1) - (0\cdot 4\cdot 3 + 1\cdot 6\cdot 1 + 5\cdot 2\cdot 2) = (20 + 0 + 6) - (0 + 6 + 20) = 26 - 26 = 0.$$

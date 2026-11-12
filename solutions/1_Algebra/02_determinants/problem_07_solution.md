@@ -1,118 +1,112 @@
+### Exercise 7. Using Properties Instead of Recomputing
 
-# Exercise 7: Using Properties Instead of Recomputing
+#### Exercise Reminder
 
-### Given
+Suppose that for a $3\times 3$ matrix $A$, $\det A = -4$. Compute
 
-* **Matrix Dimension:** 3 × 3 (n = 3)[cite: 21]
-* **Determinant:** det(A) = -4[cite: 21]
+$$
+\det(2A),\qquad \det(A^T),\qquad \det(A^2),\qquad \det(-A).
+$$
 
----
-
-### 1. Compute det(2A)
-
-* **Result:**
-  **det(2A) = -32**[cite: 21]
-
-* **Property Used:**
-  For an n × n matrix A and scalar c:
-  **det(cA) = cⁿ × det(A)**
-
-* **Detailed Calculation Steps:**
-  1. Identify matrix dimension: n = 3 (since A is a 3 × 3 matrix)[cite: 21]
-  2. Identify scalar factor: c = 2[cite: 21]
-  3. Apply general formula: det(2A) = 2³ × det(A)[cite: 21]
-  4. Substitute det(A) = -4: det(2A) = 8 × (-4) = **-32**[cite: 21]
-
-* **Method & Explanation:**
-  Multiplying an entire 3 × 3 matrix by scalar 2 multiplies every entry in every row by 2[cite: 21]. Factoring 2 out of each of the 3 rows scales the determinant by 2 three separate times (2 × 2 × 2 = 2³ = 8)[cite: 21].
+Justify each answer using the appropriate property.
 
 ---
 
-### 2. Compute det(Aᵀ)
+#### Solution
 
-* **Result:**
-  **det(Aᵀ) = -4**[cite: 21]
+**Result.**
 
-* **Property Used:**
-  The determinant of a matrix transpose equals the determinant of the original matrix:
-  **det(Aᵀ) = det(A)**
+$$
+\det(2A) = -32,\qquad \det(A^T) = -4,\qquad \det(A^2) = 16,\qquad \det(-A) = 4.
+$$
 
-* **Detailed Calculation Steps:**
-  * Substitute det(A) = -4 directly:
-    det(Aᵀ) = **-4**[cite: 21]
+<br>
 
-* **Method & Explanation:**
-  Transposing a matrix swaps its rows and columns[cite: 8]. Because row operations and column operations affect determinants in identical ways, taking the transpose never changes the value of a square matrix's determinant[cite: 21].
+**Main steps.** Here the matrix dimension is $n = 3$ and $\det A = -4$. Apply the corresponding determinant identity to each expression:
 
----
+- **Computing $\det(2A)$:** Multiplying a $3\times 3$ matrix by the scalar $c = 2$ multiplies each of its $3$ rows by $2$, scaling the determinant by $2^3$:
 
-### 3. Compute det(A²)
+$$
+\det(2A) = 2^3 \det A = 8 \cdot (-4) = -32.
+$$
 
-* **Result:**
-  **det(A²) = 16**[cite: 21]
+- **Computing $\det(A^T)$:** Transposing a square matrix leaves its determinant unchanged:
 
-* **Property Used:**
-  The determinant of a product of matrices equals the product of their individual determinants (Multiplicative Property):
-  **det(AB) = det(A) × det(B)**
-  For integer powers: **det(Aᵏ) = (det(A))ᵏ**
+$$
+\det(A^T) = \det A = -4.
+$$
 
-* **Detailed Calculation Steps:**
-  1. Apply multiplicative property for k = 2:
-     det(A²) = det(A × A) = det(A) × det(A) = (det(A))²[cite: 21]
-  2. Substitute det(A) = -4:
-     det(A²) = (-4)² = **16**[cite: 21]
+- **Computing $\det(A^2)$:** Using the multiplicative property $\det(AB) = \det(A)\det(B)$ with $B = A$:
 
-* **Method & Explanation:**
-  Because the determinant function is multiplicative, squaring a matrix simply squares its scalar determinant value[cite: 21].
+$$
+\det(A^2) = \det(A \cdot A) = (\det A)^2 = (-4)^2 = 16.
+$$
 
----
+- **Computing $\det(-A)$:** Since $-A = (-1)A$ and $A$ has size $3\times 3$, apply the scalar-multiple rule with $c = -1$ and $n = 3$:
 
-### 4. Compute det(-A)
+$$
+\det(-A) = \det\bigl((-1)A\bigr) = (-1)^3 \det A = (-1) \cdot (-4) = 4.
+$$
 
-* **Result:**
-  **det(-A) = 4**[cite: 21]
+<br>
 
-* **Property Used:**
-  Negating a matrix is equivalent to multiplying by scalar c = -1 for an n × n matrix:
-  **det(-A) = (-1)ⁿ × det(A)**
+**Property / method used.** *Algebraic properties of determinants for an $n\times n$ matrix $A$:*
+- **Scalar multiplication:** $\det(cA) = c^n \det A$ for any scalar $c$.
+- **Transpose invariance:** $\det(A^T) = \det A$.
+- **Multiplicativity (powers):** $\det(AB) = \det(A)\det(B)$, so $\det(A^k) = (\det A)^k$ for any integer $k \ge 1$.
+- **Negation:** $\det(-A) = (-1)^n \det A$ (which reverses the sign of $\det A$ when $n$ is odd).
 
-* **Detailed Calculation Steps:**
-  1. Identify matrix dimension: n = 3 (odd dimension)[cite: 21]
-  2. Calculate scale factor: (-1)³ = -1
-  3. Apply formula: det(-A) = (-1)³ × det(A) = -1 × det(A)[cite: 21]
-  4. Substitute det(A) = -4:
-     det(-A) = -1 × (-4) = **4**[cite: 21]
+<br>
 
-* **Method & Explanation:**
-  Negating a 3 × 3 matrix multiplies all 3 rows by -1[cite: 21]. Each row negation multiplies the overall determinant by -1. Three sign changes yield (-1) × (-1) × (-1) = -1, which reverses the negative sign of det(A)[cite: 21].
+**Mathematical verification.** Choosing a concrete $3\times 3$ diagonal matrix with $\det A = -4$, such as
 
----
+$$
+A=
+\begin{pmatrix}
+-4 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix},
+$$
 
-### Summary Table of Results
+and evaluating each matrix explicitly confirms all four results:
 
-| Target Expression | Property Rule / Formula | Substitution / Calculation | Final Value |
-|-------------------|-------------------------|----------------------------|-------------|
-| det(2A)           | 2³ × det(A)             | 8 × (-4)                   | -32         |
-| det(Aᵀ)           | det(A)                  | -4                         | -4          |
-| det(A²)           | (det(A))²               | (-4)²                      | 16          |
-| det(-A)           | (-1)³ × det(A)          | -1 × (-4)                  | 4           |
+$$
+2A=
+\begin{pmatrix}
+-8 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 2 \\
+\end{pmatrix}
+\implies \det(2A) = (-8)\cdot 2\cdot 2 = -32,
+$$
 
----
+$$
+A^T=
+\begin{pmatrix}
+-4 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\implies \det(A^T) = (-4)\cdot 1\cdot 1 = -4,
+$$
 
-### Detailed Explanation & Linear Algebra Insights
+$$
+A^2=
+\begin{pmatrix}
+16 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\implies \det(A^2) = 16\cdot 1\cdot 1 = 16,
+$$
 
-1. **Scaling a Single Row vs. Scaling an Entire Matrix:**
-   * Scaling **one row** of an n × n matrix by scalar c scales the determinant by **c**[cite: 19].
-   * Scaling the **entire matrix** by c scales all n rows simultaneously, scaling the determinant by **cⁿ**[cite: 21].
-   * This is why det(2A) = 2³ × det(A) = -32, NOT 2 × (-4) = -8[cite: 21]!
-
-2. **Odd vs. Even Matrix Dimensions for Matrix Negation:**
-   * For an **even-dimensional** matrix (e.g., 2 × 2 or 4 × 4), det(-A) = (-1)ⁿ det(A) = det(A).
-   * For an **odd-dimensional** matrix (e.g., 3 × 3 or 5 × 5), det(-A) = (-1)ⁿ det(A) = -det(A)[cite: 21].
-   * Because Matrix A is 3 × 3 (odd), det(-A) flips sign from -4 to +4[cite: 21].
-
-3. **Geometric Volume Interpretation:**
-   * A determinant det(A) = -4 means Matrix A transforms 3D space by scaling volumes by a factor of 4 while reversing spatial orientation[cite: 19, 21].
-   * Scaling all 3 spatial directions by a factor of 2 (matrix 2A) expands 3D volume by 2 × 2 × 2 = 8 times, giving a total volume factor of 8 × 4 = 32 (with reversed orientation, resulting in -32)[cite: 21].
-
-```
+$$
+-A=
+\begin{pmatrix}
+4 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & -1 \\
+\end{pmatrix}
+\implies \det(-A) = 4\cdot (-1)\cdot (-1) = 4.
+$$

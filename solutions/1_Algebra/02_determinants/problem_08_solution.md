@@ -1,99 +1,83 @@
-# Exercise 8: Determinant of a Product
+### Exercise 8. Determinant of a Product
 
-### Given
+#### Exercise Reminder
 
-* **det(A) = 3**[cite: 22]
-* **det(B) = -5**[cite: 22]
-* **A and B are square matrices of the same size**[cite: 22]
+Let $A, B$ be square matrices such that $\det A = 3$ and $\det B = -5$.
 
----
-
-### 1. Compute det(AB)
-
-* **Result:**
-  **det(AB) = -15**[cite: 22]
-
-* **Property Used:**
-  The determinant of a product of matrices equals the product of their individual determinants (Multiplicative Property of Determinants):
-  **det(AB) = det(A) × det(B)**[cite: 22]
-
-* **Detailed Calculation Steps:**
-  1. Apply multiplicative property: det(AB) = det(A) × det(B)[cite: 22]
-  2. Substitute given values: det(AB) = (3) × (-5)[cite: 22]
-  3. Calculate product: det(AB) = **-15**[cite: 22]
-
-* **Method & Explanation:**
-  Matrix multiplication preserves volume scaling. The combined scaling factor of transformation B followed by transformation A is simply the product of their individual volume scaling factors.
+1. Compute $\det(AB)$, $\det(BA)$, and, if it exists, $\det(A^{-1}B)$.
+2. Explain why the first two results are equal even though usually $AB \neq BA$.
 
 ---
 
-### 2. Compute det(BA)
+#### Solution
 
-* **Result:**
-  **det(BA) = -15**[cite: 22]
+##### 1. Computing $\det(AB)$, $\det(BA)$, and $\det(A^{-1}B)$
 
-* **Property Used:**
-  **det(BA) = det(B) × det(A)**[cite: 22]
+**Result.**
 
-* **Detailed Calculation Steps:**
-  1. Apply multiplicative property: det(BA) = det(B) × det(A)[cite: 22]
-  2. Substitute given values: det(BA) = (-5) × (3)[cite: 22]
-  3. Calculate product: det(BA) = **-15**[cite: 22]
+$$\det(AB) = -15,\qquad \det(BA) = -15,\qquad \det(A^{-1}B) = -\frac{5}{3}.$$
 
-* **Method & Explanation:**
-  Even though applying transformation A before B produces a different resulting matrix than applying B before A, both combined transformations scale overall space by the exact same total factor.
+<br>
 
----
+**Main steps.** Note that $AB$ and $BA$ are both defined, which implies $A$ and $B$ are square matrices of the same size $n\times n$.
 
-### 3. Compute det(A⁻¹B)
+1. **Computing $\det(AB)$:** Apply the multiplicative property $\det(XY) = \det(X)\det(Y)$:
 
-* **Existence Check:**
-  * Matrix A is **invertible** if and only if **det(A) ≠ 0**.
-  * Since **det(A) = 3 ≠ 0**, the inverse matrix **A⁻¹ exists**[cite: 22].
-  * Therefore, the matrix product **A⁻¹B exists** and its determinant is defined[cite: 22].
+$$\det(AB) = (\det A)(\det B) = 3 \cdot (-5) = -15.$$
 
-* **Result:**
-  **det(A⁻¹B) = -5/3** (or approx. -1.667)[cite: 22]
+2. **Computing $\det(BA)$:** Apply the multiplicative property in reversed matrix order:
 
-* **Property Used:**
-  1. Determinant of an inverse matrix: **det(A⁻¹) = 1 / det(A)**
-  2. Multiplicative property: **det(A⁻¹B) = det(A⁻¹) × det(B) = (1 / det(A)) × det(B)**[cite: 22]
+$$\det(BA) = (\det B)(\det A) = (-5) \cdot 3 = -15.$$
 
-* **Detailed Calculation Steps:**
-  1. Compute det(A⁻¹):
-     det(A⁻¹) = 1 / det(A) = 1 / 3
-  2. Multiply by det(B):
-     det(A⁻¹B) = (1 / 3) × (-5) = **-5/3**[cite: 22]
+3. **Existence and computation of $\det(A^{-1}B)$:** Because $\det A = 3 \neq 0$, the matrix $A$ is invertible, so $A^{-1}$ exists and has the same size $n\times n$ as $B$. Using $\det(A^{-1}) = (\det A)^{-1}$ together with multiplicativity gives
 
-* **Method & Explanation:**
-  The inverse operation undoes the scaling of A (scaling by 1/3). Combining A⁻¹ with B multiplies the scaling factor 1/3 by the scaling factor -5 of B.
+$$\det(A^{-1}B) = \det(A^{-1})\det(B) = \frac{1}{\det A}\,\det B = \frac{1}{3} \cdot (-5) = -\frac{5}{3}.$$
 
----
+<br>
 
-### 4. Explain Why det(AB) = det(BA) Even Though AB ≠ BA
+**Property / method used.** *Multiplicativity and inverse rule for determinants:* for any $n\times n$ matrices $A$ and $B$,
 
-* **Key Distinction:**
-  * **Matrix Multiplication is Non-Commutative:** In general, **AB ≠ BA** because matrix operations depend on the order in which individual components are transformed[cite: 22].
-  * **Scalar Multiplication is Commutative:** The determinant map converts square matrices into single real numbers (scalars)[cite: 22].
+$$\det(AB) = \det(A)\det(B), \qquad \text{and when } \det A \neq 0, \qquad \det(A^{-1}) = \frac{1}{\det A}.$$
 
-* **Algebraic Explanation:**
-  1. By the multiplicative property:
-     * det(AB) = det(A) × det(B)[cite: 22]
-     * det(BA) = det(B) × det(A)[cite: 22]
-  2. Since det(A) and det(B) are ordinary real numbers, scalar multiplication is commutative:
-     **det(A) × det(B) = det(B) × det(A)**
-  3. Therefore, **det(AB) = det(BA)** always holds for any square matrices A and B, even when AB ≠ BA[cite: 22].
+<br>
 
-* **Geometric Explanation:**
-  * Matrix AB and matrix BA perform geometric transformations in different sequence orders, resulting in different final orientations/configurations.
-  * However, the **total volume change** (and orientation sign) caused by applying both transformations depends only on the combined magnitude of both scaling factors, which is independent of sequence order.
+**Mathematical verification.** Choose two concrete $2\times 2$ matrices satisfying $\det A = 3$ and $\det B = -5$, such as
+
+$$A= \begin{pmatrix} 3 & 1 \\ 0 & 1 \\ \end{pmatrix},\qquad B= \begin{pmatrix} 1 & 0 \\ 2 & -5 \\ \end{pmatrix}.$$
+
+Computing the matrix products explicitly gives
+
+$$AB= \begin{pmatrix} 5 & -5 \\ 2 & -5 \\ \end{pmatrix} \implies \det(AB) = 5(-5) - (-5)(2) = -25 + 10 = -15,$$
+
+$$BA= \begin{pmatrix} 3 & 1 \\ 6 & -3 \\ \end{pmatrix} \implies \det(BA) = 3(-3) - 1(6) = -9 - 6 = -15,$$
+
+$$A^{-1}B = \frac{1}{3} \begin{pmatrix} 1 & -1 \\ 0 & 3 \\ \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 2 & -5 \\ \end{pmatrix}= \frac{1}{3} \begin{pmatrix} -1 & 5 \\ 6 & -15 \\ \end{pmatrix} \implies \det(A^{-1}B) = \left(\frac{1}{3}\right)^2 (15 - 30) = -\frac{5}{3},$$
+
+confirming all three results.
 
 ---
 
-### Summary Table of Results
+##### 2. Why $\det(AB) = \det(BA)$ Even Though Usually $AB \neq BA$
 
-| Target Expression | Property / Formula used | Substitution & Calculation | Final Value |
-|-------------------|-------------------------|----------------------------|-------------|
-| det(AB)           | det(A) × det(B)         | (3) × (-5)                 | -15         |
-| det(BA)           | det(B) × det(A)         | (-5) × (3)                 | -15         |
-| det(A⁻¹B)         | det(B) / det(A)         | (-5) / (3)                 | -5/3        |
+**Result.** Although $AB$ and $BA$ are generally different matrices, the determinant maps each matrix to a single real (or complex) number, and multiplication of numbers is commutative:
+
+$$\det(AB) = (\det A)(\det B) = (\det B)(\det A) = \det(BA).$$
+
+<br>
+
+**Main steps.**
+1. Matrix multiplication combines rows and columns in order-dependent dot products, so swapping the factors generally changes the entries of the resulting matrix ($AB \neq BA$, as seen in the verification matrices above where $AB$ and $BA$ have different entries).
+2. However, the determinant satisfies $\det(XY) = \det(X)\det(Y)$, turning matrix multiplication into ordinary scalar multiplication.
+3. Since real and complex numbers commute under multiplication ($xy = yx$), the scalar product $(\det A)(\det B)$ equals $(\det B)(\det A)$, forcing $\det(AB) = \det(BA)$ for all $n\times n$ matrices $A$ and $B$.
+
+<br>
+
+**Property / method used.** *Homomorphism property of the determinant:* the determinant $\det : M_n(\mathbb{R}) \to \mathbb{R}$ maps a noncommutative matrix ring into a commutative field, converting noncommutative matrix products into commutative scalar products.
+
+<br>
+
+**Mathematical verification.** Using the verification matrices from Part 1, notice that
+
+$$AB = \begin{pmatrix} 5 & -5 \\ 2 & -5 \\ \end{pmatrix} \neq \begin{pmatrix} 3 & 1 \\ 6 & -3 \\ \end{pmatrix}= BA,$$
+
+yet both matrices evaluate to the exact same determinant $-15$.

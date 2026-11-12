@@ -1,125 +1,165 @@
-# Exercise 2: Addition and Scalar Multiplication
+# EXERCISE 2
+# ADDITION AND SCALAR MULTIPLICATION
 
-## Exercise Reminder
+---
 
-Given the two `2 × 2` matrices:
+## 1. EXERCISE REMINDER
 
-**Matrix A:**  
-`[  1  2 ]`  
-`[ -1  3 ]`
+Given the two **2 × 2** matrices:
 
-**Matrix B:**  
-`[ 4  -2 ]`  
-`[ 0   5 ]`
+```text
+A = [  1   2 ]      B = [ 4  -2 ]
+    [ -1   3 ]          [ 0   5 ]
+```
 
-1. Compute the following matrix expressions:
-   * `A + B`
-   * `A - B`
-   * `3A - 2B`
+**Tasks:**
+1. Compute the matrix expressions:
+   - **A + B**
+   - **A - B**
+   - **3A - 2B**
 2. Explain why matrix addition is possible only for matrices of the same size.
 
 ---
 
-## Solution
+## 2. DEFINITIONS & RULES
 
-### 1. Computing `A + B`, `A - B`, and `3A - 2B`
-
-#### Part (a): `A + B`
-
-* **Result:**  
-  `A + B =`  
-  `[  5  0 ]`  
-  `[ -1  8 ]`
-
-* **Main Steps:**
-  1. Confirm dimension compatibility: both `A` and `B` have size `2 × 2`, so their sum is defined and also has size `2 × 2`.
-  2. Add corresponding entries `(A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ`:
-     * Row 1, Column 1: `1 + 4 = 5`
-     * Row 1, Column 2: `2 + (-2) = 0`
-     * Row 2, Column 1: `-1 + 0 = -1`
-     * Row 2, Column 2: `3 + 5 = 8`
-
-* **Property / Method Used:**
-  * **Entrywise Matrix Addition:** For two matrices `A` and `B` of the same size `m × n`, their sum `A + B` is obtained by adding entries that occupy the exact same row and column positions: `(A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ`.
-
-* **Mathematical Verification:**
-  * Subtracting `B` from the result `A + B` recovers the original matrix `A`:  
-    `[  5 - 4   0 - (-2) ] = [  1  2 ]`  
-    `[ -1 - 0      8 - 5 ] = [ -1  3 ] = A`
+- **Matrix Addition:** For two matrices **A** and **B** of the same size **m × n**, their sum **A + B** is computed entry by entry: **(A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ**.
+- **Matrix Subtraction:** Subtracting **B** from **A** subtracts corresponding entries: **(A - B)ᵢⱼ = aᵢⱼ - bᵢⱼ**.
+- **Scalar Multiplication:** Multiplying a matrix **M** by a scalar **c** multiplies every entry by **c**: **(cM)ᵢⱼ = c · mᵢⱼ**.
+- **Dimension Compatibility for Addition:** Matrix addition and subtraction are defined **if and only if** both matrices have the exact same number of rows and columns (**m × n**).
 
 ---
 
-#### Part (b): `A - B`
+## 3. SOLUTIONS
 
-* **Result:**  
-  `A - B =`  
-  `[ -3   4 ]`  
-  `[ -1  -2 ]`
+### 3.1. Compute A + B
 
-* **Main Steps:**
-  1. Confirm dimension compatibility: both `A` and `B` are `2 × 2` matrices.
-  2. Subtract corresponding entries `(A - B)ᵢⱼ = aᵢⱼ - bᵢⱼ`:
-     * Row 1, Column 1: `1 - 4 = -3`
-     * Row 1, Column 2: `2 - (-2) = 2 + 2 = 4`
-     * Row 2, Column 1: `-1 - 0 = -1`
-     * Row 2, Column 2: `3 - 5 = -2`
+- **Main Steps:**
+  - Both **A** and **B** have size **2 × 2**, so addition is defined.
+  - Add corresponding entries in each position:
 
-* **Property / Method Used:**
-  * **Entrywise Matrix Subtraction:** Matrix difference is defined as `A - B = A + (-1)B`, meaning each entry of `B` is subtracted from the corresponding entry of `A`: `(A - B)ᵢⱼ = aᵢⱼ - bᵢⱼ`.
+```text
+A + B = [  1 + 4   2 + (-2) ] = [  5   0 ]
+        [ -1 + 0      3 + 5 ]   [ -1   8 ]
+```
 
-* **Mathematical Verification:**
-  * Adding `B` back to `A - B` recovers `A`:  
-    `[ -3 + 4   4 + (-2) ] = [  1  2 ]`  
-    `[ -1 + 0     -2 + 5 ] = [ -1  3 ] = A`
+**RESULT:**
 
----
+```text
+A + B = [  5   0 ]
+        [ -1   8 ]
+```
 
-#### Part (c): `3A - 2B`
+- **Verification:** Subtracting **B** from the result recovers the original matrix **A**:
 
-* **Result:**  
-  `3A - 2B =`  
-  `[ -5  10 ]`  
-  `[ -3  -1 ]`
-
-* **Main Steps:**
-  1. Multiply every entry of `A` by the scalar `3`:  
-     `3A =`  
-     `[ 3 · 1    3 · 2 ] = [  3  6 ]`  
-     `[ 3 · (-1) 3 · 3 ] = [ -3  9 ]`
-  2. Multiply every entry of `B` by the scalar `2`:  
-     `2B =`  
-     `[ 2 · 4   2 · (-2) ] = [ 8  -4 ]`  
-     `[ 2 · 0   2 · 5    ] = [ 0  10 ]`
-  3. Subtract `2B` from `3A` entry by entry:
-     * Row 1, Column 1: `3 - 8 = -5`
-     * Row 1, Column 2: `6 - (-4) = 6 + 4 = 10`
-     * Row 2, Column 1: `-3 - 0 = -3`
-     * Row 2, Column 2: `9 - 10 = -1`
-
-* **Property / Method Used:**
-  * **Scalar Multiplication & Linear Combination of Matrices:** Multiplying a matrix `M` by a scalar `c` scales every entry by `c` (`(cM)ᵢⱼ = c · mᵢⱼ`). Combining this with entrywise subtraction yields `(3A - 2B)ᵢⱼ = 3aᵢⱼ - 2bᵢⱼ`.
-
-* **Mathematical Verification:**
-  * Rewrite `3A - 2B` using the distributive property as `2(A - B) + A` and verify with the result from Part (b):  
-    `2(A - B) + A =`  
-    `[ 2 · (-3)  2 · 4    ] + [  1  2 ] = [ -6   8 ] + [  1  2 ] = [ -5  10 ]`  
-    `[ 2 · (-1)  2 · (-2) ] + [ -1  3 ] = [ -2  -4 ] + [ -1  3 ] = [ -3  -1 ]`  
-  * Both methods produce the identical `2 × 2` matrix.
+```text
+(A + B) - B = [  5 - 4   0 - (-2) ] = [  1   2 ] = A
+              [ -1 - 0      8 - 5 ]   [ -1   3 ]
+```
 
 ---
 
-### 2. Why Matrix Addition Requires Matrices of the Same Size
+### 3.2. Compute A - B
 
-* **Result:**
-  * Matrix addition is defined **position-by-position** (`(A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ`), which requires a one-to-one pairing between every entry of `A` and an entry at the exact same `(i, j)` coordinate in `B`. If two matrices have different numbers of rows or columns, at least one entry in one matrix lacks a partner in the other, leaving the sum undefined.
+- **Main Steps:**
+  - Both **A** and **B** have size **2 × 2**, so subtraction is defined.
+  - Subtract each entry of **B** from the corresponding entry of **A**:
 
-* **Main Steps:**
-  1. Recall the definition of matrix addition: for `A` of size `m × n` and `B` of size `p × q`, `(A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ`.
-  2. For this sum to be defined across the entire matrix, every row index `i` (`1 ≤ i ≤ m`) and column index `j` (`1 ≤ j ≤ n`) in `A` must also be valid indices in `B` (`1 ≤ i ≤ p` and `1 ≤ j ≤ q`), and vice versa.
-  3. Therefore, addition is valid if and only if `m = p` and `n = q` (i.e., `A` and `B` have identical dimensions).
+```text
+A - B = [  1 - 4   2 - (-2) ] = [ -3   4 ]
+        [ -1 - 0      3 - 5 ]   [ -1  -2 ]
+```
 
-* **Property / Method Used:**
-  * **Domain Definition of Matrix Addition:** Addition on matrices is a binary operation closed on the set of `m × n` matrices; differing dimensions violate the index-matching domain requirement.
+**RESULT:**
 
-* **Mathematical Verification:**
-  * **Counterexample:** Let `C` be a `2 × 2` matrix (`[ 1  2 ; 3  4 ]`) and `D` be a `2 × 3` matrix (`[ 5  6  7 ; 8  9  10 ]`). Attempting to compute the `(1, 3)` entry of `C + D` requires evaluating `c₁₃ + d₁₃`, which is impossible because `C` has only `2` columns and `c₁₃` does not exist. Thus, `C + D` is undefined.
+```text
+A - B = [ -3   4 ]
+        [ -1  -2 ]
+```
+
+- **Verification:** Adding **B** back to the result recovers the original matrix **A**:
+
+```text
+(A - B) + B = [ -3 + 4   4 + (-2) ] = [  1   2 ] = A
+              [ -1 + 0     -2 + 5 ]   [ -1   3 ]
+```
+
+---
+
+### 3.3. Compute 3A - 2B
+
+- **Main Steps:**
+  - Multiply every entry of **A** by the scalar **3**:
+
+```text
+3A = [ 3 · 1     3 · 2 ] = [  3   6 ]
+     [ 3 · (-1)  3 · 3 ]   [ -3   9 ]
+```
+
+  - Multiply every entry of **B** by the scalar **2**:
+
+```text
+2B = [ 2 · 4   2 · (-2) ] = [ 8  -4 ]
+     [ 2 · 0   2 · 5    ]   [ 0  10 ]
+```
+
+  - Subtract **2B** from **3A** entry by entry:
+
+```text
+3A - 2B = [  3 - 8   6 - (-4) ] = [ -5  10 ]
+          [ -3 - 0     9 - 10 ]   [ -3  -1 ]
+```
+
+**RESULT:**
+
+```text
+3A - 2B = [ -5  10 ]
+          [ -3  -1 ]
+```
+
+- **Verification:** Rewrite **3A - 2B** as **2(A - B) + A** using the result from **3.2**:
+
+```text
+2(A - B) + A = [ -6   8 ] + [  1   2 ] = [ -5  10 ]
+               [ -2  -4 ]   [ -1   3 ]   [ -3  -1 ]
+```
+
+---
+
+### 3.4. Why Matrix Addition Requires the Same Size
+
+- **Main Steps:**
+  - Let **A** have size **m × n** and **B** have size **p × q**.
+  - Matrix addition is defined position-by-position via **(A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ**, requiring a one-to-one pairing for every coordinate **(i, j)**.
+  - For every entry in **A** to match an entry in the exact same position in **B** (and vice versa), both row counts and column counts must be equal (**m = p** and **n = q**).
+
+**RESULT:**
+Matrix addition is possible only for matrices of the **same size** because every entry **aᵢⱼ** in the first matrix must pair with a corresponding entry **bᵢⱼ** at the exact same **(row, column)** position in the second matrix; if the dimensions differ, at least one entry has no partner and the sum is undefined.
+
+- **Verification (Counterexample):** Consider a **2 × 2** matrix **C** and a **2 × 3** matrix **D**:
+
+```text
+C = [ 1  2 ]      D = [ 5  6   7 ]
+    [ 3  4 ]          [ 8  9  10 ]
+```
+
+Attempting to compute **(C + D)₁₃ = c₁₃ + d₁₃** fails because **C** only has 2 columns and **c₁₃** does not exist.
+
+---
+
+## 4. FINAL SUMMARY
+
+| Item | Expression / Question | Result | Size |
+|:----:|:---------------------:|:------:|:----:|
+| 3.1 | **A + B** | `[ 5  0 ; -1  8 ]` | **2 × 2** |
+| 3.2 | **A - B** | `[ -3  4 ; -1  -2 ]` | **2 × 2** |
+| 3.3 | **3A - 2B** | `[ -5  10 ; -3  -1 ]` | **2 × 2** |
+| 3.4 | Same-size requirement | Entrywise pairing **(i, j)** requires equal dimensions | **m × n** |
+
+---
+
+## 5. CONCLUSION
+
+Matrix addition, subtraction, and linear combinations operate entry by entry on matrices of identical size **m × n**.
+
+Because each operation relies on matching **(row, column)** coordinates, matrices with different dimensions cannot be added or subtracted.

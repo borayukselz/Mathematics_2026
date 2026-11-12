@@ -86,10 +86,14 @@ BA=
 \end{pmatrix}.
 $$
 
-**Property / method used.** *Row-by-column matrix multiplication:* for compatible matrices $X$ ($m\times n$) and $Y$ ($n\times p$), the $(i,j)$ entry of the product is given by $(XY)_{ij}=\sum_{k=1}^{n} x_{ik}y_{kj}$.
+**Property / method used.** *Row-by-column matrix multiplication:* for compatible matrices $X$ ($m\times n$) and $Y$ ($n\times p$), the $(i,j)$ entry of the product is defined by
+
+$$
+(XY)_{ij}=\sum_{k=1}^{n} x_{ik}y_{kj}.
+$$
 
 **Mathematical verification.** For any two square matrices of the same size, their products must share the same trace and determinant even when the matrices themselves differ. Checking both invariants confirms the entries:
-- **Trace check:** $\operatorname{tr}(AB) = 8 + 1 = 9$ and $\operatorname{tr}(BA) = 2 + 7 = 9$, so $\operatorname{tr}(AB) = \operatorname{tr}(BA)$.
+- **Trace check:** $\mathrm{tr}(AB) = 8 + 1 = 9$ and $\mathrm{tr}(BA) = 2 + 7 = 9$, so $\mathrm{tr}(AB) = \mathrm{tr}(BA)$.
 - **Determinant check:** $\det(A) = 1\cdot 1 - 2\cdot 0 = 1$ and $\det(B) = 2\cdot 1 - 0\cdot 3 = 2$, giving $\det(A)\det(B) = 2$. Computing directly from the products yields $\det(AB) = 8\cdot 1 - 2\cdot 3 = 2$ and $\det(BA) = 2\cdot 7 - 4\cdot 3 = 2$.
 
 ##### 2. Equality Check and Meaning of Noncommutativity
@@ -108,10 +112,14 @@ AB=
 \begin{pmatrix}
 2 & 4 \\
 3 & 7 \\
-\end{pmatrix}=BA.
+\end{pmatrix}=BA,
 $$
 
-Specifically, $(AB)_{11}=8 \neq 2=(BA)_{11}$, $(AB)_{12}=2 \neq 4=(BA)_{12}$, and $(AB)_{22}=1 \neq 7=(BA)_{22}$.
+where
+
+$$
+(AB)_{11}=8 \neq 2=(BA)_{11},\qquad (AB)_{12}=2 \neq 4=(BA)_{12},\qquad (AB)_{22}=1 \neq 7=(BA)_{22}.
+$$
 
 **Property / method used.** *Noncommutativity of matrix algebra:* unlike real or complex numbers where $ab = ba$ always holds, matrix multiplication is not commutative ($AB \neq BA$ in general) because $AB$ pairs rows of $A$ with columns of $B$, whereas $BA$ pairs rows of $B$ with columns of $A$.
 

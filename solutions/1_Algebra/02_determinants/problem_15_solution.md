@@ -1,90 +1,173 @@
-# Exercise 15: Combining Determinant Properties
+### Exercise 15. Combining Determinant Properties
 
-### Given Data
+#### Exercise Reminder
 
-* **Matrix Dimensions:** 2 × 2 square matrices A and B[cite: 20]
-* **Invertibility:** Both A and B are invertible[cite: 20]
-* **Determinant of A:** det(A) = -2[cite: 20]
-* **Determinant of B:** det(B) = 3[cite: 20]
+Let $A$ and $B$ be invertible $2\times 2$ matrices with
 
----
+$$
+\det A = -2,\qquad \det B = 3.
+$$
 
-### 1. Determinant Properties Used (In Order)
+Without finding the entries of the matrices:
 
-To compute det(B⁻¹ Aᵀ B), we apply three fundamental determinant properties sequentially[cite: 20]:
-
-1. **Multiplicative Property of Determinants:**
-   The determinant of a product of square matrices equals the product of their individual determinants:
-   det(X Y Z) = det(X) × det(Y) × det(Z)
-
-2. **Determinant of an Inverse Matrix:**
-   If a matrix B is invertible (det(B) ≠ 0), the determinant of its inverse is the reciprocal of its determinant:
-   det(B⁻¹) = 1 / det(B)
-
-3. **Determinant of a Transpose Matrix:**
-   Transposing a matrix does not change its determinant:
-   det(Aᵀ) = det(A)
+1. Compute $\det\left(B^{-1} A^T B\right)$ and state the determinant properties used in order.
+2. Explain why the factors involving $B$ eventually cancel.
 
 ---
 
-### 2. Step-by-Step Computation of det(B⁻¹ Aᵀ B)
+#### Solution
 
-* **Result:**
-  **det(B⁻¹ Aᵀ B) = -2**[cite: 20]
+##### 1. Computing $\det\left(B^{-1} A^T B\right)$ and Properties Used in Order
 
-* **Detailed Calculation Steps:**
+**Result.**
 
-  1. **Apply the Multiplicative Property:**
-     det(B⁻¹ Aᵀ B) = det(B⁻¹) × det(Aᵀ) × det(B)
+$$
+\det\left(B^{-1} A^T B\right) = -2.
+$$
 
-  2. **Apply Inverse and Transpose Properties:**
-     * Replace det(B⁻¹) with (1 / det(B))
-     * Replace det(Aᵀ) with det(A)
-     det(B⁻¹ Aᵀ B) = (1 / det(B)) × det(A) × det(B)
+<br>
 
-  3. **Substitute Given Numerical Values:**
-     * Substitute det(A) = -2 and det(B) = 3:
-     det(B⁻¹ Aᵀ B) = (1 / 3) × (-2) × (3)
+**Main steps.** Apply the determinant identities step by step without forming the entries of $A$ or $B$:
 
-  4. **Perform Scalar Arithmetic:**
-     det(B⁻¹ Aᵀ B) = (-2 × 3) / 3 = -6 / 3 = **-2**
+1. **Step 1 — Split the product of three matrices (Multiplicativity):**
+
+$$
+\det\left(B^{-1} A^T B\right) = \det\left(B^{-1}\right)\det\left(A^T\right)\det(B).
+$$
+
+2. **Step 2 — Evaluate $\det\left(B^{-1}\right)$ (Inverse property):** Because $B$ is invertible ($\det B = 3 \neq 0$),
+
+$$
+\det\left(B^{-1}\right) = \frac{1}{\det B} = \frac{1}{3}.
+$$
+
+3. **Step 3 — Evaluate $\det\left(A^T\right)$ (Transpose invariance):**
+
+$$
+\det\left(A^T\right) = \det A = -2.
+$$
+
+4. **Step 4 — Substitute the known values and simplify:**
+
+$$
+\det\left(B^{-1} A^T B\right) = \left(\frac{1}{\det B}\right)(\det A)(\det B) = \frac{1}{3} \cdot (-2) \cdot 3 = -2.
+$$
+
+<br>
+
+**Property / method used.** *Determinant properties applied in order:*
+1. **Multiplicativity of the determinant:** $\det(XYZ) = \det(X)\det(Y)\det(Z)$ for any square matrices $X, Y, Z$ of the same size.
+2. **Determinant of an inverse:** $\det(B^{-1}) = (\det B)^{-1} = \dfrac{1}{\det B}$ for any invertible matrix $B$.
+3. **Transpose invariance:** $\det(A^T) = \det A$ for any square matrix $A$.
+
+<br>
+
+**Mathematical verification.** Choose two concrete $2\times 2$ matrices satisfying $\det A = -2$ and $\det B = 3$, such as
+
+$$
+A=
+\begin{pmatrix}
+-2 & 1 \\
+0 & 1 \\
+\end{pmatrix},\qquad B=
+\begin{pmatrix}
+3 & 1 \\
+0 & 1 \\
+\end{pmatrix}.
+$$
+
+Then
+
+$$
+A^T=
+\begin{pmatrix}
+-2 & 0 \\
+1 & 1 \\
+\end{pmatrix},\qquad B^{-1} = \frac{1}{3}
+\begin{pmatrix}
+1 & -1 \\
+0 & 3 \\
+\end{pmatrix}.
+$$
+
+Multiplying $B^{-1} A^T B$ explicitly gives
+
+$$
+B^{-1} A^T B = \frac{1}{3}
+\begin{pmatrix}
+1 & -1 \\
+0 & 3 \\
+\end{pmatrix}
+\begin{pmatrix}
+-2 & 0 \\
+1 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+3 & 1 \\
+0 & 1 \\
+\end{pmatrix}= \frac{1}{3}
+\begin{pmatrix}
+-3 & -1 \\
+3 & 3 \\
+\end{pmatrix}
+\begin{pmatrix}
+3 & 1 \\
+0 & 1 \\
+\end{pmatrix}= \frac{1}{3}
+\begin{pmatrix}
+-9 & -4 \\
+9 & 6 \\
+\end{pmatrix}=
+\begin{pmatrix}
+-3 & -\frac{4}{3} \\
+3 & 2 \\
+\end{pmatrix}.
+$$
+
+Computing the determinant of this resulting matrix directly yields
+
+$$
+\det\left(B^{-1} A^T B\right) = (-3)(2) - \left(-\frac{4}{3}\right)(3) = -6 - (-4) = -6 + 4 = -2,
+$$
+
+confirming the property-based calculation.
 
 ---
 
-### 3. Why the Factors Involving B Eventually Cancel
+##### 2. Why the Factors Involving $B$ Cancel
 
-* **Commutativity of Scalar Multiplication:**
-  While matrix multiplication is generally non-commutative (M N ≠ N M), taking the determinant converts matrix expressions into single real numbers (scalars)[cite: 20]. Multiplication of real numbers is commutative[cite: 20].
+**Result.** Although $B^{-1}$ and $B$ are not adjacent inside the matrix product $B^{-1} A^T B$ (and matrix multiplication is noncommutative), taking the determinant converts the matrix product into a product of ordinary nonzero real numbers, which commute and allow $\frac{1}{\det B}$ and $\det B$ to cancel to $1$.
 
-* **Algebraic Derivation of Cancellation:**
-  Rearranging the scalar terms yields:
-  det(B⁻¹ Aᵀ B) = (1 / det(B)) × det(Aᵀ) × det(B)
-  det(B⁻¹ Aᵀ B) = [ (1 / det(B)) × det(B) ] × det(Aᵀ)
-  det(B⁻¹ Aᵀ B) = (1) × det(Aᵀ) = det(A)
+<br>
 
-Because (1 / det(B)) × det(B) = 1 for any non-zero scalar det(B), the terms involving Matrix B completely cancel out, leaving the result dependent only on Matrix A[cite: 20].
+**Main steps.**
+1. **Noncommutativity vs. scalar commutativity:** Inside the matrix expression $B^{-1} A^T B$, $B^{-1}$ and $B$ are separated by $A^T$, so they cannot be canceled at the matrix level unless $A^T$ and $B$ happen to commute.
+2. **Conversion to real numbers via $\det$:** Applying $\det$ turns matrix multiplication into multiplication of real scalars:
 
----
+$$
+\det\left(B^{-1} A^T B\right) = \det\left(B^{-1}\right)\det\left(A^T\right)\det(B).
+$$
 
-### 4. Summary Table of Properties & Calculation
+3. **Cancellation of reciprocal scalars:** Since $B$ is invertible, $\det B = 3 \neq 0$, and $\det\left(B^{-1}\right) = \frac{1}{\det B}$. Because multiplication of real numbers is commutative and associative, we can rearrange the scalar factors so that $\frac{1}{\det B}$ and $\det B$ pair together:
 
-| Step | Rule / Property | Expression Form | Substitution | Result |
-|------|-----------------|-----------------|--------------|--------|
-| Step 1 | Multiplicative Rule | det(B⁻¹) × det(Aᵀ) × det(B) | — | — |
-| Step 2 | Inverse & Transpose Rules | (1 / det(B)) × det(A) × det(B) | — | — |
-| Step 3 | Numerical Substitution | (1 / 3) × (-2) × 3 | (1 / 3) × (-6) | **-2**[cite: 20] |
+$$
+\det\left(B^{-1}\right)\det\left(A^T\right)\det(B) = \left(\frac{1}{\det B} \cdot \det B\right)\det\left(A^T\right) = 1 \cdot \det\left(A^T\right) = \det A = -2.
+$$
 
----
+<br>
 
-### 5. Detailed Explanation & Linear Algebra Insights
+**Property / method used.** *Similarity invariance of the determinant:* for any square matrix $M$ and any invertible matrix $B$ of the same size, the conjugate (similar) matrix $B^{-1}MB$ represents the same linear operator in a different basis and always has the identical determinant:
 
-1. **Similarity Transformations Preserve Determinants:**
-   * An expression of the form B⁻¹ M B is called a **similarity transformation** (or conjugate) of matrix M.
-   * Similar matrices represent the exact same linear transformation under a change of basis (defined by B).
-   * Because changing coordinate basis does not alter the fundamental geometric volume scaling factor of a transformation, **similar matrices always have identical determinants**:
-     det(B⁻¹ M B) = det(M)
-   * Setting M = Aᵀ gives det(B⁻¹ Aᵀ B) = det(Aᵀ) = det(A) = **-2**.
+$$
+\det\left(B^{-1}MB\right) = \det M.
+$$
 
-2. **Role of Invertibility:**
-   * The problem specifies that B is invertible[cite: 20].
-   * This guarantees that det(B) ≠ 0 (since det(B) = 3 ≠ 0), ensuring that division by det(B) is fully valid and defined[cite: 20].
+<br>
+
+**Mathematical verification.** Setting $M = A^T$ in the similarity invariance identity immediately gives
+
+$$
+\det\left(B^{-1} A^T B\right) = \det\left(A^T\right) = \det A = -2,
+$$
+
+showing that the result depends solely on $\det A$ and is completely independent of the choice of invertible matrix $B$.

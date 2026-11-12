@@ -1,121 +1,58 @@
-# Exercise 9: Composing Transformations
+### Exercise 9. Composing Transformations
 
-### Given
+#### Exercise Reminder
 
-**Scaling Matrix S (nonuniform scaling - stretches x-axis by factor of 2):**
-[  2   0 ]
-[  0   1 ]
+Let
 
-**Rotation Matrix R (90° counterclockwise rotation):**
-[  0  -1 ]
-[  1   0 ]
+$$S= \begin{pmatrix} 2 & 0 \\ 0 & 1 \\ \end{pmatrix},\qquad R= \begin{pmatrix} 0 & -1 \\ 1 & 0 \\ \end{pmatrix}.$$
 
-**Vector x:**
-[  1 ]
-[  2 ]
+The matrix $S$ describes nonuniform scaling, while $R$ describes a $90^\circ$ counterclockwise rotation. For
 
----
+$$x= \begin{pmatrix} 1 \\ 2 \\ \end{pmatrix},$$
 
-### 1. Compute RSx
-
-* **Result:**
-  [ -2 ]
-  [  2 ]
-
-* **Detailed Calculation Steps:**
-  * **Step 1: Apply Matrix S to Vector x first (Sx)**[cite: 11]
-    [  2   0 ]   [  1 ]   [ (2 × 1) + (0 × 2) ]   [ 2 ]
-    [  0   1 ] × [  2 ] = [ (0 × 1) + (1 × 2) ] = [ 2 ]
-
-  * **Step 2: Apply Matrix R to the resulting vector (R(Sx))**[cite: 11]
-    [  0  -1 ]   [ 2 ]   [ (0 × 2) + (-1 × 2) ]   [ -2 ]
-    [  1   0 ] × [ 2 ] = [ (1 × 2) + (0 × 2)  ] = [  2 ]
-
-* **Method & Explanation:**
-  Matrix transformation order is read from **right to left**[cite: 11]. In RSx, transformation S acts on vector x first, and then transformation R acts on the resulting vector Sx[cite: 11].
-
-* **Mathematical Verification (via Composite Matrix RS):**
-  1. Calculate composite matrix RS = R × S[cite: 11]:
-     [  0  -1 ]   [ 2  0 ]   [ (0×2)+(-1×0)  (0×0)+(-1×1) ]   [ 0  -1 ]
-     [  1   0 ] × [ 0  1 ] = [ (1×2)+(0×0)   (1×0)+(0×1)  ] = [ 2   0 ]
-
-  2. Multiply composite matrix RS by vector x[cite: 11]:
-     [ 0  -1 ]   [ 1 ]   [ (0 × 1) + (-1 × 2) ]   [ -2 ]
-     [ 2   0 ] × [ 2 ] = [ (2 × 1) + (0 × 2)  ] = [  2 ]
-  *Both methods give the exact same result.*
+1. Compute $RSx$ and $SRx$.
+2. Compare the results and explain geometrically why the order of these transformations matters.
 
 ---
 
-### 2. Compute SRx
+#### Solution
 
-* **Result:**
-  [ -4 ]
-  [  1 ]
+##### 1. Computing $RSx$ and $SRx$
 
-* **Detailed Calculation Steps:**
-  * **Step 1: Apply Matrix R to Vector x first (Rx)**[cite: 11]
-    [  0  -1 ]   [  1 ]   [ (0 × 1) + (-1 × 2) ]   [ -2 ]
-    [  1   0 ] × [  2 ] = [ (1 × 1) + (0 × 2)  ] = [  1 ]
+**Result.**
 
-  * **Step 2: Apply Matrix S to the resulting vector (S(Rx))**[cite: 11]
-    [  2   0 ]   [ -2 ]   [ (2 × -2) + (0 × 1) ]   [ -4 ]
-    [  0   1 ] × [  1 ] = [ (0 × -2) + (1 × 1) ] = [  1 ]
+$$RSx= \begin{pmatrix} -2 \\ 2 \\ \end{pmatrix},\qquad SRx= \begin{pmatrix} -4 \\ 1 \\ \end{pmatrix}.$$
 
-* **Method & Explanation:**
-  In SRx, transformation R acts on vector x first, and then transformation S acts on the resulting vector Rx[cite: 11].
+**Main steps.** In a composition of matrix transformations applied to a vector $x$, the matrix immediately to the left of $x$ acts first.
 
-* **Mathematical Verification (via Composite Matrix SR):**
-  1. Calculate composite matrix SR = S × R[cite: 11]:
-     [ 2  0 ]   [ 0  -1 ]   [ (2×0)+(0×1)  (2×-1)+(0×0) ]   [ 0  -2 ]
-     [ 0  1 ] × [ 1   0 ] = [ (0×0)+(1×1)  (0×-1)+(1×0) ] = [ 1   0 ]
+To compute $RSx = R(Sx)$, first apply the scaling matrix $S$ to $x$, and then apply the rotation matrix $R$ to the resulting vector:
 
-  2. Multiply composite matrix SR by vector x[cite: 11]:
-     [ 0  -2 ]   [ 1 ]   [ (0 × 1) + (-2 × 2) ]   [ -4 ]
-     [ 1   0 ] × [ 2 ] = [ (1 × 1) + (0 × 0)  ] = [  1 ]
-  *Both methods give the exact same result.*
+$$Sx= \begin{pmatrix} 2 & 0 \\ 0 & 1 \\ \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ \end{pmatrix}= \begin{pmatrix} 2\cdot 1 + 0\cdot 2 \\ 0\cdot 1 + 1\cdot 2 \\ \end{pmatrix}= \begin{pmatrix} 2 \\ 2 \\ \end{pmatrix},$$
 
----
+$$RSx = R(Sx) = \begin{pmatrix} 0 & -1 \\ 1 & 0 \\ \end{pmatrix} \begin{pmatrix} 2 \\ 2 \\ \end{pmatrix}= \begin{pmatrix} 0\cdot 2 + (-1)\cdot 2 \\ 1\cdot 2 + 0\cdot 2 \\ \end{pmatrix}= \begin{pmatrix} -2 \\ 2 \\ \end{pmatrix}.$$
 
-### 3. Compare Results
+To compute $SRx = S(Rx)$, first apply the rotation matrix $R$ to $x$, and then apply the scaling matrix $S$ to the resulting vector:
 
-* **Comparison:**
-  * **RSx** = [ -2,  2 ][cite: 11]
-  * **SRx** = [ -4,  1 ][cite: 11]
-* **Conclusion:** **RSx ≠ SRx**[cite: 11]. 
-  The order in which geometric transformations are applied produces entirely different final position vectors[cite: 11].
+$$Rx= \begin{pmatrix} 0 & -1 \\ 1 & 0 \\ \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ \end{pmatrix}= \begin{pmatrix} 0\cdot 1 + (-1)\cdot 2 \\ 1\cdot 1 + 0\cdot 2 \\ \end{pmatrix}= \begin{pmatrix} -2 \\ 1 \\ \end{pmatrix},$$
 
----
+$$SRx = S(Rx) = \begin{pmatrix} 2 & 0 \\ 0 & 1 \\ \end{pmatrix} \begin{pmatrix} -2 \\ 1 \\ \end{pmatrix}= \begin{pmatrix} 2\cdot (-2) + 0\cdot 1 \\ 0\cdot (-2) + 1\cdot 1 \\ \end{pmatrix}= \begin{pmatrix} -4 \\ 1 \\ \end{pmatrix}.$$
 
-### 4. Detailed Geometric Explanation of Why Order Matters
+**Property / method used.** *Composition of linear transformations and associativity:* applying transformation $T_1$ (represented by matrix $B$) followed by transformation $T_2$ (represented by matrix $A$) maps $x$ to $A(Bx) = (AB)x$.
 
-1. **Order of Operation Principle:**
-   * Matrix-vector multiplication represents composition of transformations[cite: 11].
-   * The matrix written directly adjacent to the vector is executed **first**[cite: 11].
+**Mathematical verification.** Computing the composite transformation matrices $RS$ and $SR$ first and then multiplying each by $x$ yields the exact same vectors:
 
-2. **Geometric Breakdown of RSx (Scale First, Then Rotate):**
-   * **Initial State:** Start at vector x = [1, 2] in Quadrant I[cite: 11].
-   * **First Transformation (S):** Nonuniform scaling stretches the x-axis by a factor of 2[cite: 11]. 
-     * The original horizontal distance of 1 doubles to 2[cite: 11].
-     * The vertical distance remains 2[cite: 11].
-     * Vector becomes **[2, 2]**[cite: 11].
-   * **Second Transformation (R):** A 90° counterclockwise rotation rotates the scaled vector [2, 2] around the origin into Quadrant II[cite: 11].
-     * The point [2, 2] moves to **[-2, 2]**[cite: 11].
+$$RS= \begin{pmatrix} 0 & -1 \\ 1 & 0 \\ \end{pmatrix} \begin{pmatrix} 2 & 0 \\ 0 & 1 \\ \end{pmatrix}= \begin{pmatrix} 0 & -1 \\ 2 & 0 \\ \end{pmatrix} \implies (RS)x= \begin{pmatrix} 0 & -1 \\ 2 & 0 \\ \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ \end{pmatrix}= \begin{pmatrix} -2 \\ 2 \\ \end{pmatrix},$$
 
-3. **Geometric Breakdown of SRx (Rotate First, Then Scale):**
-   * **Initial State:** Start at vector x = [1, 2] in Quadrant I[cite: 11].
-   * **First Transformation (R):** A 90° counterclockwise rotation rotates vector [1, 2] into Quadrant II before any scaling happens[cite: 11].
-     * The original y-value (2) swings over onto the negative x-axis[cite: 11].
-     * The original x-value (1) swings up onto the positive y-axis[cite: 11].
-     * Vector becomes **[-2, 1]**[cite: 11].
-   * **Second Transformation (S):** Nonuniform scaling stretches whatever component currently lies along the horizontal (x) axis by a factor of 2[cite: 11].
-     * Because rotation happened first, the value -2 is now sitting on the x-axis[cite: 11].
-     * Scaling doubles this horizontal component from -2 to -4[cite: 11].
-     * The vertical component remains 1[cite: 11].
-     * Vector becomes **[-4, 1]**[cite: 11].
+$$SR= \begin{pmatrix} 2 & 0 \\ 0 & 1 \\ \end{pmatrix} \begin{pmatrix} 0 & -1 \\ 1 & 0 \\ \end{pmatrix}= \begin{pmatrix} 0 & -2 \\ 1 & 0 \\ \end{pmatrix} \implies (SR)x= \begin{pmatrix} 0 & -2 \\ 1 & 0 \\ \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ \end{pmatrix}= \begin{pmatrix} -4 \\ 1 \\ \end{pmatrix}.$$
 
-4. **Why the Results Differ (Core Insight):**
-   * Nonuniform scaling Matrix S ONLY modifies coordinates along the horizontal x-axis[cite: 11].
-   * Rotating a vector by 90° interchanges its horizontal and vertical components[cite: 11].
-   * In **RSx**, Matrix S stretches the **original x-component (1)** into 2 before rotation[cite: 11].
-   * In **SRx**, Rotation R moves the **original y-component (2)** onto the x-axis first, so Matrix S ends up stretching that rotated value (2) into 4 instead[cite: 11].
-   * Because rotation changes which component sits on the x-axis, applying scaling before versus after rotation affects completely different geometric features of the vector[cite: 11]!
+##### 2. Comparison and Geometric Explanation
+
+**Result.** The two resulting vectors are different ($RSx \neq SRx$). Geometrically, the order matters because $S$ stretches space *nonuniformly* (only along the horizontal $x$-axis), so rotating a vector changes which coordinate lies along the stretched axis.
+
+**Main steps.** Tracking the coordinates of $x = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$ through both sequences shows the geometric difference:
+- **In $RSx$ (scale first, then rotate):** $S$ doubles the horizontal coordinate from $1$ to $2$ while leaving the vertical coordinate at $2$, producing $\begin{pmatrix} 2 \\ 2 \end{pmatrix}$. Rotating by $90^\circ$ counterclockwise then maps $\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \mapsto \begin{pmatrix} -x_2 \\ x_1 \end{pmatrix}$, sending $\begin{pmatrix} 2 \\ 2 \end{pmatrix}$ to $\begin{pmatrix} -2 \\ 2 \end{pmatrix}$.
+- **In $SRx$ (rotate first, then scale):** $R$ first rotates $\begin{pmatrix} 1 \\ 2 \end{pmatrix}$ by $90^\circ$ counterclockwise to $\begin{pmatrix} -2 \\ 1 \end{pmatrix}$, placing the original vertical coordinate ($2$) onto the horizontal axis. Applying $S$ afterward doubles this new horizontal coordinate from $-2$ to $-4$, yielding $\begin{pmatrix} -4 \\ 1 \end{pmatrix}$.
+
+**Property / method used.** *Geometric noncommutativity of anisotropic scaling and rotation:* while uniform scaling ($cI$) commutes with rotations, nonuniform scaling along a fixed coordinate axis does not commute with a $90^\circ$ rotation because rotation swaps the horizontal and vertical directions.
+
+**Mathematical verification.** A pure rotation $R$ is an isometry and preserves Euclidean vector length ($\Vert{}Rv\Vert{} = \Vert{}v\Vert{}$). In $RSx$, $Sx = \begin{pmatrix} 2 \\ 2 \end{pmatrix}$ has length $\sqrt{2^2 + 2^2} = \sqrt{8}$, so $\Vert{}RSx\Vert{} = \sqrt{(-2)^2 + 2^2} = \sqrt{8}$. In $SRx$, $Rx = \begin{pmatrix} -2 \\ 1 \end{pmatrix}$ has length $\sqrt{(-2)^2 + 1^2} = \sqrt{5}$, and stretching its horizontal component by $2$ changes the length to $\Vert{}SRx\Vert{} = \sqrt{(-4)^2 + 1^2} = \sqrt{17} \neq \sqrt{8}$, confirming geometrically why the two outcomes cannot coincide.

@@ -1,131 +1,125 @@
-# Exercise 11: Shortening the Calculation with Row Operations
+### Exercise 11. Shortening the Calculation with Row Operations
 
-### Given Matrix
+#### Exercise Reminder
 
-**Matrix A:**
-[  1   2   3 ]
-[  1   3   4 ]
-[  1   4   6 ][cite: 25]
+Compute
 
----
+$$
+\det
+\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 4 \\
+1 & 4 & 6 \\
+\end{pmatrix}
+$$
 
-### 1. Operations That Do Not Change the Determinant
-
-* **Core Determinant Property:**
-  Performing an **elementary row replacement**—adding or subtracting a scalar multiple of one row to another row—**does NOT change the value of the determinant**[cite: 19, 25]:
-  **det(A_new) = det(A_old)**
-
-* **Operations Used in This Solution:**
-  1. **R₂ ← R₂ - R₁** (Subtract Row 1 from Row 2)[cite: 25] → *Determinant remains unchanged.*
-  2. **R₃ ← R₃ - R₁** (Subtract Row 1 from Row 3)[cite: 25] → *Determinant remains unchanged.*
-  3. **R₃ ← R₃ - 2R₂** (Subtract 2 times Row 2 from Row 3)[cite: 25] → *Determinant remains unchanged.*
+by first performing row operations that create as many zeros as possible. State which operations do not change the determinant.
 
 ---
 
-### 2. Step-by-Step Matrix Reduction to Create Zeros
+#### Solution
 
-#### Step 1: Create Zero at Position (2,1) using R₂ ← R₂ - R₁
+**Result.**
 
-* **Calculation:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ][cite: 25]
-  * Calculate new Row 2 (R₂ - R₁):
-    * Entry (2,1): 1 - 1 = 0
-    * Entry (2,2): 3 - 2 = 1
-    * Entry (2,3): 4 - 3 = 1
-  * Row 3 remains unchanged: [ 1, 4, 6 ][cite: 25]
+$$
+\det
+\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 4 \\
+1 & 4 & 6 \\
+\end{pmatrix}= 1.
+$$
 
-* **Resulting Matrix A₁:**
-  [  1   2   3 ]
-  [  0   1   1 ]
-  [  1   4   6 ]
+None of the row operations used below change the determinant, because every step is a **row replacement** operation of the form $R_i \leftarrow R_i + cR_j$ ($i \neq j$).
 
-* **Effect on Determinant:**
-  **det(A) = det(A₁)**[cite: 19, 25]
+<br>
 
----
+**Main steps.** Let
 
-#### Step 2: Create Zero at Position (3,1) using R₃ ← R₃ - R₁
+$$
+A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 4 \\
+1 & 4 & 6 \\
+\end{pmatrix}.
+$$
 
-* **Calculation:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ][cite: 25]
-  * Row 2 remains unchanged: [ 0, 1, 1 ]
-  * Calculate new Row 3 (R₃ - R₁):
-    * Entry (3,1): 1 - 1 = 0
-    * Entry (3,2): 4 - 2 = 2
-    * Entry (3,3): 6 - 3 = 3
+Apply row replacement operations to introduce zeros below the main diagonal (and optionally above it as well):
 
-* **Resulting Matrix A₂:**
-  [  1   2   3 ]
-  [  0   1   1 ]
-  [  0   2   3 ]
+1. **Create zeros in column $1$ below the $(1,1)$ pivot** via $R_2 \leftarrow R_2 - R_1$ and $R_3 \leftarrow R_3 - R_1$:
 
-* **Effect on Determinant:**
-  **det(A) = det(A₁) = det(A₂)**[cite: 19, 25]
+$$
+A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 4 \\
+1 & 4 & 6 \\
+\end{pmatrix}
+\xrightarrow{\substack{R_2 \leftarrow R_2 - R_1 \\ R_3 \leftarrow R_3 - R_1}}
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+0 & 2 & 3 \\
+\end{pmatrix}= A_1.
+$$
 
----
+2. **Create a zero in column $2$ below the $(2,2)$ pivot** via $R_3 \leftarrow R_3 - 2R_2$:
 
-#### Step 3: Create Zero at Position (3,2) using R₃ ← R₃ - 2R₂
+$$
+A_1=
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+0 & 2 & 3 \\
+\end{pmatrix}
+\xrightarrow{R_3 \leftarrow R_3 - 2R_2}
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+0 & 0 & 1 \\
+\end{pmatrix}= U.
+$$
 
-* **Calculation:**
-  * Row 1 remains unchanged: [ 1, 2, 3 ][cite: 25]
-  * Row 2 remains unchanged: [ 0, 1, 1 ]
-  * Calculate new Row 3 (R₃ - 2R₂):
-    * Entry (3,1): 0 - 2(0) = 0
-    * Entry (3,2): 2 - 2(1) = 0
-    * Entry (3,3): 3 - 2(1) = 1
+3. *(Optional)* **Eliminate the entries above the diagonal** via $R_2 \leftarrow R_2 - R_3$, $R_1 \leftarrow R_1 - 3R_3$, and $R_1 \leftarrow R_1 - 2R_2$ to obtain six zeros:
 
-* **Resulting Matrix A₃ (Upper Triangular Form):**
-  [  1   2   3 ]
-  [  0   1   1 ]
-  [  0   0   1 ]
+$$
+U=
+\begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\xrightarrow{\substack{R_2 \leftarrow R_2 - R_3 \\ R_1 \leftarrow R_1 - 3R_3}}
+\begin{pmatrix}
+1 & 2 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\xrightarrow{R_1 \leftarrow R_1 - 2R_2}
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}= I_3.
+$$
 
-* **Effect on Determinant:**
-  **det(A) = det(A₃)**[cite: 19, 25]
+4. **Identify operations that preserve the determinant and evaluate $\det A$:** Every single operation performed above is a row replacement ($R_i \leftarrow R_i + cR_j$ with $i \neq j$), which leaves the determinant completely unchanged ($\det A = \det A_1 = \det U = \det I_3$). Taking the product of the main diagonal entries of the upper triangular matrix $U$ (or $I_3$) gives
 
----
+$$
+\det A = \det U = 1 \cdot 1 \cdot 1 = 1.
+$$
 
-### 3. Compute det(A)
+<br>
 
-#### Method 1: Product of Main Diagonal Entries (Upper Triangular Matrix)
-* For any upper triangular matrix, the determinant equals the product of its main diagonal entries[cite: 18, 19]:
-  det(A) = det(A₃) = (1) × (1) × (1) = **1**
+**Property / method used.** *Row replacement invariance and triangular determinant rule:*
+- Adding a scalar multiple of one row to a different row ($R_i \leftarrow R_i + cR_j$, $i \neq j$) does not alter the determinant. (By contrast, swapping two rows multiplies $\det$ by $-1$, and scaling a row by $k$ multiplies $\det$ by $k$.)
+- The determinant of a triangular matrix equals the product of its main diagonal entries.
 
-#### Method 2: Cofactor Expansion along Column 1 of Matrix A₂
-* Column 1 of Matrix A₂ contains entries [ 1, 0, 0 ][cite: 25]:
-  det(A) = 1 × det[ 1, 1 ; 2, 3 ] - 0 + 0
-  det(A) = 1 × ((1 × 3) - (1 × 2))
-  det(A) = 1 × (3 - 2) = **1**
+<br>
 
-* **Final Result:**
-  **det(A) = 1**[cite: 25]
+**Mathematical verification.** Computing $\det A$ directly using Sarrus' rule confirms the result:
 
----
-
-### 4. Mathematical Verification
-
-#### Verification Check: Sarrus' Rule on Original Matrix A
-* **Original Matrix A:** [ 1, 2, 3 ; 1, 3, 4 ; 1, 4, 6 ][cite: 25]
-* **Down-Right Diagonals (Positive Terms):**
-  (1 × 3 × 6) + (2 × 4 × 1) + (3 × 1 × 4) = 18 + 8 + 12 = **38**[cite: 25]
-* **Up-Right Diagonals (Negative Terms):**
-  (1 × 3 × 3) + (4 × 4 × 1) + (6 × 1 × 2) = 9 + 16 + 12 = **37**[cite: 25]
-* **det(A):** 38 - 37 = **1**[cite: 25]
-
-Both methods yield the exact same value (**1**), verifying the calculation[cite: 25].
-
----
-
-### 5. Detailed Explanation & Linear Algebra Insights
-
-1. **Strategic Planning vs. Mechanical Calculation:**
-   * Notice that Column 1 of original Matrix A has identical leading entries: [ 1, 1, 1 ][cite: 25].
-   * Recognizing this structure allows us to subtract Row 1 from both Row 2 and Row 3 simultaneously, introducing two zeros in a single step[cite: 25].
-   * Reducing the problem to an upper triangular form avoids evaluating six separate multi-digit multiplication terms required by Sarrus' rule[cite: 19, 25].
-
-2. **Cofactor Simplification via Zeros:**
-   * Expanding a determinant along a row or column with k zeros eliminates k calculation branches completely.
-   * Creating a column with entries [ 1, 0, 0 ] reduces a 3×3 determinant directly to a single 2×2 sub-determinant without altering the overall value[cite: 18, 25].
-
-3. **Invertibility & Geometric Meaning:**
-   * Since det(A) = 1 ≠ 0, Matrix A is non-singular and fully **invertible**[cite: 18].
-   * Geometrically, Matrix A transforms the 3D unit cube into a parallelepiped with an exact volume of **1 cubic unit**, preserving spatial volume perfectly[cite: 18, 25].
+$$
+\det A = (1\cdot 3\cdot 6 + 2\cdot 4\cdot 1 + 3\cdot 1\cdot 4) - (1\cdot 3\cdot 3 + 4\cdot 4\cdot 1 + 6\cdot 1\cdot 2) = (18 + 8 + 12) - (9 + 16 + 12) = 38 - 37 = 1.
+$$

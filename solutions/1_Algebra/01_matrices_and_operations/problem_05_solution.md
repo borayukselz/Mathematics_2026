@@ -1,55 +1,154 @@
-# Exercise 5: Matrix Times Vector
+### Exercise 5. Matrix Times Vector
 
-### Given
+#### Exercise Reminder
 
-**Matrix A:**
-[  2  -1 ]
-[  1   3 ]
+Let
 
-**Vector x:**
-[  4 ]
-[  2 ]
+$$
+A=
+\begin{pmatrix}
+2 & -1 \\
+1 & 3 \\
+\end{pmatrix},\qquad x=
+\begin{pmatrix}
+4 \\
+2 \\
+\end{pmatrix}.
+$$
 
----
-
-### 1. Compute Ax
-
-* **Result:**
-  [  6 ]
-  [ 10 ]
-
-* **Main Steps:** Multiply rows of Matrix A by Vector x[cite: 7]:
-  * Top entry (Row 1):    (2 × 4) + (-1 × 2) = 8 - 2 = 6
-  * Bottom entry (Row 2): (1 × 4) + (3 × 2)  = 4 + 6 = 10
-
-* **Method & Explanation:** Matrix-vector multiplication using the row dot-product method[cite: 7]. Each element of the resulting vector is the dot product of a row from Matrix A and Vector x[cite: 7].
-
-* **Mathematical Verification:** Check individual calculations: 2(4) - 1(2) = 6, and 1(4) + 3(2) = 10. Both values are correct.
+1. Compute $Ax$.
+2. Express $Ax$ as a linear combination of the columns of $A$, with coefficients coming from the vector $x$.
 
 ---
 
-### 2. Express Ax as a Linear Combination of the Columns of A
+#### Solution
 
-* **Result:**
-    4 * [  2 ] + 2 * [ -1 ] = [  6 ]
-        [  1 ]       [  3 ]   [ 10 ]
+##### 1. Computing $Ax$
 
-* **Main Steps:**
-  1. Identify the columns of Matrix A[cite: 7]:
-     * Column 1: [  2 ]
-                 [  1 ]
-     * Column 2: [ -1 ]
-                 [  3 ]
-  2. Identify the scalar coefficients from Vector x[cite: 7]:
-     * First coefficient (x₁): 4
-     * Second coefficient (x₂): 2
-  3. Write the linear combination:
-     4 * (Column 1) + 2 * (Column 2)[cite: 7]
+**Result.**
 
-* **Method & Explanation:** The column-based definition of matrix-vector multiplication states that Ax is a linear combination of the columns of A, where the entries of Vector x serve as the scalar weights (coefficients)[cite: 7].
+$$
+Ax=
+\begin{pmatrix}
+6 \\
+10 \\
+\end{pmatrix}.
+$$
 
-* **Mathematical Verification:** Multiply out the linear combination:
-  * 4 * [ 2, 1 ] = [ 8, 4 ]
-  * 2 * [ -1, 3 ] = [ -2, 6 ]
-  * Adding them together: [ 8 + (-2), 4 + 6 ] = [ 6, 10 ]
-  * This matches the exact result obtained in Part 1.
+**Main steps.** Matrix $A$ has size $2\times 2$ and column vector $x$ has size $2\times 1$. Since the number of columns of $A$ ($2$) equals the number of rows of $x$ ($2$), the product $Ax$ is defined and has size $2\times 1$.
+
+Take the dot product of each row of $A$ with the vector $x$:
+
+$$
+Ax=
+\begin{pmatrix}
+2 & -1 \\
+1 & 3 \\
+\end{pmatrix}
+\begin{pmatrix}
+4 \\
+2 \\
+\end{pmatrix}=
+\begin{pmatrix}
+2\cdot 4 + (-1)\cdot 2 \\
+1\cdot 4 + 3\cdot 2 \\
+\end{pmatrix}=
+\begin{pmatrix}
+8 - 2 \\
+4 + 6 \\
+\end{pmatrix}=
+\begin{pmatrix}
+6 \\
+10 \\
+\end{pmatrix}.
+$$
+
+**Property / method used.** *Row-by-column matrix-vector multiplication:* for an $m\times n$ matrix $A$ and an $n\times 1$ vector $x$, the $i$-th component of $Ax$ is the dot product of row $i$ of $A$ with $x$.
+
+**Mathematical verification.** Using the standard basis vectors $e_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ and $e_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, we can decompose $x = 4e_1 + 2e_2$. By linearity of matrix multiplication,
+
+$$
+Ax = A(4e_1 + 2e_2) = 4Ae_1 + 2Ae_2 = 4
+\begin{pmatrix}
+2 \\
+1 \\
+\end{pmatrix} + 2
+\begin{pmatrix}
+-1 \\
+3 \\
+\end{pmatrix}=
+\begin{pmatrix}
+6 \\
+10 \\
+\end{pmatrix},
+$$
+
+which confirms the result.
+
+##### 2. Expressing $Ax$ as a Linear Combination of the Columns of $A$
+
+**Result.**
+
+$$
+Ax = 4
+\begin{pmatrix}
+2 \\
+1 \\
+\end{pmatrix} + 2
+\begin{pmatrix}
+-1 \\
+3 \\
+\end{pmatrix} =
+\begin{pmatrix}
+6 \\
+10 \\
+\end{pmatrix}.
+$$
+
+**Main steps.** Partition $A$ into its two column vectors $a_1$ and $a_2$, and read the scalar weights $x_1$ and $x_2$ from $x$:
+
+$$
+a_1=
+\begin{pmatrix}
+2 \\
+1 \\
+\end{pmatrix},\qquad a_2=
+\begin{pmatrix}
+-1 \\
+3 \\
+\end{pmatrix},\qquad x_1 = 4,\qquad x_2 = 2.
+$$
+
+Multiply each column vector of $A$ by its corresponding entry from $x$ and add the resulting vectors:
+
+$$
+Ax = x_1 a_1 + x_2 a_2 = 4
+\begin{pmatrix}
+2 \\
+1 \\
+\end{pmatrix} + 2
+\begin{pmatrix}
+-1 \\
+3 \\
+\end{pmatrix} =
+\begin{pmatrix}
+8 \\
+4 \\
+\end{pmatrix} +
+\begin{pmatrix}
+-2 \\
+6 \\
+\end{pmatrix} =
+\begin{pmatrix}
+6 \\
+10 \\
+\end{pmatrix}.
+$$
+
+**Property / method used.** *Column-picture of matrix-vector multiplication:* if $A = \begin{pmatrix} a_1 & a_2 & \cdots & a_n \end{pmatrix}$ and $x = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}$, then the product $Ax$ is the linear combination of the columns of $A$ weighted by the entries of $x$:
+
+$$
+Ax = x_1 a_1 + x_2 a_2 + \cdots + x_n a_n.
+$$
+
+**Mathematical verification.** Comparing the vector obtained from the column-wise linear combination in Part 2 with the vector computed via row-by-column dot products in Part 1 shows that both methods produce the exact same column vector $\begin{pmatrix} 6 \\ 10 \end{pmatrix}$.

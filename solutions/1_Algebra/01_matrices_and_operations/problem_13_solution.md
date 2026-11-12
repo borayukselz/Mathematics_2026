@@ -1,155 +1,241 @@
-# Exercise 13: A Recurrence Written in Matrix Form
+### Exercise 13. A Recurrence Written in Matrix Form
 
-### Given Matrix
+#### Exercise Reminder
 
-**Matrix F:**
-[  1   1 ]
-[  1   0 ]
+Let
 
----
+$$
+F=
+\begin{pmatrix}
+1 & 1 \\
+1 & 0 \\
+\end{pmatrix}.
+$$
 
-### 1. Compute Matrix Powers: F², F³, F⁴, and F⁵
-
-#### A. Compute F² (F × F)
-
-* **Result:**
-  [  2   1 ]
-  [  1   1 ]
-
-* **Detailed Calculation Steps:**
-  * Top-left entry (1,1):     (1 × 1) + (1 × 1) = 1 + 1 = 2[cite: 15]
-  * Top-right entry (1,2):    (1 × 1) + (1 × 0) = 1 + 0 = 1[cite: 15]
-  * Bottom-left entry (2,1):  (1 × 1) + (0 × 1) = 1 + 0 = 1[cite: 15]
-  * Bottom-right entry (2,2): (1 × 1) + (0 × 0) = 1 + 0 = 1[cite: 15]
+1. Compute $F^2$, $F^3$, $F^4$, and $F^5$. Compare the numbers obtained with the sequence $0, 1, 1, 2, 3, 5, 8, \dots$ and describe the relationship you observe.
+2. Compute $F \begin{pmatrix} a \\ b \end{pmatrix}$ and explain how this multiplication performs one recurrence step: it creates the sum of two consecutive terms and keeps one of them for the next step.
 
 ---
 
-#### B. Compute F³ (F² × F)
+#### Solution
 
-* **Result:**
-  [  3   2 ]
-  [  2   1 ]
+##### 1. Computing Powers of $F$ and Relationship to the Fibonacci Sequence
 
-* **Detailed Calculation Steps:**
-  * Top-left entry (1,1):     (2 × 1) + (1 × 1) = 2 + 1 = 3[cite: 15]
-  * Top-right entry (1,2):    (2 × 1) + (1 × 0) = 2 + 0 = 2[cite: 15]
-  * Bottom-left entry (2,1):  (1 × 1) + (1 × 1) = 1 + 1 = 2[cite: 15]
-  * Bottom-right entry (2,2): (1 × 1) + (1 × 0) = 1 + 0 = 1[cite: 15]
+**Result.**
+
+$$
+F^2=
+\begin{pmatrix}
+2 & 1 \\
+1 & 1 \\
+\end{pmatrix},\qquad F^3=
+\begin{pmatrix}
+3 & 2 \\
+2 & 1 \\
+\end{pmatrix},\qquad F^4=
+\begin{pmatrix}
+5 & 3 \\
+3 & 2 \\
+\end{pmatrix},\qquad F^5=
+\begin{pmatrix}
+8 & 5 \\
+5 & 3 \\
+\end{pmatrix}.
+$$
+
+If the sequence $0, 1, 1, 2, 3, 5, 8, \dots$ is indexed by $f_0 = 0, f_1 = 1, f_2 = 1, f_3 = 2, f_4 = 3, f_5 = 5, f_6 = 8, \dots$ (the Fibonacci sequence), then for every integer $n \ge 1$, the matrix power $F^n$ is given by
+
+$$
+F^n=
+\begin{pmatrix}
+f_{n+1} & f_n \\
+f_n & f_{n-1} \\
+\end{pmatrix}.
+$$
+
+<br>
+
+**Main steps.** Compute each successive power using $F^k = F^{k-1}F$:
+
+$$
+F^2 = F \cdot F =
+\begin{pmatrix}
+1 & 1 \\
+1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1 \\
+1 & 0 \\
+\end{pmatrix}=
+\begin{pmatrix}
+1\cdot 1 + 1\cdot 1 & 1\cdot 1 + 1\cdot 0 \\
+1\cdot 1 + 0\cdot 1 & 1\cdot 1 + 0\cdot 0 \\
+\end{pmatrix}=
+\begin{pmatrix}
+2 & 1 \\
+1 & 1 \\
+\end{pmatrix},
+$$
+
+$$
+F^3 = F^2 \cdot F =
+\begin{pmatrix}
+2 & 1 \\
+1 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1 \\
+1 & 0 \\
+\end{pmatrix}=
+\begin{pmatrix}
+2\cdot 1 + 1\cdot 1 & 2\cdot 1 + 1\cdot 0 \\
+1\cdot 1 + 1\cdot 1 & 1\cdot 1 + 1\cdot 0 \\
+\end{pmatrix}=
+\begin{pmatrix}
+3 & 2 \\
+2 & 1 \\
+\end{pmatrix},
+$$
+
+$$
+F^4 = F^3 \cdot F =
+\begin{pmatrix}
+3 & 2 \\
+2 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1 \\
+1 & 0 \\
+\end{pmatrix}=
+\begin{pmatrix}
+3\cdot 1 + 2\cdot 1 & 3\cdot 1 + 2\cdot 0 \\
+2\cdot 1 + 1\cdot 1 & 2\cdot 1 + 1\cdot 0 \\
+\end{pmatrix}=
+\begin{pmatrix}
+5 & 3 \\
+3 & 2 \\
+\end{pmatrix},
+$$
+
+$$
+F^5 = F^4 \cdot F =
+\begin{pmatrix}
+5 & 3 \\
+3 & 2 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1 \\
+1 & 0 \\
+\end{pmatrix}=
+\begin{pmatrix}
+5\cdot 1 + 3\cdot 1 & 5\cdot 1 + 3\cdot 0 \\
+3\cdot 1 + 2\cdot 1 & 3\cdot 1 + 2\cdot 0 \\
+\end{pmatrix}=
+\begin{pmatrix}
+8 & 5 \\
+5 & 3 \\
+\end{pmatrix}.
+$$
+
+Comparing these entries with $f_0 = 0, f_1 = 1, f_2 = 1, f_3 = 2, f_4 = 3, f_5 = 5, f_6 = 8$:
+- In $F^1 = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$, the entries are $\begin{pmatrix} f_2 & f_1 \\ f_1 & f_0 \end{pmatrix}$.
+- In $F^2 = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$, the entries are $\begin{pmatrix} f_3 & f_2 \\ f_2 & f_1 \end{pmatrix}$.
+- In $F^3 = \begin{pmatrix} 3 & 2 \\ 2 & 1 \end{pmatrix}$, the entries are $\begin{pmatrix} f_4 & f_3 \\ f_3 & f_2 \end{pmatrix}$.
+- In $F^4 = \begin{pmatrix} 5 & 3 \\ 3 & 2 \end{pmatrix}$, the entries are $\begin{pmatrix} f_5 & f_4 \\ f_4 & f_3 \end{pmatrix}$.
+- In $F^5 = \begin{pmatrix} 8 & 5 \\ 5 & 3 \end{pmatrix}$, the entries are $\begin{pmatrix} f_6 & f_5 \\ f_5 & f_4 \end{pmatrix}$.
+
+In every power $F^n$, the $(1,1)$ entry is $f_{n+1}$, both the $(1,2)$ and $(2,1)$ entries equal $f_n$, and the $(2,2)$ entry is $f_{n-1}$.
+
+<br>
+
+**Property / method used.** *Fibonacci Q-matrix representation:* the linear recurrence $f_{n+1} = f_n + f_{n-1}$ with $f_0 = 0, f_1 = 1$ is encoded by the $2\times 2$ symmetric matrix $F = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$, whose powers advance the sequence indices by $1$ at each step.
+
+<br>
+
+**Mathematical verification.** Since $\det(F) = 1\cdot 0 - 1\cdot 1 = -1$, the determinant property $\det(F^n) = (\det F)^n = (-1)^n$ yields Cassini's identity $f_{n+1}f_{n-1} - f_n^2 = (-1)^n$. Checking $F^4$ and $F^5$ confirms the computed entries:
+
+$$
+\det(F^4) = 5\cdot 2 - 3\cdot 3 = 10 - 9 = 1 = (-1)^4, \qquad \det(F^5) = 8\cdot 3 - 5\cdot 5 = 24 - 25 = -1 = (-1)^5.
+$$
 
 ---
 
-#### C. Compute F⁴ (F³ × F)
+##### 2. Computing $F \begin{pmatrix} a \\ b \end{pmatrix}$ and Explaining One Recurrence Step
 
-* **Result:**
-  [  5   3 ]
-  [  3   2 ]
+**Result.**
 
-* **Detailed Calculation Steps:**
-  * Top-left entry (1,1):     (3 × 1) + (2 × 1) = 3 + 2 = 5[cite: 15]
-  * Top-right entry (1,2):    (3 × 1) + (2 × 0) = 3 + 0 = 3[cite: 15]
-  * Bottom-left entry (2,1):  (2 × 1) + (1 × 1) = 2 + 1 = 3[cite: 15]
-  * Bottom-right entry (2,2): (2 × 1) + (1 × 0) = 2 + 0 = 2[cite: 15]
+$$
+F
+\begin{pmatrix}
+a \\
+b \\
+\end{pmatrix}=
+\begin{pmatrix}
+a + b \\
+a \\
+\end{pmatrix}.
+$$
 
----
+<br>
 
-#### D. Compute F⁵ (F⁴ × F)
+**Main steps.** Multiply the $2\times 2$ matrix $F$ by the $2\times 1$ column vector $\begin{pmatrix} a \\ b \end{pmatrix}$:
 
-* **Result:**
-  [  8   5 ]
-  [  5   3 ]
+$$
+F
+\begin{pmatrix}
+a \\
+b \\
+\end{pmatrix}=
+\begin{pmatrix}
+1 & 1 \\
+1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+a \\
+b \\
+\end{pmatrix}=
+\begin{pmatrix}
+1\cdot a + 1\cdot b \\
+1\cdot a + 0\cdot b \\
+\end{pmatrix}=
+\begin{pmatrix}
+a + b \\
+a \\
+\end{pmatrix}.
+$$
 
-* **Detailed Calculation Steps:**
-  * Top-left entry (1,1):     (5 × 1) + (3 × 1) = 5 + 3 = 8[cite: 15]
-  * Top-right entry (1,2):    (5 × 1) + (3 × 0) = 5 + 0 = 5[cite: 15]
-  * Bottom-left entry (2,1):  (3 × 1) + (2 × 1) = 3 + 2 = 5[cite: 15]
-  * Bottom-right entry (2,2): (3 × 1) + (2 × 0) = 3 + 0 = 3[cite: 15]
+Suppose the state vector $\begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} f_n \\ f_{n-1} \end{pmatrix}$ stores two consecutive terms of the recurrence, with the newer term $a = f_n$ in the top position and the older term $b = f_{n-1}$ in the bottom position:
+1. **Top entry (creates the next term):** The first row $\begin{pmatrix} 1 & 1 \end{pmatrix}$ adds the two entries to produce $a + b = f_n + f_{n-1} = f_{n+1}$, placing the newly computed term at the top of the output vector.
+2. **Bottom entry (keeps one term for the next step):** The second row $\begin{pmatrix} 1 & 0 \end{pmatrix}$ selects $a = f_n$ and discards $b = f_{n-1}$, shifting the current term $f_n$ down into the bottom position so that $\begin{pmatrix} f_{n+1} \\ f_n \end{pmatrix}$ holds the updated pair of consecutive terms for the next step.
 
----
+<br>
 
-### 2. Comparison with the Sequence 0, 1, 1, 2, 3, 5, 8, ...
+**Property / method used.** *State-space (companion matrix) formulation of a second-order linear recurrence:* a two-term recurrence $x_{n+1} = x_n + x_{n-1}$ is converted into a first-order vector update $v_{n+1} = F v_n$ by stacking two consecutive terms into a state vector $v_n = \begin{pmatrix} x_n \\ x_{n-1} \end{pmatrix}$.
 
-#### A. The Fibonacci Sequence
-The given sequence **0, 1, 1, 2, 3, 5, 8, ...** is the **Fibonacci Sequence** (denoted by f_n)[cite: 15]:
-* f₀ = 0[cite: 15]
-* f₁ = 1[cite: 15]
-* f₂ = 1[cite: 15]
-* f₃ = 2[cite: 15]
-* f₄ = 3[cite: 15]
-* f₅ = 5[cite: 15]
-* f₆ = 8[cite: 15]
+<br>
 
----
+**Mathematical verification.** Starting from the initial state vector $v_1 = \begin{pmatrix} f_1 \\ f_0 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ and applying $F$ five times reproduces the sequence step by step and matches the first column of each matrix power $F^n$ from Part 1:
 
-#### B. Observed Relationship
-
-When comparing the entries of matrix powers Fⁿ with the Fibonacci terms:
-
-* **F¹:**
-  [ 1  1 ] = [ f₂  f₁ ]
-  [ 1  0 ]   [ f₁  f₀ ][cite: 15]
-
-* **F²:**
-  [ 2  1 ] = [ f₃  f₂ ]
-  [ 1  1 ]   [ f₂  f₁ ][cite: 15]
-
-* **F³:**
-  [ 3  2 ] = [ f₄  f₃ ]
-  [ 2  1 ]   [ f₃  f₂ ][cite: 15]
-
-* **F⁴:**
-  [ 5  3 ] = [ f₅  f₄ ]
-  [ 3  2 ]   [ f₄  f₃ ][cite: 15]
-
-* **F⁵:**
-  [ 8  5 ] = [ f₆  f₅ ]
-  [ 5  3 ]   [ f₅  f₄ ][cite: 15]
-
-* **General Formula:**
-  For any positive integer n:
-  **Fⁿ = [ f_(n+1)   f_n     ]**
-         **[ f_n       f_(n-1) ]**[cite: 15]
-
-Every entry in the matrix Fⁿ is a specific term from the Fibonacci sequence![cite: 15]
-
----
-
-### 3. Compute Matrix-Vector Multiplication: F × [ a ; b ]
-
-* **Result:**
-  [ a + b ]
-  [   a   ][cite: 15]
-
-* **Detailed Calculation Steps:**
-  * Top entry:    (1 × a) + (1 × b) = **a + b**[cite: 15]
-  * Bottom entry: (1 × a) + (0 × b) = **a**[cite: 15]
-
----
-
-### 4. Detailed Explanation: How This Multiplication Performs a Recurrence Step
-
-1. **Understanding the Recurrence Formula:**
-   * The Fibonacci sequence is defined by the linear recurrence relation:
-     **f_(k+1) = f_k + f_(k-1)**
-   * To calculate the next number in the sequence, you must know the **two preceding consecutive terms**.
-
-2. **How Matrix F Transforms State Vectors:**
-   * Imagine a vector holding two consecutive terms of the sequence:
-     Input Vector = [  a  ] = [ f_k     ]  (Current term)
-                    [  b  ]   [ f_(k-1) ]  (Previous term)[cite: 15]
-
-   * When you multiply this vector by Matrix F:
-     F × [  a  ] = [ 1  1 ] × [  a  ] = [ a + b ]
-         [  b  ]   [ 1  0 ]   [  b  ]   [   a   ][cite: 15]
-
-3. **Role of the Two Rows:**
-   * **Row 1 (Sum Creation):** Compute `a + b`[cite: 15]. Since `a = f_k` and `b = f_(k-1)`, `a + b` calculates the **new next term** `f_(k+1)`[cite: 15].
-   * **Row 2 (Memory / Shift):** Keeps `a` unchanged[cite: 15]. The previous larger term (`f_k`) becomes the new lower entry, preserving it for the subsequent step[cite: 15].
-
-4. **Output Vector:**
-   Output Vector = [ a + b ] = [ f_(k+1) ]  (New term)
-                   [   a   ]   [ f_k     ]  (Updated previous term)[cite: 15]
-
-5. **Key Takeaway:**
-   * Multiplying by Matrix F acts as a **single time step forward** in the recurrence[cite: 15].
-   * Multiplying by Fⁿ advances the recurrence by **n steps simultaneously**!
-   * This is why matrix powers allow us to compute extremely large Fibonacci numbers efficiently without calculating every intermediate number sequentially.
+$$
+v_2 = Fv_1 =
+\begin{pmatrix}
+1 \\
+1 \\
+\end{pmatrix},\quad v_3 = Fv_2 =
+\begin{pmatrix}
+2 \\
+1 \\
+\end{pmatrix},\quad v_4 = Fv_3 =
+\begin{pmatrix}
+3 \\
+2 \\
+\end{pmatrix},\quad v_5 = Fv_4 =
+\begin{pmatrix}
+5 \\
+3 \\
+\end{pmatrix},\quad v_6 = Fv_5 =
+\begin{pmatrix}
+8 \\
+5 \\
+\end{pmatrix}.
+$$

@@ -1,103 +1,140 @@
-# Exercise 3: Swapping Two Rows
+### Exercise 3. Swapping Two Rows
 
-### Given Matrix
+#### Exercise Reminder
 
-**Matrix A:**
-[  1   2   0 ]
-[  0   3   1 ]
-[  2   1   1 ][cite: 20]
+For
 
----
+$$
+A=
+\begin{pmatrix}
+1 & 2 & 0 \\
+0 & 3 & 1 \\
+2 & 1 & 1 \\
+\end{pmatrix},
+$$
 
-### 1. Compute det(A)
-
-* **Result:**
-  **det(A) = 6**[cite: 20]
-
-* **Detailed Calculation Steps (via Cofactor Expansion along Column 1):**
-  * Column 1 contains [ 1, 0, 2 ][cite: 20]. Expanding along Column 1 minimizes calculations:
-    det(A) = 1 × det[ 3, 1 ; 1, 1 ] - 0 × det[ 2, 0 ; 1, 1 ] + 2 × det[ 2, 0 ; 3, 1 ][cite: 20]
-
-  * Compute the 2×2 sub-determinants:
-    * det[ 3, 1 ; 1, 1 ] = (3 × 1) - (1 × 1) = 3 - 1 = **2**
-    * det[ 2, 0 ; 3, 1 ] = (2 × 1) - (0 × 3) = 2 - 0 = **2**
-
-  * Combine the terms:
-    det(A) = 1(2) - 0 + 2(2) = 2 + 4 = **6**
-
-* **Method & Explanation:**
-  Cofactor expansion calculates a 3×3 determinant by breaking it down into a weighted sum of smaller 2×2 determinants[cite: 20].
-
-* **Mathematical Verification (via Sarrus' Rule):**
-  * Down-Right Diagonals: (1×3×1) + (2×1×2) + (0×0×1) = 3 + 4 + 0 = **7**[cite: 20]
-  * Up-Right Diagonals: (2×3×0) + (1×1×1) + (1×0×2) = 0 + 1 + 0 = **1**[cite: 20]
-  * det(A) = 7 - 1 = **6**
+1. Compute $\det A$.
+2. Form a matrix $B$ by swapping the first and second rows of $A$. First predict $\det B$ using a determinant property, and then verify your prediction by calculation.
 
 ---
 
-### 2. Form Matrix B and Predict det(B)
+#### Solution
 
-#### A. Form Matrix B
-Matrix B is formed by swapping Row 1 and Row 2 of Matrix A[cite: 20]:
+##### 1. Computing $\det A$
 
-* **Row 1 of B** = [ 0, 3, 1 ] (Original Row 2 of A)[cite: 20]
-* **Row 2 of B** = [ 1, 2, 0 ] (Original Row 1 of A)[cite: 20]
-* **Row 3 of B** = [ 2, 1, 1 ] (Original Row 3 of A)[cite: 20]
+**Result.**
 
-**Matrix B:**
-[  0   3   1 ]
-[  1   2   0 ]
-[  2   1   1 ][cite: 20]
+$$
+\det A = 6.
+$$
+
+<br>
+
+**Main steps.** Compute $\det A$ using cofactor expansion along the first row (taking advantage of the zero entry in position $(1,3)$):
+
+$$
+\begin{aligned}
+\det A &= 1\cdot \det
+\begin{pmatrix}
+3 & 1 \\
+1 & 1 \\
+\end{pmatrix}- 2\cdot \det
+\begin{pmatrix}
+0 & 1 \\
+2 & 1 \\
+\end{pmatrix}+ 0\cdot \det
+\begin{pmatrix}
+0 & 3 \\
+2 & 1 \\
+\end{pmatrix} \\
+&= 1(3\cdot 1 - 1\cdot 1) - 2(0\cdot 1 - 1\cdot 2) + 0 \\
+&= 1(2) - 2(-2) \\
+&= 2 + 4 = 6.
+\end{aligned}
+$$
+
+<br>
+
+**Property / method used.** *Cofactor expansion along a row:* for any $3\times 3$ matrix $A$, expanding along row $1$ gives $\det A = a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}$, where $C_{ij} = (-1)^{i+j}M_{ij}$ is the $(i,j)$-cofactor.
+
+<br>
+
+**Mathematical verification.** Checking $\det A$ with Sarrus' rule confirms the result:
+
+$$
+\det A = (1\cdot 3\cdot 1 + 2\cdot 1\cdot 2 + 0\cdot 0\cdot 1) - (2\cdot 3\cdot 0 + 1\cdot 1\cdot 1 + 1\cdot 0\cdot 2) = (3 + 4 + 0) - (0 + 1 + 0) = 7 - 1 = 6.
+$$
 
 ---
 
-#### B. Predict det(B) Using Determinant Property
+##### 2. Forming $B$, Predicting $\det B$, and Verifying by Calculation
 
-* **Determinant Property:**
-  Interchanging (swapping) any two rows (or two columns) of a matrix multiplies its determinant by **-1** (it reverses the sign of the determinant)[cite: 20].
+**Result.** Swapping rows $1$ and $2$ of $A$ gives
 
-* **Prediction:**
-  Since Matrix B is derived by performing a single row swap on Matrix A[cite: 20]:
-  det(B) = -det(A) = **-6**[cite: 20]
+$$
+B=
+\begin{pmatrix}
+0 & 3 & 1 \\
+1 & 2 & 0 \\
+2 & 1 & 1 \\
+\end{pmatrix}.
+$$
 
----
+- **Prediction:** $\det B = -6$.
+- **Calculated value:** $\det B = -6$ (confirming the prediction).
 
-### 3. Verify det(B) by Calculation
+<br>
 
-* **Result:**
-  **det(B) = -6**[cite: 20]
+**Main steps.**
 
-* **Detailed Calculation Steps (via Cofactor Expansion along Column 1 of B):**
-  * Column 1 of Matrix B contains [ 0, 1, 2 ][cite: 20]:
-    det(B) = 0 × det[ 2, 0 ; 1, 1 ] - 1 × det[ 3, 1 ; 1, 1 ] + 2 × det[ 3, 1 ; 2, 0 ][cite: 20]
+1. **Form $B$ and predict $\det B$:** Interchange the first and second rows of $A$ ($R_1 \leftrightarrow R_2$) to obtain $B$:
 
-  * Compute the 2×2 sub-determinants:
-    * det[ 3, 1 ; 1, 1 ] = (3 × 1) - (1 × 1) = 3 - 1 = **2**
-    * det[ 3, 1 ; 2, 0 ] = (3 × 0) - (1 × 2) = 0 - 2 = **-2**
+$$
+B=
+\begin{pmatrix}
+0 & 3 & 1 \\
+1 & 2 & 0 \\
+2 & 1 & 1 \\
+\end{pmatrix}.
+$$
 
-  * Combine the terms:
-    det(B) = 0 - 1(2) + 2(-2) = -2 - 4 = **-6**
+Because $B$ is obtained from $A$ by a single row interchange, its determinant must have the opposite sign of $\det A$:
 
-* **Conclusion:**
-  The direct calculation yields **-6**, which perfectly matches our prediction made using the row swap property[cite: 20]!
+$$
+\det B = -\det A = -6.
+$$
 
----
+2. **Verify by direct calculation:** Expand $\det B$ by cofactors along the first row of $B$:
 
-### 4. Detailed Explanation & Linear Algebra Insights
+$$
+\begin{aligned}
+\det B &= 0\cdot \det
+\begin{pmatrix}
+2 & 0 \\
+1 & 1 \\
+\end{pmatrix}- 3\cdot \det
+\begin{pmatrix}
+1 & 0 \\
+2 & 1 \\
+\end{pmatrix}+ 1\cdot \det
+\begin{pmatrix}
+1 & 2 \\
+2 & 1 \\
+\end{pmatrix} \\
+&= 0 - 3(1\cdot 1 - 0\cdot 2) + 1(1\cdot 1 - 2\cdot 2) \\
+&= -3(1) + 1(-3) \\
+&= -3 - 3 = -6.
+\end{aligned}
+$$
 
-1. **Why Swapping Rows Changes the Sign:**
-   * The formal definition of a determinant sums products over all permutations of matrix indices, weighted by the **sign (parity)** of each permutation.
-   * Swapping two rows introduces exactly one additional transposition (swap) into every permutation.
-   * Adding one transposition changes the parity of every term from positive to negative (or negative to positive), causing the overall determinant to flip its sign from **det(A)** to **-det(A)**[cite: 20].
+<br>
 
-2. **Geometric Meaning of Sign Change (Orientation in 3D Space):**
-   * The absolute value |det(A)| = 6 represents the **3D volume** spanned by the row vectors of Matrix A.
-   * The **sign** (+ or -) represents the **spatial orientation** (handedness) of the coordinate system defined by those vectors (right-handed vs. left-handed system).
-   * Swapping two row vectors physically reflects the vector system across a plane, reversing its orientation (from right-handed to left-handed) while leaving the enclosed volume (6 cubic units) completely unchanged.
+**Property / method used.** *Alternating (row-swap) property of determinants:* interchanging any two distinct rows of a square matrix reverses the sign of its determinant (multiplies the determinant by $-1$).
 
-3. **Connection to Elementary Permutation Matrices:**
-   * Swapping Row 1 and Row 2 is equivalent to multiplying Matrix A on the left by an elementary permutation matrix E:
-     **E = [ 0, 1, 0 ; 1, 0, 0 ; 0, 0, 1 ]**
-   * The determinant of this permutation matrix is **det(E) = -1**.
-   * By the multiplicative property of determinants:
-     **det(B) = det(E × A) = det(E) × det(A) = (-1) × 6 = -6**[cite: 20].
+<br>
+
+**Mathematical verification.** Checking $\det B$ via Sarrus' rule provides an independent verification of the sign reversal:
+
+$$
+\det B = (0\cdot 2\cdot 1 + 3\cdot 0\cdot 2 + 1\cdot 1\cdot 1) - (2\cdot 2\cdot 1 + 1\cdot 0\cdot 0 + 1\cdot 1\cdot 3) = (0 + 0 + 1) - (4 + 0 + 3) = 1 - 7 = -6.
+$$

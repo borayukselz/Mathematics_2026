@@ -5,10 +5,10 @@
 Let
 
 $$
-F=
+F =
 \begin{pmatrix}
 1 & 1 \\
-1 & 0 \\
+1 & 0
 \end{pmatrix}.
 $$
 
@@ -19,7 +19,7 @@ $$
 F
 \begin{pmatrix}
 a \\
-b \\
+b
 \end{pmatrix}
 $$
 
@@ -34,32 +34,32 @@ and explain how this multiplication performs one recurrence step: it creates the
 **Result.**
 
 $$
-F^2=
+F^2 =
 \begin{pmatrix}
 2 & 1 \\
-1 & 1 \\
-\end{pmatrix},\qquad F^3=
+1 & 1
+\end{pmatrix},\qquad F^3 =
 \begin{pmatrix}
 3 & 2 \\
-2 & 1 \\
-\end{pmatrix},\qquad F^4=
+2 & 1
+\end{pmatrix},\qquad F^4 =
 \begin{pmatrix}
 5 & 3 \\
-3 & 2 \\
-\end{pmatrix},\qquad F^5=
+3 & 2
+\end{pmatrix},\qquad F^5 =
 \begin{pmatrix}
 8 & 5 \\
-5 & 3 \\
+5 & 3
 \end{pmatrix}.
 $$
 
 If the sequence $0, 1, 1, 2, 3, 5, 8, \dots$ is indexed by $f_0 = 0, f_1 = 1, f_2 = 1, f_3 = 2, f_4 = 3, f_5 = 5, f_6 = 8, \dots$ (the Fibonacci sequence), then for every integer $n \ge 1$, the matrix power $F^n$ is given by
 
 $$
-F^n=
+F^n =
 \begin{pmatrix}
 f_{n+1} & f_n \\
-f_n & f_{n-1} \\
+f_n & f_{n-1}
 \end{pmatrix}.
 $$
 
@@ -71,19 +71,19 @@ $$
 F^2 = F \cdot F =
 \begin{pmatrix}
 1 & 1 \\
-1 & 0 \\
+1 & 0
 \end{pmatrix}
 \begin{pmatrix}
 1 & 1 \\
-1 & 0 \\
-\end{pmatrix}=
+1 & 0
+\end{pmatrix} =
 \begin{pmatrix}
 1\cdot 1 + 1\cdot 1 & 1\cdot 1 + 1\cdot 0 \\
-1\cdot 1 + 0\cdot 1 & 1\cdot 1 + 0\cdot 0 \\
-\end{pmatrix}=
+1\cdot 1 + 0\cdot 1 & 1\cdot 1 + 0\cdot 0
+\end{pmatrix} =
 \begin{pmatrix}
 2 & 1 \\
-1 & 1 \\
+1 & 1
 \end{pmatrix},
 $$
 
@@ -91,19 +91,19 @@ $$
 F^3 = F^2 \cdot F =
 \begin{pmatrix}
 2 & 1 \\
-1 & 1 \\
+1 & 1
 \end{pmatrix}
 \begin{pmatrix}
 1 & 1 \\
-1 & 0 \\
-\end{pmatrix}=
+1 & 0
+\end{pmatrix} =
 \begin{pmatrix}
 2\cdot 1 + 1\cdot 1 & 2\cdot 1 + 1\cdot 0 \\
-1\cdot 1 + 1\cdot 1 & 1\cdot 1 + 1\cdot 0 \\
-\end{pmatrix}=
+1\cdot 1 + 1\cdot 1 & 1\cdot 1 + 1\cdot 0
+\end{pmatrix} =
 \begin{pmatrix}
 3 & 2 \\
-2 & 1 \\
+2 & 1
 \end{pmatrix},
 $$
 
@@ -111,19 +111,19 @@ $$
 F^4 = F^3 \cdot F =
 \begin{pmatrix}
 3 & 2 \\
-2 & 1 \\
+2 & 1
 \end{pmatrix}
 \begin{pmatrix}
 1 & 1 \\
-1 & 0 \\
-\end{pmatrix}=
+1 & 0
+\end{pmatrix} =
 \begin{pmatrix}
 3\cdot 1 + 2\cdot 1 & 3\cdot 1 + 2\cdot 0 \\
-2\cdot 1 + 1\cdot 1 & 2\cdot 1 + 1\cdot 0 \\
-\end{pmatrix}=
+2\cdot 1 + 1\cdot 1 & 2\cdot 1 + 1\cdot 0
+\end{pmatrix} =
 \begin{pmatrix}
 5 & 3 \\
-3 & 2 \\
+3 & 2
 \end{pmatrix},
 $$
 
@@ -131,32 +131,76 @@ $$
 F^5 = F^4 \cdot F =
 \begin{pmatrix}
 5 & 3 \\
-3 & 2 \\
+3 & 2
 \end{pmatrix}
 \begin{pmatrix}
 1 & 1 \\
-1 & 0 \\
-\end{pmatrix}=
+1 & 0
+\end{pmatrix} =
 \begin{pmatrix}
 5\cdot 1 + 3\cdot 1 & 5\cdot 1 + 3\cdot 0 \\
-3\cdot 1 + 2\cdot 1 & 3\cdot 1 + 2\cdot 0 \\
-\end{pmatrix}=
+3\cdot 1 + 2\cdot 1 & 3\cdot 1 + 2\cdot 0
+\end{pmatrix} =
 \begin{pmatrix}
 8 & 5 \\
-5 & 3 \\
+5 & 3
 \end{pmatrix}.
 $$
 
 Comparing these entries with $f_0 = 0, f_1 = 1, f_2 = 1, f_3 = 2, f_4 = 3, f_5 = 5, f_6 = 8$ shows how each matrix power matches the Fibonacci terms:
 
 $$
-\begin{aligned}
-F^1 &= \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} f_2 & f_1 \\ f_1 & f_0 \end{pmatrix}, \qquad
-F^2 = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix} = \begin{pmatrix} f_3 & f_2 \\ f_2 & f_1 \end{pmatrix}, \\
-F^3 &= \begin{pmatrix} 3 & 2 \\ 2 & 1 \end{pmatrix} = \begin{pmatrix} f_4 & f_3 \\ f_3 & f_2 \end{pmatrix}, \qquad
-F^4 = \begin{pmatrix} 5 & 3 \\ 3 & 2 \end{pmatrix} = \begin{pmatrix} f_5 & f_4 \\ f_4 & f_3 \end{pmatrix}, \\
-F^5 &= \begin{pmatrix} 8 & 5 \\ 5 & 3 \end{pmatrix} = \begin{pmatrix} f_6 & f_5 \\ f_5 & f_4 \end{pmatrix}.
-\end{aligned}
+F^1 =
+\begin{pmatrix}
+1 & 1 \\
+1 & 0
+\end{pmatrix} =
+\begin{pmatrix}
+f_2 & f_1 \\
+f_1 & f_0
+\end{pmatrix},\qquad
+F^2 =
+\begin{pmatrix}
+2 & 1 \\
+1 & 1
+\end{pmatrix} =
+\begin{pmatrix}
+f_3 & f_2 \\
+f_2 & f_1
+\end{pmatrix},
+$$
+
+$$
+F^3 =
+\begin{pmatrix}
+3 & 2 \\
+2 & 1
+\end{pmatrix} =
+\begin{pmatrix}
+f_4 & f_3 \\
+f_3 & f_2
+\end{pmatrix},\qquad
+F^4 =
+\begin{pmatrix}
+5 & 3 \\
+3 & 2
+\end{pmatrix} =
+\begin{pmatrix}
+f_5 & f_4 \\
+f_4 & f_3
+\end{pmatrix},
+$$
+
+$$
+F^5 =
+\begin{pmatrix}
+8 & 5 \\
+5 & 3
+\end{pmatrix} =
+\begin{pmatrix}
+f_6 & f_5 \\
+f_5 & f_4
+\end{pmatrix}.
 $$
 
 In every power $F^n$, the $(1,1)$ entry is $f_{n+1}$, both the $(1,2)$ and $(2,1)$ entries equal $f_n$, and the $(2,2)$ entry is $f_{n-1}$.
@@ -183,11 +227,11 @@ $$
 F
 \begin{pmatrix}
 a \\
-b \\
-\end{pmatrix}=
+b
+\end{pmatrix} =
 \begin{pmatrix}
 a + b \\
-a \\
+a
 \end{pmatrix}.
 $$
 
@@ -199,23 +243,23 @@ $$
 F
 \begin{pmatrix}
 a \\
-b \\
-\end{pmatrix}=
+b
+\end{pmatrix} =
 \begin{pmatrix}
 1 & 1 \\
-1 & 0 \\
+1 & 0
 \end{pmatrix}
 \begin{pmatrix}
 a \\
-b \\
-\end{pmatrix}=
+b
+\end{pmatrix} =
 \begin{pmatrix}
 1\cdot a + 1\cdot b \\
-1\cdot a + 0\cdot b \\
-\end{pmatrix}=
+1\cdot a + 0\cdot b
+\end{pmatrix} =
 \begin{pmatrix}
 a + b \\
-a \\
+a
 \end{pmatrix}.
 $$
 
@@ -225,11 +269,11 @@ $$
 v =
 \begin{pmatrix}
 a \\
-b \\
-\end{pmatrix}=
+b
+\end{pmatrix} =
 \begin{pmatrix}
 f_n \\
-f_{n-1} \\
+f_{n-1}
 \end{pmatrix}.
 $$
 
@@ -244,7 +288,7 @@ $$
 v_n =
 \begin{pmatrix}
 x_n \\
-x_{n-1} \\
+x_{n-1}
 \end{pmatrix}.
 $$
 
@@ -256,30 +300,30 @@ $$
 v_1 =
 \begin{pmatrix}
 f_1 \\
-f_0 \\
-\end{pmatrix}=
+f_0
+\end{pmatrix} =
 \begin{pmatrix}
 1 \\
-0 \\
+0
 \end{pmatrix},\quad v_2 = Fv_1 =
 \begin{pmatrix}
 1 \\
-1 \\
+1
 \end{pmatrix},\quad v_3 = Fv_2 =
 \begin{pmatrix}
 2 \\
-1 \\
+1
 \end{pmatrix},\quad v_4 = Fv_3 =
 \begin{pmatrix}
 3 \\
-2 \\
+2
 \end{pmatrix},\quad v_5 = Fv_4 =
 \begin{pmatrix}
 5 \\
-3 \\
+3
 \end{pmatrix},\quad v_6 = Fv_5 =
 \begin{pmatrix}
 8 \\
-5 \\
+5
 \end{pmatrix}.
 $$

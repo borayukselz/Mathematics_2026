@@ -5,18 +5,18 @@
 Given the $3\times 3$ matrix
 
 $$
-A=
+A =
 \begin{pmatrix}
 1 & 2 & -1 \\
 2 & 4 & 1 \\
--1 & 1 & 3 \\
+-1 & 1 & 3
 \end{pmatrix},
 $$
 
 1. Perform the following elementary row operations in order and write the matrix after each step:
-   - Step 1: $R_2 \leftarrow R_2 - 2R_1$,
-   - Step 2: $R_3 \leftarrow R_3 + R_1$,
-   - Step 3: interchange $R_2$ and $R_3$ ($R_2 \leftrightarrow R_3$).
+  - Step 1: $R_2 \leftarrow R_2 - 2R_1$,
+  - Step 2: $R_3 \leftarrow R_3 + R_1$,
+  - Step 3: interchange $R_2$ and $R_3$ ($R_2 \leftrightarrow R_3$).
 2. For each of the three operations, state an operation that reverses it.
 
 ---
@@ -30,33 +30,33 @@ $$
 - After Step 1 ($R_2 \leftarrow R_2 - 2R_1$):
 
 $$
-A_1=
+A_1 =
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 0 & 3 \\
--1 & 1 & 3 \\
+-1 & 1 & 3
 \end{pmatrix}.
 $$
 
 - After Step 2 ($R_3 \leftarrow R_3 + R_1$):
 
 $$
-A_2=
+A_2 =
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 0 & 3 \\
-0 & 3 & 2 \\
+0 & 3 & 2
 \end{pmatrix}.
 $$
 
 - After Step 3 ($R_2 \leftrightarrow R_3$):
 
 $$
-A_3=
+A_3 =
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 3 & 2 \\
-0 & 0 & 3 \\
+0 & 0 & 3
 \end{pmatrix}.
 $$
 
@@ -65,7 +65,7 @@ $$
 1. **Step 1 ($R_2 \leftarrow R_2 - 2R_1$):** Subtract $2$ times row $1$ from row $2$, leaving rows $1$ and $3$ unchanged:
 
 $$
-R_2^{\text{new}} =
+R_2^{\mathrm{new}} =
 \begin{pmatrix}
 2 & 4 & 1
 \end{pmatrix} - 2
@@ -81,18 +81,18 @@ R_2^{\text{new}} =
 $$
 
 $$
-A_1=
+A_1 =
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 0 & 3 \\
--1 & 1 & 3 \\
+-1 & 1 & 3
 \end{pmatrix}.
 $$
 
 2. **Step 2 ($R_3 \leftarrow R_3 + R_1$):** Add row $1$ of $A_1$ to row $3$ of $A_1$, leaving rows $1$ and $2$ unchanged:
 
 $$
-R_3^{\text{new}} =
+R_3^{\mathrm{new}} =
 \begin{pmatrix}
 -1 & 1 & 3
 \end{pmatrix} +
@@ -108,22 +108,22 @@ R_3^{\text{new}} =
 $$
 
 $$
-A_2=
+A_2 =
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 0 & 3 \\
-0 & 3 & 2 \\
+0 & 3 & 2
 \end{pmatrix}.
 $$
 
 3. **Step 3 ($R_2 \leftrightarrow R_3$):** Swap row $2$ and row $3$ of $A_2$ to place the nonzero pivot $3$ into the $(2,2)$ position:
 
 $$
-A_3=
+A_3 =
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 3 & 2 \\
-0 & 0 & 3 \\
+0 & 0 & 3
 \end{pmatrix}.
 $$
 
@@ -164,28 +164,28 @@ which confirms that the two row replacements preserved the magnitude of the dete
 **Mathematical verification.** Applying the three inverse operations to $A_3$ in reverse order (Step 3 inverse, then Step 2 inverse, then Step 1 inverse) recovers the original matrix $A$:
 
 $$
-A_3=
+A_3 =
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 3 & 2 \\
-0 & 0 & 3 \\
+0 & 0 & 3
 \end{pmatrix}
 \xrightarrow{R_2 \leftrightarrow R_3}
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 0 & 3 \\
-0 & 3 & 2 \\
+0 & 3 & 2
 \end{pmatrix}
 \xrightarrow{R_3 \leftarrow R_3 - R_1}
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 0 & 3 \\
--1 & 1 & 3 \\
+-1 & 1 & 3
 \end{pmatrix}
 \xrightarrow{R_2 \leftarrow R_2 + 2R_1}
 \begin{pmatrix}
 1 & 2 & -1 \\
 2 & 4 & 1 \\
--1 & 1 & 3 \\
-\end{pmatrix}=A.
+-1 & 1 & 3
+\end{pmatrix} = A.
 $$

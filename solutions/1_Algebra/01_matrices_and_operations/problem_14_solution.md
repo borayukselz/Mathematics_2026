@@ -4,7 +4,13 @@
 
 The matrix for a rotation through an angle $\theta$ is
 
-$$R(\theta)= \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \\ \end{pmatrix}.$$
+$$
+R(\theta) =
+\begin{pmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{pmatrix}.
+$$
 
 1. Compute $R(\alpha)R(\beta)$ and, using the angle-sum formulas for sine and cosine, show that $R(\alpha)R(\beta) = R(\alpha + \beta)$.
 2. Explain the result geometrically.
@@ -17,21 +23,57 @@ $$R(\theta)= \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta
 
 **Result.**
 
-$$R(\alpha)R(\beta)= \begin{pmatrix} \cos(\alpha+\beta) & -\sin(\alpha+\beta) \\ \sin(\alpha+\beta) & \cos(\alpha+\beta) \\ \end{pmatrix}= R(\alpha+\beta).$$
+$$
+R(\alpha)R(\beta) =
+\begin{pmatrix}
+\cos(\alpha+\beta) & -\sin(\alpha+\beta) \\
+\sin(\alpha+\beta) & \cos(\alpha+\beta)
+\end{pmatrix} = R(\alpha+\beta).
+$$
 
 <br>
 
 **Main steps.** Multiply the two $2\times 2$ rotation matrices $R(\alpha)$ and $R(\beta)$ using row-by-column dot products:
 
-$$\begin{aligned} R(\alpha)R(\beta) &= \begin{pmatrix} \cos\alpha & -\sin\alpha \\ \sin\alpha & \cos\alpha \\ \end{pmatrix} \begin{pmatrix} \cos\beta & -\sin\beta \\ \sin\beta & \cos\beta \\ \end{pmatrix} \\ &= \begin{pmatrix} \cos\alpha\cos\beta - \sin\alpha\sin\beta & -\cos\alpha\sin\beta - \sin\alpha\cos\beta \\ \sin\alpha\cos\beta + \cos\alpha\sin\beta & -\sin\alpha\sin\beta + \cos\alpha\cos\beta \\ \end{pmatrix} \\ &= \begin{pmatrix} \cos\alpha\cos\beta - \sin\alpha\sin\beta & -(\sin\alpha\cos\beta + \cos\alpha\sin\beta) \\ \sin\alpha\cos\beta + \cos\alpha\sin\beta & \cos\alpha\cos\beta - \sin\alpha\sin\beta \\ \end{pmatrix}. \end{aligned}$$
+$$
+\begin{aligned}
+R(\alpha)R(\beta) &=
+\begin{pmatrix}
+\cos\alpha & -\sin\alpha \\
+\sin\alpha & \cos\alpha
+\end{pmatrix}
+\begin{pmatrix}
+\cos\beta & -\sin\beta \\
+\sin\beta & \cos\beta
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+\cos\alpha\cos\beta - \sin\alpha\sin\beta & -\cos\alpha\sin\beta - \sin\alpha\cos\beta \\
+\sin\alpha\cos\beta + \cos\alpha\sin\beta & -\sin\alpha\sin\beta + \cos\alpha\cos\beta
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+\cos\alpha\cos\beta - \sin\alpha\sin\beta & -(\sin\alpha\cos\beta + \cos\alpha\sin\beta) \\
+\sin\alpha\cos\beta + \cos\alpha\sin\beta & \cos\alpha\cos\beta - \sin\alpha\sin\beta
+\end{pmatrix}.
+\end{aligned}
+$$
 
 Apply the trigonometric angle-sum identities
 
-$$\cos(\alpha+\beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta, \qquad \sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta$$
+$$
+\cos(\alpha+\beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta, \qquad \sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta
+$$
 
 to each of the four entries:
 
-$$R(\alpha)R(\beta)= \begin{pmatrix} \cos(\alpha+\beta) & -\sin(\alpha+\beta) \\ \sin(\alpha+\beta) & \cos(\alpha+\beta) \\ \end{pmatrix}= R(\alpha+\beta).$$
+$$
+R(\alpha)R(\beta) =
+\begin{pmatrix}
+\cos(\alpha+\beta) & -\sin(\alpha+\beta) \\
+\sin(\alpha+\beta) & \cos(\alpha+\beta)
+\end{pmatrix} = R(\alpha+\beta).
+$$
 
 <br>
 
@@ -41,7 +83,25 @@ $$R(\alpha)R(\beta)= \begin{pmatrix} \cos(\alpha+\beta) & -\sin(\alpha+\beta) \\
 
 **Mathematical verification.** Testing the identity at $\alpha = \frac{\pi}{2}$ ($90^\circ$) and $\beta = \frac{\pi}{2}$ ($90^\circ$) confirms the algebraic derivation:
 
-$$R\left(\frac{\pi}{2}\right)R\left(\frac{\pi}{2}\right)= \begin{pmatrix} 0 & -1 \\ 1 & 0 \\ \end{pmatrix} \begin{pmatrix} 0 & -1 \\ 1 & 0 \\ \end{pmatrix}= \begin{pmatrix} -1 & 0 \\ 0 & -1 \\ \end{pmatrix}= \begin{pmatrix} \cos\pi & -\sin\pi \\ \sin\pi & \cos\pi \\ \end{pmatrix}= R(\pi).$$
+$$
+R\left(\frac{\pi}{2}\right)R\left(\frac{\pi}{2}\right) =
+\begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix} =
+\begin{pmatrix}
+-1 & 0 \\
+0 & -1
+\end{pmatrix} =
+\begin{pmatrix}
+\cos\pi & -\sin\pi \\
+\sin\pi & \cos\pi
+\end{pmatrix} = R(\pi).
+$$
 
 Additionally, $\det(R(\theta)) = \cos^2\theta + \sin^2\theta = 1$ for every angle $\theta$, which agrees with $\det(R(\alpha)R(\beta)) = \det(R(\alpha))\det(R(\beta)) = 1\cdot 1 = 1 = \det(R(\alpha+\beta))$.
 
@@ -64,6 +124,26 @@ Additionally, $\det(R(\theta)) = \cos^2\theta + \sin^2\theta = 1$ for every angl
 
 <br>
 
-**Mathematical verification.** Expressing an arbitrary nonzero vector in polar coordinates as $v = r \begin{pmatrix} \cos\phi \\ \sin\phi \end{pmatrix}$ shows explicitly how the angles add under successive multiplication:
+**Mathematical verification.** Expressing an arbitrary nonzero vector in polar coordinates as
 
-$$R(\beta)v = r \begin{pmatrix} \cos(\phi + \beta) \\ \sin(\phi + \beta) \\ \end{pmatrix} \implies R(\alpha)\bigl(R(\beta)v\bigr) = r \begin{pmatrix} \cos(\phi + \beta + \alpha) \\ \sin(\phi + \beta + \alpha) \\ \end{pmatrix}= R(\alpha + \beta)v.$$
+$$
+v = r
+\begin{pmatrix}
+\cos\phi \\
+\sin\phi
+\end{pmatrix}
+$$
+
+shows explicitly how the angles add under successive multiplication:
+
+$$
+R(\beta)v = r
+\begin{pmatrix}
+\cos(\phi + \beta) \\
+\sin(\phi + \beta)
+\end{pmatrix} \implies R(\alpha)\bigl(R(\beta)v\bigr) = r
+\begin{pmatrix}
+\cos(\phi + \beta + \alpha) \\
+\sin(\phi + \beta + \alpha)
+\end{pmatrix} = R(\alpha + \beta)v.
+$$

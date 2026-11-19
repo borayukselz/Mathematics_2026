@@ -5,14 +5,14 @@
 Given the $2\times 2$ matrices
 
 $$
-A=
+A =
 \begin{pmatrix}
 1 & 1 \\
-0 & 1 \\
-\end{pmatrix},\qquad B=
+0 & 1
+\end{pmatrix},\qquad B =
 \begin{pmatrix}
 a & b \\
-c & d \\
+c & d
 \end{pmatrix},
 $$
 
@@ -25,10 +25,10 @@ $$
 
 ##### 1. Conditions on $a, b, c, d$ for $AB = BA$
 
-**Result.** The matrices $A$ and $B$ commute ($AB = BA$) if and only if
+**Result.** The matrices $A$ and $B$ commute ($AB = BA$) if and only if $c = 0$ and $a = d$:
 
 $$
-c = 0 \qquad \text{and} \qquad a = d,
+c = 0,\qquad a = d,
 $$
 
 while $b$ can be any arbitrary scalar.
@@ -38,42 +38,42 @@ while $b$ can be any arbitrary scalar.
 **Main steps.** Compute both products $AB$ and $BA$ in terms of $a, b, c, d$:
 
 $$
-AB=
+AB =
 \begin{pmatrix}
 1 & 1 \\
-0 & 1 \\
+0 & 1
 \end{pmatrix}
 \begin{pmatrix}
 a & b \\
-c & d \\
-\end{pmatrix}=
+c & d
+\end{pmatrix} =
 \begin{pmatrix}
 1\cdot a + 1\cdot c & 1\cdot b + 1\cdot d \\
-0\cdot a + 1\cdot c & 0\cdot b + 1\cdot d \\
-\end{pmatrix}=
+0\cdot a + 1\cdot c & 0\cdot b + 1\cdot d
+\end{pmatrix} =
 \begin{pmatrix}
 a + c & b + d \\
-c & d \\
+c & d
 \end{pmatrix},
 $$
 
 $$
-BA=
+BA =
 \begin{pmatrix}
 a & b \\
-c & d \\
+c & d
 \end{pmatrix}
 \begin{pmatrix}
 1 & 1 \\
-0 & 1 \\
-\end{pmatrix}=
+0 & 1
+\end{pmatrix} =
 \begin{pmatrix}
 a\cdot 1 + b\cdot 0 & a\cdot 1 + b\cdot 1 \\
-c\cdot 1 + d\cdot 0 & c\cdot 1 + d\cdot 1 \\
-\end{pmatrix}=
+c\cdot 1 + d\cdot 0 & c\cdot 1 + d\cdot 1
+\end{pmatrix} =
 \begin{pmatrix}
 a & a + b \\
-c & c + d \\
+c & c + d
 \end{pmatrix}.
 $$
 
@@ -82,24 +82,19 @@ Set $AB = BA$:
 $$
 \begin{pmatrix}
 a + c & b + d \\
-c & d \\
-\end{pmatrix}=
+c & d
+\end{pmatrix} =
 \begin{pmatrix}
 a & a + b \\
-c & c + d \\
+c & c + d
 \end{pmatrix}.
 $$
 
 Equating corresponding entries in all four positions yields the system of equations:
-
-$$
-\begin{aligned}
-\text{Position } (1,1): &\quad a + c = a \implies c = 0, \\
-\text{Position } (1,2): &\quad b + d = a + b \implies d = a, \\
-\text{Position } (2,1): &\quad c = c \quad \text{(always satisfied)}, \\
-\text{Position } (2,2): &\quad d = c + d \implies c = 0.
-\end{aligned}
-$$
+- **Position $(1,1)$:** $a + c = a \implies c = 0$,
+- **Position $(1,2)$:** $b + d = a + b \implies d = a$,
+- **Position $(2,1)$:** $c = c$ (always satisfied),
+- **Position $(2,2)$:** $d = c + d \implies c = 0$.
 
 Hence, $AB = BA$ holds if and only if $c = 0$ and $a = d$, with no restriction on $b$.
 
@@ -112,22 +107,22 @@ Hence, $AB = BA$ holds if and only if $c = 0$ and $a = d$, with no restriction o
 **Mathematical verification.** Substituting $c = 0$ and $d = a$ directly into $AB$ and $BA$ confirms that both products simplify to the exact same matrix:
 
 $$
-AB=
+AB =
 \begin{pmatrix}
 a + 0 & b + a \\
-0 & a \\
-\end{pmatrix}=
+0 & a
+\end{pmatrix} =
 \begin{pmatrix}
 a & a + b \\
-0 & a \\
-\end{pmatrix},\qquad BA=
+0 & a
+\end{pmatrix},\qquad BA =
 \begin{pmatrix}
 a & a + b \\
-0 & 0 + a \\
-\end{pmatrix}=
+0 & 0 + a
+\end{pmatrix} =
 \begin{pmatrix}
 a & a + b \\
-0 & a \\
+0 & a
 \end{pmatrix}.
 $$
 
@@ -138,41 +133,53 @@ $$
 **Result.** Every matrix $B$ that commutes with $A$ is an upper triangular matrix with equal diagonal entries, having the general form
 
 $$
-B=
+B =
 \begin{pmatrix}
 a & b \\
-0 & a \\
-\end{pmatrix}= aI + bN,
+0 & a
+\end{pmatrix} = aI + bN,
 $$
 
-where $a, b \in \mathbb{R}$ are arbitrary scalars, $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ is the $2\times 2$ identity matrix, and $N = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$.
+where $a, b \in \mathbb{R}$ are arbitrary scalars, and
+
+$$
+I =
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix},\qquad N =
+\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}.
+$$
 
 <br>
 
 **Main steps.** Replace $c$ by $0$ and $d$ by $a$ in the general $2\times 2$ matrix $B$, then decompose it into a linear combination of $I$ and $N$:
 
 $$
-B=
+B =
 \begin{pmatrix}
 a & b \\
-0 & a \\
-\end{pmatrix}=
+0 & a
+\end{pmatrix} =
 \begin{pmatrix}
 a & 0 \\
-0 & a \\
-\end{pmatrix}+
+0 & a
+\end{pmatrix} +
 \begin{pmatrix}
 0 & b \\
-0 & 0 \\
-\end{pmatrix}= a
+0 & 0
+\end{pmatrix} = a
 \begin{pmatrix}
 1 & 0 \\
-0 & 1 \\
-\end{pmatrix}+ b
+0 & 1
+\end{pmatrix} + b
 \begin{pmatrix}
 0 & 1 \\
-0 & 0 \\
-\end{pmatrix}= aI + bN.
+0 & 0
+\end{pmatrix} = aI + bN.
 $$
 
 <br>

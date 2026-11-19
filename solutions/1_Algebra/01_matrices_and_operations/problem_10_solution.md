@@ -5,15 +5,15 @@
 Given the matrices
 
 $$
-A=
+A =
 \begin{pmatrix}
 1 & 2 & 0 \\
-0 & 1 & 1 \\
-\end{pmatrix},\qquad B=
+0 & 1 & 1
+\end{pmatrix},\qquad B =
 \begin{pmatrix}
 1 & 2 \\
 -1 & 0 \\
-3 & 1 \\
+3 & 1
 \end{pmatrix},
 $$
 
@@ -32,14 +32,14 @@ where $b_1$ and $b_2$ denote the columns of $B$:
 **Result.**
 
 $$
-Ab_1=
+Ab_1 =
 \begin{pmatrix}
 -1 \\
-2 \\
-\end{pmatrix},\qquad Ab_2=
+2
+\end{pmatrix},\qquad Ab_2 =
 \begin{pmatrix}
 2 \\
-1 \\
+1
 \end{pmatrix}.
 $$
 
@@ -48,68 +48,68 @@ $$
 **Main steps.** Extract the two $3\times 1$ column vectors from $B$:
 
 $$
-b_1=
+b_1 =
 \begin{pmatrix}
 1 \\
 -1 \\
-3 \\
-\end{pmatrix},\qquad b_2=
+3
+\end{pmatrix},\qquad b_2 =
 \begin{pmatrix}
 2 \\
 0 \\
-1 \\
+1
 \end{pmatrix}.
 $$
 
 Since $A$ has size $2\times 3$ and each column $b_j$ has size $3\times 1$, each product $Ab_j$ is a $2\times 1$ column vector computed via row-by-column dot products:
 
 $$
-Ab_1=
+Ab_1 =
 \begin{pmatrix}
 1 & 2 & 0 \\
-0 & 1 & 1 \\
+0 & 1 & 1
 \end{pmatrix}
 \begin{pmatrix}
 1 \\
 -1 \\
-3 \\
-\end{pmatrix}=
+3
+\end{pmatrix} =
 \begin{pmatrix}
 1\cdot 1 + 2\cdot (-1) + 0\cdot 3 \\
-0\cdot 1 + 1\cdot (-1) + 1\cdot 3 \\
-\end{pmatrix}=
+0\cdot 1 + 1\cdot (-1) + 1\cdot 3
+\end{pmatrix} =
 \begin{pmatrix}
 1 - 2 + 0 \\
-0 - 1 + 3 \\
-\end{pmatrix}=
+0 - 1 + 3
+\end{pmatrix} =
 \begin{pmatrix}
 -1 \\
-2 \\
+2
 \end{pmatrix},
 $$
 
 $$
-Ab_2=
+Ab_2 =
 \begin{pmatrix}
 1 & 2 & 0 \\
-0 & 1 & 1 \\
+0 & 1 & 1
 \end{pmatrix}
 \begin{pmatrix}
 2 \\
 0 \\
-1 \\
-\end{pmatrix}=
+1
+\end{pmatrix} =
 \begin{pmatrix}
 1\cdot 2 + 2\cdot 0 + 0\cdot 1 \\
-0\cdot 2 + 1\cdot 0 + 1\cdot 1 \\
-\end{pmatrix}=
+0\cdot 2 + 1\cdot 0 + 1\cdot 1
+\end{pmatrix} =
 \begin{pmatrix}
 2 + 0 + 0 \\
-0 + 0 + 1 \\
-\end{pmatrix}=
+0 + 0 + 1
+\end{pmatrix} =
 \begin{pmatrix}
 2 \\
-1 \\
+1
 \end{pmatrix}.
 $$
 
@@ -125,23 +125,23 @@ $$
 Ab_1 = 1
 \begin{pmatrix}
 1 \\
-0 \\
+0
 \end{pmatrix} - 1
 \begin{pmatrix}
 2 \\
-1 \\
+1
 \end{pmatrix} + 3
 \begin{pmatrix}
 0 \\
-1 \\
-\end{pmatrix}=
+1
+\end{pmatrix} =
 \begin{pmatrix}
 1 - 2 + 0 \\
-0 - 1 + 3 \\
-\end{pmatrix}=
+0 - 1 + 3
+\end{pmatrix} =
 \begin{pmatrix}
 -1 \\
-2 \\
+2
 \end{pmatrix},
 $$
 
@@ -149,23 +149,23 @@ $$
 Ab_2 = 2
 \begin{pmatrix}
 1 \\
-0 \\
+0
 \end{pmatrix} + 0
 \begin{pmatrix}
 2 \\
-1 \\
+1
 \end{pmatrix} + 1
 \begin{pmatrix}
 0 \\
-1 \\
-\end{pmatrix}=
+1
+\end{pmatrix} =
 \begin{pmatrix}
 2 + 0 + 0 \\
-0 + 0 + 1 \\
-\end{pmatrix}=
+0 + 0 + 1
+\end{pmatrix} =
 \begin{pmatrix}
 2 \\
-1 \\
+1
 \end{pmatrix}.
 $$
 
@@ -176,10 +176,10 @@ $$
 **Result.**
 
 $$
-AB=
+AB =
 \begin{pmatrix}
 -1 & 2 \\
-2 & 1 \\
+2 & 1
 \end{pmatrix}.
 $$
 
@@ -188,23 +188,23 @@ $$
 **Main steps.** Matrix $A$ has size $2\times 3$ and matrix $B$ has size $3\times 2$, so their product $AB$ is defined and has size $2\times 2$. Compute each $(i,j)$ entry as the dot product of row $i$ of $A$ with column $j$ of $B$:
 
 $$
-AB=
+AB =
 \begin{pmatrix}
 1 & 2 & 0 \\
-0 & 1 & 1 \\
+0 & 1 & 1
 \end{pmatrix}
 \begin{pmatrix}
 1 & 2 \\
 -1 & 0 \\
-3 & 1 \\
-\end{pmatrix}=
+3 & 1
+\end{pmatrix} =
 \begin{pmatrix}
 1\cdot 1 + 2\cdot (-1) + 0\cdot 3 & 1\cdot 2 + 2\cdot 0 + 0\cdot 1 \\
-0\cdot 1 + 1\cdot (-1) + 1\cdot 3 & 0\cdot 2 + 1\cdot 0 + 1\cdot 1 \\
-\end{pmatrix}=
+0\cdot 1 + 1\cdot (-1) + 1\cdot 3 & 0\cdot 2 + 1\cdot 0 + 1\cdot 1
+\end{pmatrix} =
 \begin{pmatrix}
 -1 & 2 \\
-2 & 1 \\
+2 & 1
 \end{pmatrix}.
 $$
 
@@ -217,49 +217,57 @@ $$
 **Mathematical verification.** Checking the transpose identity $(AB)^T = B^T A^T$ confirms all four entries of $AB$:
 
 $$
-B^T A^T=
+B^T A^T =
 \begin{pmatrix}
 1 & -1 & 3 \\
-2 & 0 & 1 \\
+2 & 0 & 1
 \end{pmatrix}
 \begin{pmatrix}
 1 & 0 \\
 2 & 1 \\
-0 & 1 \\
-\end{pmatrix}=
+0 & 1
+\end{pmatrix} =
 \begin{pmatrix}
 1 - 2 + 0 & 0 - 1 + 3 \\
-2 + 0 + 0 & 0 + 0 + 1 \\
-\end{pmatrix}=
+2 + 0 + 0 & 0 + 0 + 1
+\end{pmatrix} =
 \begin{pmatrix}
 -1 & 2 \\
-2 & 1 \\
-\end{pmatrix}=(AB)^T.
+2 & 1
+\end{pmatrix} = (AB)^T.
 $$
 
 ---
 
 ##### 3. Comparison and Explanation of the Column Structure of $AB$
 
-**Result.** The first column of $AB$ is identically equal to $Ab_1 = \begin{pmatrix} -1 \\ 2 \end{pmatrix}$ and the second column of $AB$ is identically equal to $Ab_2 = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$, so
+**Result.** The first column of $AB$ is identically equal to $Ab_1$ and the second column of $AB$ is identically equal to $Ab_2$:
 
 $$
-AB =
+Ab_1 =
+\begin{pmatrix}
+-1 \\
+2
+\end{pmatrix},\qquad Ab_2 =
+\begin{pmatrix}
+2 \\
+1
+\end{pmatrix},\qquad AB =
 \begin{pmatrix}
 Ab_1 & Ab_2
-\end{pmatrix}=
+\end{pmatrix} =
 \begin{pmatrix}
 -1 & 2 \\
-2 & 1 \\
+2 & 1
 \end{pmatrix}.
 $$
 
 <br>
 
-**Main steps.** By definition, the entries in column $j$ of $AB$ are computed exclusively by taking dot products of the rows of $A$ with column $j$ of $B$ (which is the vector $b_j$), without involving any other columns of $B$:
+**Main steps.** By definition, the entries in column $j$ of $AB$ are computed exclusively by taking dot products of the rows of $A$ with column $j$ of $B$ (which is the vector $b_j$), without involving any other columns of $B$. For all $i \in \{1, 2\}$ and $j \in \{1, 2\}$:
 
 $$
-(AB)_{ij} = \sum_{k=1}^{3} a_{ik} b_{kj} = (Ab_j)_i \qquad \text{for } i \in \{1, 2\} \text{ and } j \in \{1, 2\}.
+(AB)_{ij} = \sum_{k=1}^{3} a_{ik} b_{kj} = (Ab_j)_i.
 $$
 
 Because every coordinate $i$ of column $j$ of $AB$ matches coordinate $i$ of $Ab_j$, the entire $j$-th column of $AB$ equals $Ab_j$.
@@ -272,7 +280,7 @@ $$
 AB = A
 \begin{pmatrix}
 b_1 & b_2 & \cdots & b_p
-\end{pmatrix}=
+\end{pmatrix} =
 \begin{pmatrix}
 Ab_1 & Ab_2 & \cdots & Ab_p
 \end{pmatrix}.
@@ -280,21 +288,37 @@ $$
 
 <br>
 
-**Mathematical verification.** Let $e_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ and $e_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ be the standard basis vectors of $\mathbb{R}^2$. Multiplying $B$ on the right by $e_j$ isolates its $j$-th column, since $Be_1$ equals $b_1$ and $Be_2$ equals $b_2$. Applying associativity of matrix multiplication yields
+**Mathematical verification.** Let the standard basis vectors of $\mathbb{R}^2$ be
 
 $$
-\text{Column } 1 \text{ of } AB = (AB)e_1 = A(Be_1) = Ab_1 =
+e_1 =
+\begin{pmatrix}
+1 \\
+0
+\end{pmatrix},\qquad e_2 =
+\begin{pmatrix}
+0 \\
+1
+\end{pmatrix}.
+$$
+
+Multiplying $B$ on the right by $e_j$ isolates its $j$-th column, since $Be_1 = b_1$ and $Be_2 = b_2$. Applying associativity of matrix multiplication yields the first column of $AB$:
+
+$$
+(AB)e_1 = A(Be_1) = Ab_1 =
 \begin{pmatrix}
 -1 \\
-2 \\
+2
 \end{pmatrix},
 $$
 
+and the second column of $AB$:
+
 $$
-\text{Column } 2 \text{ of } AB = (AB)e_2 = A(Be_2) = Ab_2 =
+(AB)e_2 = A(Be_2) = Ab_2 =
 \begin{pmatrix}
 2 \\
-1 \\
+1
 \end{pmatrix},
 $$
 

@@ -5,10 +5,10 @@
 Given the $2\times 2$ matrix
 
 $$
-A=
+A =
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
+0 & 2
 \end{pmatrix},
 $$
 
@@ -27,113 +27,113 @@ $$
 AI = IA = A + 0 =
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
+0 & 2
 \end{pmatrix},\qquad A^2 =
 \begin{pmatrix}
 4 & 4 \\
-0 & 4 \\
+0 & 4
 \end{pmatrix},\qquad A^3 =
 \begin{pmatrix}
 8 & 12 \\
-0 & 8 \\
+0 & 8
 \end{pmatrix}.
 $$
 
 **Main steps.** Since $A$ has size $2\times 2$, the compatible identity matrix $I$ and zero matrix $0$ also have size $2\times 2$:
 
 $$
-I=
+I =
 \begin{pmatrix}
 1 & 0 \\
-0 & 1 \\
-\end{pmatrix},\qquad 0=
+0 & 1
+\end{pmatrix},\qquad 0 =
 \begin{pmatrix}
 0 & 0 \\
-0 & 0 \\
+0 & 0
 \end{pmatrix}.
 $$
 
 First, compute $AI$, $IA$, and $A+0$:
 
 $$
-AI=
+AI =
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
+0 & 2
 \end{pmatrix}
 \begin{pmatrix}
 1 & 0 \\
-0 & 1 \\
-\end{pmatrix}=
+0 & 1
+\end{pmatrix} =
 \begin{pmatrix}
 2\cdot 1 + 1\cdot 0 & 2\cdot 0 + 1\cdot 1 \\
-0\cdot 1 + 2\cdot 0 & 0\cdot 0 + 2\cdot 1 \\
-\end{pmatrix}=
+0\cdot 1 + 2\cdot 0 & 0\cdot 0 + 2\cdot 1
+\end{pmatrix} =
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
+0 & 2
 \end{pmatrix},
 $$
 
 $$
-IA=
+IA =
 \begin{pmatrix}
 1 & 0 \\
-0 & 1 \\
+0 & 1
 \end{pmatrix}
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
-\end{pmatrix}=
+0 & 2
+\end{pmatrix} =
 \begin{pmatrix}
 1\cdot 2 + 0\cdot 0 & 1\cdot 1 + 0\cdot 2 \\
-0\cdot 2 + 1\cdot 0 & 0\cdot 1 + 1\cdot 2 \\
-\end{pmatrix}=
+0\cdot 2 + 1\cdot 0 & 0\cdot 1 + 1\cdot 2
+\end{pmatrix} =
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
+0 & 2
 \end{pmatrix},
 $$
 
 $$
-A+0=
+A+0 =
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
-\end{pmatrix}+
+0 & 2
+\end{pmatrix} +
 \begin{pmatrix}
 0 & 0 \\
-0 & 0 \\
-\end{pmatrix}=
+0 & 0
+\end{pmatrix} =
 \begin{pmatrix}
 2+0 & 1+0 \\
-0+0 & 2+0 \\
-\end{pmatrix}=
+0+0 & 2+0
+\end{pmatrix} =
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
+0 & 2
 \end{pmatrix}.
 $$
 
 Next, compute $A^2 = AA$ and $A^3 = A^2 A$:
 
 $$
-A^2=
+A^2 =
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
+0 & 2
 \end{pmatrix}
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
-\end{pmatrix}=
+0 & 2
+\end{pmatrix} =
 \begin{pmatrix}
 2\cdot 2 + 1\cdot 0 & 2\cdot 1 + 1\cdot 2 \\
-0\cdot 2 + 2\cdot 0 & 0\cdot 1 + 2\cdot 2 \\
-\end{pmatrix}=
+0\cdot 2 + 2\cdot 0 & 0\cdot 1 + 2\cdot 2
+\end{pmatrix} =
 \begin{pmatrix}
 4 & 4 \\
-0 & 4 \\
+0 & 4
 \end{pmatrix},
 $$
 
@@ -141,19 +141,19 @@ $$
 A^3 = A^2 A =
 \begin{pmatrix}
 4 & 4 \\
-0 & 4 \\
+0 & 4
 \end{pmatrix}
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
-\end{pmatrix}=
+0 & 2
+\end{pmatrix} =
 \begin{pmatrix}
 4\cdot 2 + 4\cdot 0 & 4\cdot 1 + 4\cdot 2 \\
-0\cdot 2 + 4\cdot 0 & 0\cdot 1 + 4\cdot 2 \\
-\end{pmatrix}=
+0\cdot 2 + 4\cdot 0 & 0\cdot 1 + 4\cdot 2
+\end{pmatrix} =
 \begin{pmatrix}
 8 & 12 \\
-0 & 8 \\
+0 & 8
 \end{pmatrix}.
 $$
 
@@ -162,22 +162,22 @@ $$
 **Mathematical verification.** Because matrix multiplication is associative, computing $A^3$ as $A(A^2)$ instead of $(A^2)A$ must yield the exact same matrix:
 
 $$
-A(A^2)=
+A(A^2) =
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
+0 & 2
 \end{pmatrix}
 \begin{pmatrix}
 4 & 4 \\
-0 & 4 \\
-\end{pmatrix}=
+0 & 4
+\end{pmatrix} =
 \begin{pmatrix}
 2\cdot 4 + 1\cdot 0 & 2\cdot 4 + 1\cdot 4 \\
-0\cdot 4 + 2\cdot 0 & 0\cdot 4 + 2\cdot 4 \\
-\end{pmatrix}=
+0\cdot 4 + 2\cdot 0 & 0\cdot 4 + 2\cdot 4
+\end{pmatrix} =
 \begin{pmatrix}
 8 & 12 \\
-0 & 8 \\
+0 & 8
 \end{pmatrix}.
 $$
 
@@ -191,19 +191,29 @@ In addition, determinants satisfy $\det(A^k) = (\det(A))^k$: since $\det(A) = 2\
 - **Pattern in powers of $A$:** For every integer $n \ge 1$, the $n$-th power of $A$ has the closed form
 
 $$
-A^n=
+A^n =
 \begin{pmatrix}
 2^n & n\cdot 2^{n-1} \\
-0 & 2^n \\
+0 & 2^n
 \end{pmatrix}.
 $$
 
 **Main steps.** Comparing $A^1$, $A^2$, and $A^3$ reveals a clear structure in each entry:
-- **Main diagonal entries:** $(A^1)_{11} = (A^1)_{22} = 2^1 = 2$, $(A^2)_{11} = (A^2)_{22} = 2^2 = 4$, and $(A^3)_{11} = (A^3)_{22} = 2^3 = 8$, following $2^n$.
-- **Lower-left entry:** $(A^n)_{21} = 0$ remains $0$ for all $n \ge 1$ because $A$ is upper triangular.
-- **Upper-right entry:** $(A^1)_{12} = 1 = 1\cdot 2^0$, $(A^2)_{12} = 4 = 2\cdot 2^1$, and $(A^3)_{12} = 12 = 3\cdot 2^2$, following $n\cdot 2^{n-1}$.
+- **Main diagonal entries:** For $A^1$, both diagonal entries equal $2^1 = 2$; for $A^2$, both equal $2^2 = 4$; and for $A^3$, both equal $2^3 = 8$, following $2^n$.
+- **Lower-left entry:** The $(2,1)$-entry remains $0$ for all $n \ge 1$ because $A$ is upper triangular.
+- **Upper-right entry:** The $(1,2)$-entry is $1 = 1\cdot 2^0$ in $A^1$, $4 = 2\cdot 2^1$ in $A^2$, and $12 = 3\cdot 2^2$ in $A^3$, following $n\cdot 2^{n-1}$.
 
-**Property / method used.** *Jordan-block / nilpotent decomposition:* writing $A = 2I + N$, where $N = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$ satisfies $N^2 = 0$ and commutes with $2I$, allows applying the binomial theorem to $(2I + N)^n$.
+**Property / method used.** *Jordan-block / nilpotent decomposition:* writing $A = 2I + N$, where
+
+$$
+N =
+\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+$$
+
+satisfies $N^2 = 0$ and commutes with $2I$, allows applying the binomial theorem to $(2I + N)^n$.
 
 **Mathematical verification.** Since $(2I)N = N(2I)$ and $N^k = 0$ for all $k \ge 2$, all higher-order terms in the binomial expansion vanish:
 
@@ -211,15 +221,15 @@ $$
 A^n = (2I + N)^n = (2I)^n + n(2I)^{n-1}N = 2^n
 \begin{pmatrix}
 1 & 0 \\
-0 & 1 \\
+0 & 1
 \end{pmatrix} + n\cdot 2^{n-1}
 \begin{pmatrix}
 0 & 1 \\
-0 & 0 \\
-\end{pmatrix}=
+0 & 0
+\end{pmatrix} =
 \begin{pmatrix}
 2^n & n\cdot 2^{n-1} \\
-0 & 2^n \\
+0 & 2^n
 \end{pmatrix}.
 $$
 

@@ -9,7 +9,7 @@ $$
 \begin{pmatrix}
 2 & 4 & 1 \\
 0 & -3 & 5 \\
-0 & 0 & 7 \\
+0 & 0 & 7
 \end{pmatrix}.
 $$
 
@@ -28,7 +28,7 @@ $$
 \begin{pmatrix}
 2 & 4 & 1 \\
 0 & -3 & 5 \\
-0 & 0 & 7 \\
+0 & 0 & 7
 \end{pmatrix}= -42.
 $$
 
@@ -41,7 +41,7 @@ A=
 \begin{pmatrix}
 2 & 4 & 1 \\
 0 & -3 & 5 \\
-0 & 0 & 7 \\
+0 & 0 & 7
 \end{pmatrix}.
 $$
 
@@ -73,7 +73,7 @@ $$
 \det A = 2 \cdot \det
 \begin{pmatrix}
 -3 & 5 \\
-0 & 7 \\
+0 & 7
 \end{pmatrix}- 0 + 0 = 2\bigl((-3)\cdot 7 - 5\cdot 0\bigr) = 2 \cdot (-3) \cdot 7 = -42.
 $$
 
@@ -87,12 +87,21 @@ $$
 
 **Main steps.**
 1. **Why off-diagonal entries do not affect $\det T$:** In an upper triangular matrix, all entries below the main diagonal are zero ($t_{ij} = 0$ for $i > j$), while the entries above the main diagonal ($t_{ij}$ for $i < j$) can be arbitrary numbers. In this example, the upper-right entries $4$, $1$, and $5$ contribute nothing to $\det A$.
-2. **Recursive reduction:** Expanding along column $1$ isolates $t_{11} = 2$ multiplied by the $(n-1)\times(n-1)$ upper triangular submatrix $\begin{pmatrix} -3 & 5 \\ 0 & 7 \end{pmatrix}$, and repeating this step peels off $t_{22} = -3$ and $t_{33} = 7$, leaving solely $2 \cdot (-3) \cdot 7 = -42$.
+2. **Recursive reduction:** Expanding along column $1$ isolates $t_{11} = 2$ multiplied by the $(n-1)\times(n-1)$ upper triangular submatrix
+
+$$
+\begin{pmatrix}
+-3 & 5 \\
+0 & 7
+\end{pmatrix},
+$$
+
+and repeating this step peels off $t_{22} = -3$ and $t_{33} = 7$, leaving solely $2 \cdot (-3) \cdot 7 = -42$.
 3. **Symmetry for lower triangular matrices:** Because $\det(L^T) = \det L$ and the transpose of a lower triangular matrix is upper triangular with the exact same diagonal entries, the identical product rule applies to lower triangular matrices as well.
 
 <br>
 
-**Property / method used.** *Inductive cofactor reduction and transpose invariance ($\det(M^T) = \det M$):* zeros below (or above) the main diagonal eliminate every off-diagonal term in the Leibniz permutation expansion except the identity permutation $t_{11}t_{22}\cdots t_{nn}$.
+**Property / method used.** *Inductive cofactor reduction and transpose invariance* ($\det(M^T) = \det M$)*:* zeros below (or above) the main diagonal eliminate every off-diagonal term in the Leibniz permutation expansion except the identity permutation $t_{11}t_{22}\cdots t_{nn}$.
 
 <br>
 
@@ -103,7 +112,7 @@ $$
 \begin{pmatrix}
 2 & 0 & 0 \\
 0 & -3 & 0 \\
-0 & 0 & 7 \\
+0 & 0 & 7
 \end{pmatrix}= 2 \cdot (-3) \cdot 7 = -42 = \det A,
 $$
 

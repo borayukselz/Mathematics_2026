@@ -96,7 +96,26 @@ $$
      - Thus $(x, y) = \left(\frac{5}{3}, -\frac{7}{3}\right)$.
 
 3. **Compare the elimination steps and explain what stays the same:**
-   - **What is identical:** In both reductions, the row operations ($R_1 \leftrightarrow R_2$ and $R_2 \leftarrow R_2 - 2R_1$), the pivot positions, and the left-hand side matrices at every stage—from $\begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix}$ to $\begin{pmatrix} 1 & -1 \\ 2 & 1 \end{pmatrix}$ to $\begin{pmatrix} 1 & -1 \\ 0 & 3 \end{pmatrix}$—are completely identical. Only the right-hand augmented column changes.
+   - **What is identical:** In both reductions, the row operations ($R_1 \leftrightarrow R_2$ and $R_2 \leftarrow R_2 - 2R_1$), the pivot positions, and the left-hand side coefficient matrices at every stage are completely identical:
+
+$$
+\begin{pmatrix}
+2 & 1 \\
+1 & -1
+\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}
+1 & -1 \\
+2 & 1
+\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}
+1 & -1 \\
+0 & 3
+\end{pmatrix}.
+$$
+
+     Only the right-hand augmented column changes.
    - **Why:** Elementary row operations are determined solely by the entries of the coefficient matrix $A$ (specifically, eliminating sub-pivot entries in $A$), independently of the right-hand side vector $b$. Consequently, both systems could even be reduced simultaneously in a single doubly augmented matrix $[A \mid b_1 \ \ b_2]$.
 
 <br>

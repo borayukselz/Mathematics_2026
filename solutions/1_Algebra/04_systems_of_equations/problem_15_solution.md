@@ -38,9 +38,9 @@ For each, justify the classification: **one solution**, **infinitely many soluti
 #### Solution
 
 **Result.**
-- **System 1:** **One solution** (consistent with $2$ pivots among $2$ unknowns; specifically $(x, y) = (1, 1)$).
-- **System 2:** **Infinitely many solutions** (consistent with $1$ pivot among $2$ unknowns, leaving $1$ free variable).
-- **System 3:** **No solution** (inconsistent; elimination produces the contradictory row $0 = 1$).
+- **System 1:** **One solution** — consistent with $2$ pivots among $2$ unknowns; specifically $(x, y) = (1, 1)$.
+- **System 2:** **Infinitely many solutions** — consistent with $1$ pivot among $2$ unknowns, leaving $1$ free variable.
+- **System 3:** **No solution** — inconsistent; elimination produces the contradictory row $0 = 1$.
 
 <br>
 

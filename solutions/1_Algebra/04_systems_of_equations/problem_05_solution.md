@@ -52,7 +52,7 @@ $$
 1. **Determine consistency and the number of free variables:**
    - The matrix is already in row echelon form with **$n = 3$ unknowns** ($x, y, z$).
    - Row $3$ is $(0 \quad 0 \quad 0 \mid 0)$, which represents the trivial identity $0 = 0$; there is no contradictory row with all zeros on the left and a nonzero constant on the right, so the system is **consistent**.
-   - The leading nonzero entries (pivots) sit in column $1$ (entry $(1,1)$) and column $2$ (entry $(2,2)$), giving rank $r = 2$.
+   - The leading nonzero entries (pivots) sit in column $1$ at row $1$, column $1$ and column $2$ at row $2$, column $2$, giving rank $r = 2$.
    - Because there are $n = 3$ variables and $r = 2$ pivot variables ($x$ and $y$), the number of variables that may be chosen freely is
 
 $$

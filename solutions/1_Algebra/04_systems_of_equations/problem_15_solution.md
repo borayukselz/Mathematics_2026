@@ -84,7 +84,18 @@ $$
 \right).
 $$
 
-   - **Justification:** Row $2$ reduces completely to $(0 \quad 0 \mid 0)$, which is the valid identity $0 = 0$ (no contradiction). There is only $r = 1$ pivot (in column $1$) among $n = 2$ unknowns, leaving $n - r = 2 - 1 = 1$ free variable ($y = t \in \mathbb{R}$), so the system has **infinitely many solutions** ($(x, y) = (2 - t, t)$).
+   - **Justification:** Row $2$ reduces completely to $(0 \quad 0 \mid 0)$, which is the valid identity $0 = 0$ (no contradiction). There is only $r = 1$ pivot (in column $1$) among $n = 2$ unknowns, leaving $n - r = 2 - 1 = 1$ free variable ($y = t \in \mathbb{R}$), so the system has **infinitely many solutions**:
+
+$$
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix} =
+\begin{pmatrix}
+2 - t \\
+t
+\end{pmatrix}, \qquad t \in \mathbb{R}.
+$$
 
 3. **System 3 — Eliminate $x$ from row $2$ via $R_2 \leftarrow R_2 - 2R_1$:**
 
@@ -113,7 +124,15 @@ $$
 <br>
 
 **Mathematical verification.** Checking each classification directly against the original equations confirms all three results:
-- **System 1:** $(1, 1)$ satisfies $1 + 1 = 2$ and $1 - 1 = 0$, and $\det \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = -2 \neq 0$.
+- **System 1:** $(1, 1)$ satisfies $1 + 1 = 2$ and $1 - 1 = 0$, and the coefficient matrix determinant is nonzero:
+
+$$
+\det
+\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix} = -2 \neq 0.
+$$
+
 - **System 2:** Equation $2$ is $2(x + y) = 2(2)$, which is identical to Equation $1$.
 - **System 3:** Equation $1$ implies $2(x + y) = 4$, which directly contradicts Equation $2$ ($2x + 2y = 5$).
-```[cite: 10]

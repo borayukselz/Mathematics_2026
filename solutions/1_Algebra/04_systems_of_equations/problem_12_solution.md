@@ -153,7 +153,7 @@ $$
 
 <br>
 
-**Property / method used.** *Null space (kernel) of a homogeneous system $Ax = 0$:* elementary row operations preserve the zero right-hand side column, and the set of all solutions forms the vector subspace $\ker(A) = \mathrm{span}\{(-1, 1, 1)^T\}$ passing through the origin $(0, 0, 0)$ (corresponding to $t = 0$).
+**Property / method used.** *Null space (kernel) of a homogeneous system:* elementary row operations preserve the zero right-hand side column, and the set of all solutions forms the vector subspace $\ker(A) = \mathrm{span}\{(-1, 1, 1)^T\}$ passing through the origin $(0, 0, 0)$ (corresponding to $t = 0$).
 
 <br>
 
